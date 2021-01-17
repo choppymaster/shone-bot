@@ -1,0 +1,14 @@
+dist: trusty
+language: node_js
+node_js:
+  - "14"
+before_install:
+  - npm i -g npm@6.14.11
+cache: npm
+install: 
+    - npm ci 
+    - npm build --if-present
+script:
+    - npm run test
+
+
