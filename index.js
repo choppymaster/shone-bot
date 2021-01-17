@@ -331,7 +331,7 @@ client.on("message", message => {
 
 const alexa = require('alexa-bot-api')
 var chatbot = new alexa("aw2plm")
-
+ 
 client.on("message", async message => {
     if (message.author.bot) return;
     let content = message.content
