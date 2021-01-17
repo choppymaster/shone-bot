@@ -1,0 +1,23 @@
+{
+  "name": "shone-bot",
+  "version": "1.2.4",
+  "author": "shone",
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "test": "node index.js && exit 1"
+  },
+  "dependencies": {
+    "alexa-bot-api": "^0.2.1",
+    "discord.js": "^12.5.1",
+    "quick.db": "^7.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://glitch.com/edit/#!/blue-lunar-albertosaurus?path=README.md%3A1%3A0"
+  },
+  "licence": "ISC",
+  "description": "My discord bot"
+}
