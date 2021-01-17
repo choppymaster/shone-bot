@@ -1,0 +1,2 @@
+# Shone-Bot
+Moderar discord 
