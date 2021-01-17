@@ -7,7 +7,7 @@
     "node": "14.x"
   },
   "scripts": {
-    "test": "node index.js && exit 1"
+    "test": "node index.js"
   },
   "dependencies": {
     "alexa-bot-api": "^0.2.1",
