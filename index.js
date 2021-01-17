@@ -353,7 +353,7 @@ client.on('guildMemberAdd', member => {
  })
 
 
-client.login(secrets.TOKEN)
+client.login(${{ secrets.TOKEN }})
 
           
             
