@@ -1,3 +1,4 @@
+name: Travis CI Build and Test
 dist: trusty
 language: node_js
 node_js:
