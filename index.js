@@ -15,7 +15,8 @@ client.on("message", message => {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase()
     const blogchannel = message.guild.channels.cache.get(config.blogchannel)
-    
+    const logchannel = message.guild.channels.cache.get(config.logchannel)
+   
     if (command === "ping") {
         message.channel.send(`Pong! - ${client.ws.ping}ms` ) 
         message.react("")
@@ -327,11 +328,37 @@ client.on("message", message => {
       logchannel.send(`${message.author.tag} used **.rolelog** command for searching  ${role}`)
       
       }
+ 
+ if(command === "setwelcome") {
+     if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("Insufficient permissions")
+    const channel = message.mentions.channels.first()
+     const db = require('quick.db')
+     db.set(`welchannel_${message.guild.id}`, channel.id)
+     message.channel.send(`Welcome channel seted as ${channel}`)
+ }
+ 
 }) 
+
+client.on("guildMemberAdd", async member => {
+    const { CanvasSenpai } = require("canvas-senpai")
+    const canva = new CanvasSenpai()
+    const chx = db.get(`welchannel_${message.guild.id}`)
+    
+    if(chx = null) {
+        return;
+    }
+    
+    let data = await canva.welcome(member, { link: "https://wallpapercave.com/wp/wp5128415.jpg" })
+    const attachment = new Discord.MessageAttachment(
+      data,
+      "welcome-image.png"
+      )
+    client.channels.cache.get(chx).send("Welcome to our server " + member.user.username, attachment)
+})
 
 const alexa = require('alexa-bot-api')
 var chatbot = new alexa("aw2plm")
- 
+
 client.on("message", async message => {
     if (message.author.bot) return;
     let content = message.content
@@ -342,18 +369,8 @@ client.on("message", async message => {
     }
 })
 
-client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.get("748464661233532962")
-    let welcomeEmbed = new MessageEmbed()
-    .setTitle("New Member")
-    .setDescription(`Everyone welcome ${member} !  Welcome to the party!`)
-    .setColor("RANDOM")
-    .setThumbnail(member.user.displayAvatarURL({ size: 2048 }))
-    channel.send(welcomeEmbed)
- })
 
-
-client.login(`${{ secrets.TOKEN }}`)
+client.login(config.token)
 
           
             
