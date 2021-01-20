@@ -15,7 +15,8 @@ client.on("message", message => {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase()
     const blogchannel = message.guild.channels.cache.get(config.blogchannel)
-    
+    const logchannel = message.guild.channels.cache.get(config.logchannel)
+   
     if (command === "ping") {
         message.channel.send(`Pong! - ${client.ws.ping}ms` ) 
         message.react("")
@@ -289,7 +290,7 @@ client.on("message", message => {
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("Insufficient permissions.").then(msg => {
         msg.delete({ timeout: 10000 })
     })
-    const muterole = message.guild.roles.cache.get("761507787402379274")
+    const muterole = message.guild.roles.cache.get(config.muterole)
     member.roles.add(muterole).catch(console.error)
     message.channel.send(`${message.author} muted ${member}`)
     logchannel.send(`${message.author.tag} muted ${member} .`)
@@ -304,7 +305,7 @@ client.on("message", message => {
         msg.delete({ timeout: 10000 })
     })
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("Insufficient permissions")
-    const muterole = message.guild.roles.cache.get("761507787402379274")
+    const muterole = message.guild.roles.cache.get(config.muterole)
     member.roles.remove(muterole).catch(console.error)
     message.channel.send(`${message.author} unmuted  ${member}`)
     logchannel.send(`${message.author.tag} unmuted ${member} .`)
@@ -327,11 +328,11 @@ client.on("message", message => {
       logchannel.send(`${message.author.tag} used **.rolelog** command for searching  ${role}`)
       
       }
-}) 
-
+ })
+ 
 const alexa = require('alexa-bot-api')
 var chatbot = new alexa("aw2plm")
- 
+
 client.on("message", async message => {
     if (message.author.bot) return;
     let content = message.content
@@ -342,18 +343,8 @@ client.on("message", async message => {
     }
 })
 
-client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.get("748464661233532962")
-    let welcomeEmbed = new MessageEmbed()
-    .setTitle("New Member")
-    .setDescription(`Everyone welcome ${member} !  Welcome to the party!`)
-    .setColor("RANDOM")
-    .setThumbnail(member.user.displayAvatarURL({ size: 2048 }))
-    channel.send(welcomeEmbed)
- })
 
-
-client.login(`${{ secrets.TOKEN }}`)
+client.login(config.token)
 
           
             
