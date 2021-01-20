@@ -19,5 +19,8 @@
     "type": "git",
     "url": "https://github.com/choppymaster/Shone-Bot"
   },
+"eslintConfig": {
+    "extends": "eslint:recommended"
+    },
   "licence": "MIT",
   "description": "My bot"
