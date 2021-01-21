@@ -106,3 +106,6 @@ dist
 
 # Configuration 
 config.*
+
+# repl.it clone files
+.repl.it 
