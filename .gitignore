@@ -108,4 +108,4 @@ dist
 config.*
 
 # repl.it clone files
-.repl.it 
+.replit 
