@@ -9,6 +9,7 @@ install:
     - npm ci 
     - npm build --if-present
 script:
-    - npm run test
+    - npm run lint
+
 
 
