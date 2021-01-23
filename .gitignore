@@ -109,3 +109,6 @@ config.*
 
 # repl.it clone files
 .replit 
+
+# db files 
+json.sqlite 
