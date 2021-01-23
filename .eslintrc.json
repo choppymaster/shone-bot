@@ -7,6 +7,7 @@
 	"parserOptions": {
 		"ecmaVersion": 2020
 	},
+  "parser": "babel-eslint",
 	"rules": {
 		"brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
 		"comma-spacing": "error",
