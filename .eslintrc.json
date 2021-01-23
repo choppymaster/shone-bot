@@ -4,9 +4,6 @@
 		"node": true,
 		"es6": true
 	},
-	"parserOptions": {
-		"ecmaVersion": 2020
-	},
   "parser": "babel-eslint",
 	"rules": {
 		"brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
