@@ -7,7 +7,7 @@
     "node": "14.x"
   },
   "scripts": {
-    "lint": "eslint . --ext .js,.json",
+    "lint": "eslint . --fix --ext .js",
     "test": "node index.js"
   },
   "dependencies": {
