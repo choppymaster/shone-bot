@@ -1,9 +1,8 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const { MessageEmbed } = require('discord.js')
-const config = require('./config.json')
 
-client.on ('ready', message => { 
+client.on ('ready', ready => { 
     console.log("I am ready to go.");
       client.user.setPresence({activity: { name: 'Super Mario Bros 2', type: 'PLAYING' }, status: 'idle'})
 })
@@ -12,10 +11,11 @@ client.on ('ready', message => {
 client.on("message", message => {
     
     if(message.author.bot) return;
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const prefix = "."
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase()
-    const blogchannel = message.guild.channels.cache.get(config.blogchannel)
-    const logchannel = message.guild.channels.cache.get(config.logchannel)
+    const blogchannel = message.guild.channels.cache.get(process.env.BLOGCHANNEL)
+    const logchannel = message.guild.channels.cache.get(process.env.LOGCHANNEL)
    
     if (command === "ping") {
         message.channel.send(`Pong! - ${client.ws.ping}ms` ) 
@@ -180,9 +180,6 @@ client.on("message", message => {
               									             })
           db.add(`warn.${member.id}`, 1);
           const data = db.get(`warn.${member.id}`);
-      if(data === undefined ) {
-        let data = 0
-      }
       message.channel.send(`${member} you are warned. Additional infractions may result in a mute. You have ${data} warns.`)
       logchannel.send(`${member} is warned. He have ${data} warns. He is warned by ${message.author}.`)
       blogchannel.send(`${member} is warned. He have ${data} warns. He is warned by ${message.author}.`)
@@ -290,7 +287,7 @@ client.on("message", message => {
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("Insufficient permissions.").then(msg => {
         msg.delete({ timeout: 10000 })
     })
-    const muterole = message.guild.roles.cache.get(config.muterole)
+    const muterole = message.guild.roles.cache.get(process.env.MUTEROLE)
     member.roles.add(muterole).catch(console.error)
     message.channel.send(`${message.author} muted ${member}`)
     logchannel.send(`${message.author.tag} muted ${member} .`)
@@ -299,9 +296,7 @@ client.on("message", message => {
     }
 
     if (command === "unmute") {
-    let user = message.mentions.users.first()
-    let member = message.guild.member(user)
-    if(!user) return message.channel.send("No user mentioned").then(msg => {
+    if(!member) return message.channel.send("No user mentioned").then(msg => {
         msg.delete({ timeout: 10000 })
     })
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("Insufficient permissions")
@@ -344,7 +339,7 @@ client.on("message", async message => {
 })
 
 
-client.login(config.token)
+client.login(process.env.TOKEN)
 
           
             
