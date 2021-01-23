@@ -5,14 +5,15 @@
 		"es6": true
 	},
 	"parserOptions": {
-		"ecmaVersion": 2019
+		"ecmaVersion": 2020
 	},
 	"rules": {
 		"brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
-		"comma-dangle": ["error", "always-multiline"],
 		"comma-spacing": "error",
 		"comma-style": "error",
 		"dot-location": ["error", "property"],
+		"no-unused-vars": "warn",
+		"no-mixed-spaces-and-tabs": "warn",
 		"handle-callback-err": "off",
 		"max-nested-callbacks": ["error", { "max": 4 }],
 		"max-statements-per-line": ["error", { "max": 2 }],
@@ -23,7 +24,6 @@
 	 	"no-lonely-if": "error",
 		"no-multi-spaces": "error",
 		"no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1, "maxBOF": 0 }],
-		"no-shadow": ["error", { "allow": ["err", "resolve", "reject"] }],
 		"space-before-blocks": "error",
 		"space-before-function-paren": ["error", {
 			"anonymous": "never",

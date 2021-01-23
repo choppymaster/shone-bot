@@ -120,9 +120,9 @@ client.on("message", message => {
     
     if (command === "sps") {
         const options = [
-            "stone :shell: ",
+            "stone :shell:",
             "paper :newspaper2:",
-            "scissors :scissors: "
+            "scissors :scissors:"
         ]
         const option = options[Math.floor(Math.random() * options.length)]
         message.channel.send(`You got ${option}`)
@@ -300,7 +300,7 @@ client.on("message", message => {
         msg.delete({ timeout: 10000 })
     })
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send("Insufficient permissions")
-    const muterole = message.guild.roles.cache.get(config.muterole)
+    const muterole = message.guild.roles.cache.get(process.env.MUTEROLE)
     member.roles.remove(muterole).catch(console.error)
     message.channel.send(`${message.author} unmuted  ${member}`)
     logchannel.send(`${message.author.tag} unmuted ${member} .`)
@@ -341,5 +341,9 @@ client.on("message", async message => {
 
 client.login(process.env.TOKEN)
 
-          
-            
+const http = require('http');
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('ok');
+});
+server.listen(3000);
