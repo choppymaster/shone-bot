@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const client = new Discord.Client()
+const clie new Discord.Client()
 const { MessageEmbed } = require('discord.js')
 
 client.on ('ready', ready => { 
