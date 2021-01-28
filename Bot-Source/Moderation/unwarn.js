@@ -1,8 +1,11 @@
+const db = require('quick.db')
+const { MessageEmbed } = require('discord.js')
+
 module.exports = {
     name: "unwarn",
     description: "unwarns a warned member",
     permissions: "MANAGE_MESSAGES",
-    execute(message, args, member, MessageEmbed, blogchannel, logchannel, reason, db) {
+    execute(message, args, member, reason) {
         message.delete()
    if(!message.member.hasPermission("MANAGE_MESSAGES")) 
    return message.channel.send("You dont have the permission to unwarn anyone").then(msg => {
@@ -19,7 +22,5 @@ module.exports = {
           db.delete(`warn.${member.id}`)
           const data = db.get(`warn.${member.id}`)
           message.channel.send(`${member} is unwarned. 👍`)
-          logchannel.send(`${member} is unwarned by ${message.author}.`)
-          blogchannel.send(`${member} is unwarned by ${message.author}.`)
-    }
+     }
 }
