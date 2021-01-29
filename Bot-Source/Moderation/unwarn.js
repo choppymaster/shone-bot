@@ -5,7 +5,7 @@ module.exports = {
     name: "unwarn",
     description: "unwarns a warned member",
     permissions: "MANAGE_MESSAGES",
-    execute(cliet, message, args, member, reason) {
+    execute(client, message, args, member, reason) {
         message.delete()
    if(!message.member.hasPermission("MANAGE_MESSAGES")) 
    return message.channel.send("You dont have the permission to unwarn anyone").then(msg => {
