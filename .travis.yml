@@ -9,6 +9,8 @@ install:
     - npm ci 
     - npm build --if-present
     - docker -v
+    - docker build -t my-bot .
+    - docker run -d my-bot
 script:
     - npm run lint
 
