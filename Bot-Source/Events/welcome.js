@@ -1,9 +1,10 @@
 const db = require('quick.db')
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
     name: "welcome",
     description: "sends a welcome channel",
-    execute(message, args) {
+    execute(client, message, args) {
 client.on("guildMemberAdd", member => {
     const welcomechannel = db.get(`welcome_${message.guild.id}_channel`)
     if(!welcomechannel) return;

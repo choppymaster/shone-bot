@@ -2,7 +2,7 @@ module.exports = {
     name: "warn",
     description: "warns a member",
     permissions: "MANAGE_MESSAGES",
-    execute(message, args, member, MessageEmbed, blogchannel, logchannel, reason, db) {
+    execute(client, message, args, member, MessageEmbed, blogchannel, logchannel, reason, db) {
         message.delete()
    if(!message.member.hasPermission("MANAGE_MESSAGES")) 
    return message.channel.send("You dont have the permission to warn anyone").then(msg => {
