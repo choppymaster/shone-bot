@@ -1,3 +1,15 @@
+/*=========Hosting start========*/
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => res.send('I am ready to go MR.'))
+
+app.listen(port, () =>
+console.log(`Your app is listening at http://localhost:${port}`)
+)
+/*=========Hosting end=========*/
+
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const { MessageEmbed } = require('discord.js')
