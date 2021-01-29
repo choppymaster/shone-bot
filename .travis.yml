@@ -8,7 +8,7 @@ cache: npm
 install: 
     - npm ci 
     - npm build --if-present
-    - docker -v
+    - docker run --help
     - docker run -d my-bot
 script:
     - npm run lint
