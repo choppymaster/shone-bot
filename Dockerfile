@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . /usr/src/bot
 
-ENTRYPOINT ["node", "index.js"]
+ENTRYPOINT ["pm2 start", "index.js"]

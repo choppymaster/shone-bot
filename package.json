@@ -19,7 +19,8 @@
   },
   "devDependencies": {
     "eslint": "^7.18.0",
-    "babel-eslint": "^10.1.0"
+    "babel-eslint": "^10.1.0",
+    "pm2": "latest"
   },
   "repository": {
     "type": "git",
