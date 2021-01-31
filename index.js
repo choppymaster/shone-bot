@@ -44,7 +44,7 @@ client.on("message", async message => {
    const command = client.commands.get(commandName)
    
    try {
-       command.execute(message, args, member, reason)
+       command.execute(message, args, member, reason, db)
    } catch (error) {
        console.error(error)
        message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`)

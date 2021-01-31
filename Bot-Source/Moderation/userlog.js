@@ -1,11 +1,10 @@
-const db = require('quick.db')
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
     name: "userlog",
     description: "get the user's log",
     permissions: "MANAGE_MESSAGES",
-    execute(message, args, member) {
+    execute(message, member, db) {
        const data = db.get(`warn.${member.id}`)
        const userembed = new MessageEmbed()
        .setTitle(`Log of ${member.tag}`)
