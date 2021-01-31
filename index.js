@@ -3,6 +3,7 @@ const client = new Discord.Client()
 const { MessageEmbed } = require('discord.js')
 const db = require('quick.db')
 const fs = require('fs')
+const env = require('dotenv')
 
 client.commands = new Discord.Collection()
 
@@ -21,9 +22,11 @@ const logger = winston.createLogger({
      	 	format: winston.format.printf(log => `[${log.level.toUpperCase()}] - ${log.message}`),
      	 	});
      	 	     client.on('ready', () => {
-     	 	         logger.log('info', 'I am ready to go.')
+     	 	       console.log("I am ready to go.")
      	 	         client.user.setPresence({activity: { name: 'Super Mario Bros 2', type: 'PLAYING' }, status: 'idle'})
             })
+            logger.log('info', "Bot is online now!")
+            
      	 	 	  
      	 	 	   client.on('debug', m => logger.log('debug', m))
      	 	 	   client.on('warn', m => logger.log('warn', m))
