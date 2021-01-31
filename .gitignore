@@ -112,3 +112,6 @@ config.*
 
 # db files 
 json.sqlite 
+
+#logs
+Discord-bot-Shone-log

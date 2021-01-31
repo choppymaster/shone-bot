@@ -3,7 +3,6 @@ const client = new Discord.Client()
 const { MessageEmbed } = require('discord.js')
 const db = require('quick.db')
 const fs = require('fs')
-const env = require('dotenv')
 
 client.commands = new Discord.Collection()
 
