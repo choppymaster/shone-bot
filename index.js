@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const { MessageEmbed } = require('discord.js')
-const db = require('quick.db')
 const fs = require('fs')
 
 client.commands = new Discord.Collection()
@@ -33,21 +32,14 @@ const logger = winston.createLogger({
 client.on("message", async message => {
   
     const prefix = db.get(`guild_${message.guild.id}_prefix`) || "."
-    
     if(message.author.bot) return;
-   
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
-   
     const commandName = args.shift().toLowerCase()
-   
-    const blogchannel = message.guild.channels.cache.get(process.env.BLOGCHANNEL)
-   
-    const logchannel = message.guild.channels.cache.get(process.env.LOGCHANNEL)
-    
     const member = message.mentions.members.first()
-    
     const reason = args.slice(1).join(" ")
-    
+    const Database = require('@replit/database')
+    const db = new Database()
+
    if(!client.commands.has(commandName)) return;
    const command = client.commands.get(commandName)
    
