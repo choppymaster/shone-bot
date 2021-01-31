@@ -21,11 +21,9 @@ const logger = winston.createLogger({
      	 	format: winston.format.printf(log => `[${log.level.toUpperCase()}] - ${log.message}`),
      	 	});
      	 	     client.on('ready', () => {
-     	 	       console.log("I am ready to go.")
+     	 	         logger.log('info', 'I am ready to go.')
      	 	         client.user.setPresence({activity: { name: 'Super Mario Bros 2', type: 'PLAYING' }, status: 'idle'})
             })
-            logger.log('info', "Bot is online now!")
-            
      	 	 	  
      	 	 	   client.on('debug', m => logger.log('debug', m))
      	 	 	   client.on('warn', m => logger.log('warn', m))
@@ -59,6 +57,7 @@ client.on("message", async message => {
        console.error(error)
        message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`)
    }
+   logger.log('Command usage', `${message.author.tag} (${message.author.id}) used ${command} in ${message.guild} (${message.guild.id}) .)
    
    if (command.permissions) {
    const authorPerms = message.channel.permissionsFor(message.author)
@@ -79,7 +78,7 @@ client.on("message", async message => {
     if (message.content.indexOf('!') === 0) {
         var text = message.content.substring(1);
     chatbot.getReply(`${text}`, 'automatic').then(r => message.channel.send(`\`${message.author.username}\` ${r}`))
-    
+    logger.log('talk', `${message.author.tag} (${message.author.id}) talked to the bot by excecuting \"${text}\". I replyed \"${r}\" .)
     }
 })
 
