@@ -1,9 +1,11 @@
 const { MessageEmbed } = require('discord.js')
+const Database = require('@replit/database')
+const db = new Database()
 
 module.exports = {
     name: "welcome",
     description: "sends a welcome message in a channel",
-    execute(client, message, db) {
+    execute(client, message) {
 client.on("guildMemberAdd", member => {
   // get the welcome channel( By setwelcome command)
     const welcomechannel = db.get(`welcome_${message.guild.id}_channel`)

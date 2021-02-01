@@ -34,20 +34,18 @@ const logger = winston.createLogger({
 // Important message things 
 client.on("message", async message => {
   //message things needed
-    const prefix = db.get(`guild_${message.guild.id}_prefix`) || "."
+    const prefix = "."
     if(message.author.bot) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const commandName = args.shift().toLowerCase()
     const member = message.mentions.members.first()
     const reason = args.slice(1).join(" ")
-    const Database = require('@replit/database')
-    const db = new Database()
 // command
    if(!client.commands.has(commandName)) return;
    const command = client.commands.get(commandName)
    
    try {
-       command.execute(message, args, member, reason, db)
+       command.execute(message, args, member, reason)
    } catch (error) {
        console.error(error)
        message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`)
@@ -65,18 +63,5 @@ client.on("message", async message => {
     
 })
 
-client.on("message", async message => {
-  
-   const alexa = require('alexa-bot-api')
-   var chatbot = new alexa("aw2plm")
-   
-    if (message.author.bot) return;
-    if (message.content.indexOf('!') === 0) {
-        var text = message.content.substring(1);
-   chatbot.getReply(`${text}`, 'automatic').then(r => message.channel.send (`\`${message.author.username}\` ${r}`))
-    logger.log('info', `${message.author.tag} (${message.author.id}) talked to the bot by excecuting \`${text}\`.`)
-    }
-})
-
-// import the token
+// import the token!
 client.login(process.env.TOKEN)

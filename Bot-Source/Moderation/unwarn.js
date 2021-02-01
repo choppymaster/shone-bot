@@ -1,11 +1,12 @@
-const db = require('quick.db')
 const { MessageEmbed } = require('discord.js')
+const Database = require('@replit/database')
+const db = new Database()
 
 module.exports = {
     name: "unwarn",
     description: "unwarns a warned member",
     permissions: "MANAGE_MESSAGES",
-    execute(client, message, args, member, db) {
+    execute(client, message, args, member) {
         message.delete()
           if (!member) return message.channel.send("Member not specified").then(m => m.delete({ timeout: 10000 }))
           if(member.id === message.author.id) return message.channel.send("You cant unwarn yourself").then(m => m.delete({ timeout: 10000 }))
