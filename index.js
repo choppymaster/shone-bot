@@ -1,8 +1,10 @@
+//import dependencies 
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const { MessageEmbed } = require('discord.js')
 const fs = require('fs')
 
+// Command handling 
 client.commands = new Discord.Collection()
 
 const commandfiles = fs.readdirSync('./Bot-Source/').filter(file => file.endsWith('.js'))
@@ -11,6 +13,7 @@ for(const file of commandfiles) {
     client.commands.set(command.name, command)
 }
 
+//logging | aware: I can see all your activity with this bot.
 const winston = require('winston')
 const logger = winston.createLogger({
      	transports: [
@@ -28,9 +31,9 @@ const logger = winston.createLogger({
      	 	 	   client.on('warn', m => logger.log('warn', m))
      	 	 	   client.on('error', m => logger.log('error', m))
      	 	 	   process.on('uncaughtException', error => logger.log('error', error)) 
-
+// Important message things 
 client.on("message", async message => {
-  
+  //message things needed
     const prefix = db.get(`guild_${message.guild.id}_prefix`) || "."
     if(message.author.bot) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -39,7 +42,7 @@ client.on("message", async message => {
     const reason = args.slice(1).join(" ")
     const Database = require('@replit/database')
     const db = new Database()
-
+// command
    if(!client.commands.has(commandName)) return;
    const command = client.commands.get(commandName)
    
@@ -51,6 +54,7 @@ client.on("message", async message => {
    }
    logger.log('info', `${message.author.tag} (${message.author.id}) used ${command} in ${message.guild} (${message.guild.id}).`)
    
+   // permissions 
    if (command.permissions) {
    const authorPerms = message.channel.permissionsFor(message.author)
    if (!authorPerms || !authorPerms.has(command.permissions)) {
@@ -69,10 +73,10 @@ client.on("message", async message => {
     if (message.author.bot) return;
     if (message.content.indexOf('!') === 0) {
         var text = message.content.substring(1);
-   const rep = chatbot.getReply(`${text}`, 'automatic')
-   message.channel.send(`\`${message.author.username}\` ${rep}`)
-    logger.log('info', `${message.author.tag} (${message.author.id}) talked to the bot by excecuting \`${text}\`. I replyed \`${rep}\` .`)
+   chatbot.getReply(`${text}`, 'automatic').then(r => message.channel.send (`\`${message.author.username}\` ${r}`))
+    logger.log('info', `${message.author.tag} (${message.author.id}) talked to the bot by excecuting \`${text}\`.`)
     }
 })
 
+// import the token
 client.login(process.env.TOKEN)

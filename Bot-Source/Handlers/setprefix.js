@@ -3,9 +3,7 @@ module.exports = {
     description: "sets a prefix for one guild",
     permissions: "MANAGE_GUILD",
     execute(message, args, db, prefix) {
-        const ps = args[1]
-     if(!message.member.hasPermission("MANAGE_GUILD"))
-     return message.channel.send("Insufficient permissions.").then(m => m.delete({ timeout: 10000 }))
+        const ps = args[0]
      if(!ps) return message.channel.send("Prefix not specified.").then(m => m.delete({ timeout: 10000 }))
      if(ps.length > 5) return message.channel.send("Prefix should be 5 letters or lower.").then(m => m.delete({ timeout: 10000 }))
      if(ps === prefix) return message.channel.send("That is a setted prefix").then(m => m.delete({ timeout: 10000 }))
