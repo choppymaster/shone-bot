@@ -8,7 +8,8 @@
   },
   "scripts": {
     "lint": "eslint . --fix --ext .js",
-    "test": "node index.js"
+    "test": "pm2 start index.js",
+    "stop": "pm2 stop"
   },
   "dependencies": {
     "@replit/database": "^2.0.0",
