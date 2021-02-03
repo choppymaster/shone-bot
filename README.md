@@ -3,22 +3,48 @@ Discord bot for moderation and entertainment on my discord server. Currently it 
 This bot is made with Node.js language. 
 
 ## Installing 
-You need to create a discord bot on discord developer portal. You also need to select "bot".
-**1:** Install `node.js`. You can install it by executing `pkg install nodejs` on terminal.
-**2:** Install `git` by executing `pkg install git` on terminal.
-**3:** Clone this repo, by executing `git clone https://github.com/choppymaster/Shone-Bot`. 
-**4:** Get your credentials, a.k.a your bot's token, logchannel id, public logchannel id, and mute role id. Bot's token is on the `discord developer portal`, and channel ids can be get by sending \#your_channel_name on discord and copying the string of numbers. Role id can by get by sending \@role_name on discord.
-**5:** Make a file called `.env`. The file name **must** be `.env`, not like `foo.env`. File content should be like this: 
-   ```shell 
-TOKEN=your_bot_token
-LOGCHANNEL=your_log_channel_id
-BLOGCHANNEL=your_public_log_channel_id
-MUTEROLE=your_mute_role_id
-   ```
-**6:** Execute `npm install` on terminal.
-**7:** On terminal, type `node index.js`. 
+### Step 1: Cloning the repository and installing node.js 
+First you need to clone the repository, by downloading as a zip file. You can click the "clone or download" button to clone this repo. You also download node.js.
 
-That's it! You can start your bot.
+### Step 2: Creating the bot
+You need to create a new application on [discord developer portal](https://discord.com/developers/applications). Then you will need to:
+* Create a new application by clicking "create a new application".
+
+* Give the bot's name.
+
+* Upload the bot's avatar and a description. (Optional)
+
+* On the bot section, select add bot.
+
+* Select bot, and permissions. (Important!)
+
+* Copy the url, and go to it to invite the bot.
+
+* That's it! You created the bot!
+  
+### Step 3: scripts to do
+
+* You have downloaded the zip mentioned in step 1 nah? So run these scripts on the terminal:
+
+```json
+npm install
+npm install pm2 -g 
+```
+### Step 4: Create .env file
+
+* You need to create a .env file, and enter the contents below:
+
+```node.js
+TOKEN=your_bot_token
+```
+
+* Change `your_bot_token` to your bot's token.
+ 
+### Starting
+
+* You need to execute the script `pm2 start index.js`.
+
+* That's it! You can start your bot.
 
 ## Contributing
 
