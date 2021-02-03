@@ -9,7 +9,7 @@ You need to create a discord bot on discord developer portal. You also need to s
 **3:** Clone this repo, by executing `git clone https://github.com/choppymaster/Shone-Bot`. 
 **4:** Get your credentials, a.k.a your bot's token, logchannel id, public logchannel id, and mute role id. Bot's token is on the `discord developer portal`, and channel ids can be get by sending \#your_channel_name on discord and copying the string of numbers. Role id can by get by sending \@role_name on discord.
 **5:** Make a file called `.env`. The file name **must** be `.env`, not like `foo.env`. File content should be like this: 
-   ```
+   ```shell 
 TOKEN=your_bot_token
 LOGCHANNEL=your_log_channel_id
 BLOGCHANNEL=your_public_log_channel_id
