@@ -28,4 +28,3 @@ jobs:
     - run: npm ci
     - run: npm install
     - run: npm run lint
-    - run: node index.js
