@@ -63,8 +63,7 @@ client.on("message", async message => {
     }
   }
 
- if (command.guildOnly && message.channel
- type === "dm") {
+ if (command.guildOnly && message.channel.type === "dm") {
    message.delete()
    return message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }))
  }
