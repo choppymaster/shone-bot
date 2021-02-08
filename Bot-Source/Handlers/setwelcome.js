@@ -1,5 +1,4 @@
-const Database = require('@replit/database')
-const db = new Database()
+const db = require('quick.db')
 
 module.exports = {
   name: "setwelcome",
@@ -8,7 +7,7 @@ module.exports = {
   execute(message, args) {
   const channel = message.mentions.channels.first()
   if(!channel) return message.channel.send('You didnt mentioned a channel').then(m => m.delete({ timeout: 10000 }))
-db.set(`welcome_${message.guild.id}_channel`, channel)
+db.set(`welcome_${message.guild.id}_channel`, channel.id)
 message.channel.send(`Welcome channel setted to ${channel}`)
 
    }

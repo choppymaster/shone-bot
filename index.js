@@ -62,6 +62,17 @@ client.on("message", async message => {
     
     }
   }
+
+ if (command.guildOnly && message.channel
+ type === "dm") {
+   message.delete()
+   return message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }))
+ }
+
+ if (command.botMaster && message.author.id !== process.env.BOTMASTER) {
+   message.delete()
+   return message.channel.send("This command is for bot masters only").then(m => m.delete({ timeout: 10000 }))
+ }
     
 })
 

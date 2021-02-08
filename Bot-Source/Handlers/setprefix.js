@@ -1,5 +1,4 @@
-const Database = require('@replit/database')
-const db = new Database()
+const db = require('quick.db')
 
 module.exports = {
     name: "setprefix",
