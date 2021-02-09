@@ -1,4 +1,4 @@
-const { get } = require("request-promise-native");
+const { get } = require("axios");
 const { MessageEmbed } = require("discord.js")
 
 module.exports = {
