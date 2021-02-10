@@ -19,7 +19,7 @@ for(const file of commandfiles) {
 
 client.on('ready', () => {
   logger.log('info', 'I am ready to go.')
-  client.user.setPresenc ({activity: { name: 'Super Mario Bros 2', type: 'PLAYING' }, status: 'idle'})
+  client.user.setPresence ({activity: { name: 'Super Mario Bros 2', type: 'PLAYING' }, status: 'idle'})
             
 })
      	 	 	
