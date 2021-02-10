@@ -13,9 +13,6 @@ module.exports = {
           const data = db.get(`warn.${member.id}`);
       if(data >= 1) {
      message.channel.send(`${member} is warned. They have ${data} warn(s).`)
-      } else {
-        message.channel.send  (`${member} is warned. They have 0 warn.`)
-        }
+        } 
       }
-       }
-    }
+    } 
