@@ -1,5 +1,4 @@
 const anime = require('ctk-anime-scraper')
-const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   name: "anime",

@@ -1,7 +1,7 @@
 module.exports = {
     name: "sps",
     description: "plays stone paper scissors!",
-    execute(message, args) {
+    execute(message) {
     const options = [
             "stone :shell: ",
             "paper :newspaper2:",

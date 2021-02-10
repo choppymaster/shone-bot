@@ -10,7 +10,6 @@ const options = {
   json: true
   
 }
-message.channel.send("Fetching Informtion for API").then(msg => {
   get(options).then(body => {
     
     let embed = new MessageEmbed()
@@ -21,7 +20,6 @@ message.channel.send("Fetching Informtion for API").then(msg => {
     .setFooter(`Weakness of pokemon - ${body.info.weakness}`, `https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/${body.images.weaknessIcon}`)
     
     message.channel.send(embed)
-  })
-})
+      })
+    }
   }
-}

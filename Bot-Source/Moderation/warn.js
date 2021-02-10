@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js')
 const db = require('quick.db')
 
 module.exports = {
@@ -12,9 +11,11 @@ module.exports = {
           if(member.id === client.user.id) return message.channel.send("You cant warn me").then(m => m.delete({ timeout: 10000 }))
           db.add(`warn.${member.id}`, 1);
           const data = db.get(`warn.${member.id}`);
-      if(data === undefined ) {
-        let data = 0
-      }
+      if(data >= 1) {
      message.channel.send(`${member} is warned. They have ${data} warn(s).`)
+      } else {
+        message.channel.send  (`${member} is warned. They have 0 warn.`)
+        }
+      }
        }
     }
