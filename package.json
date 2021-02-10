@@ -13,6 +13,7 @@
     "@replit/database": "^2.0.0",
     "alexa-bot-api": "^0.2.1",
     "axios": "^0.21.1",
+    "ctk-anime-scraper": "^1.1.1",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "quick.db": "^7.1.3",
