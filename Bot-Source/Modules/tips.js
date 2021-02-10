@@ -5,3 +5,6 @@ const tips = [
     ""
     ]
   
+const tip = tips[Math.floor(Math.random() * tips.length)]
+
+module.exports = tip;

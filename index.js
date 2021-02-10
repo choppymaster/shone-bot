@@ -1,38 +1,29 @@
 //import dependencies 
-require('dotenv').config()
 
 const Discord = require('discord.js')
+require('dotenv').config()
 const client = new Discord.Client()
 const fs = require('fs')
+var logger = require("./Bot-Source/logging/logger.js")
 
 // Command handling 
 client.commands = new Discord.Collection()
 
-const commandfiles = fs.readdirSync('./Bot-Source/').filter(file => file.endsWith('.js'))
+fs.readdirSync("./Bot-Source/").forEach(dir => {
+const commandfiles = fs.readdirSync(`./Bot-Source/${dir}`).filter(file => file.endsWith('.js'))
 for(const file of commandfiles) {
-    const command = require(`./Bot-Source/${file}`)
+    const command = require(`./Bot-Source/${dir}/${file}`)
     client.commands.set(command.name, command)
-}
+   }
+})
 
-//logging | aware: I can see all your activity with this bot.
-const winston = require('winston')
-const logger = winston.createLogger({
-     	transports: [
-     	 		new winston.transports.Console(),
-     	 		new winston.transports.File({ filename: 'Discord-bot-Shone-log' }),
-     	 	],
-     	 	format: winston.format.printf(log => `[${log.level.toUpperCase()}] - ${log.message}`),
-     	 	});
-     	 	     client.on('ready', () => {
-     	 	         logger.log('info', 'I am ready to go.')
-     	 	         client.user.setPresence({activity: { name: 'Super Mario Bros 2', type: 'PLAYING' }, status: 'idle'})
-            })
-     	 	 	  
-     	 	 	   client.on('debug', m => logger.log('debug', m))
-     	 	 	   client.on('warn', m => logger.log('warn', m))
-     	 	 	   client.on('error', m => logger.log('error', m))
-     	 	 	   process.on('uncaughtException', error => logger.log('error', error)) 
-// Important message things 
+client.on('ready', () => {
+  logger.log('info', 'I am ready to go.')
+  client.user.setPresenc ({activity: { name: 'Super Mario Bros 2', type: 'PLAYING' }, status: 'idle'})
+            
+})
+     	 	 	
+     // message things
 client.on("message", async message => {
   //message things needed
     const prefix = "."
