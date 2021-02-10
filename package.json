@@ -3,14 +3,10 @@
   "version": "1.2.4",
   "author": "shone",
   "main": "index.js",
-  "engines": {
-    "node": "14.x"
-  },
   "scripts": {
     "lint": "eslint . --fix --ext .js"
   },
   "dependencies": {
-    "@replit/database": "^2.0.0",
     "alexa-bot-api": "^0.2.1",
     "axios": "^0.21.1",
     "ctk-anime-scraper": "^1.1.1",
@@ -21,7 +17,7 @@
   },
   "devDependencies": {
     "eslint": "^7.18.0",
-    "babel-eslint": "^10.1.0"
+    "@babel/eslint-parser": "^10.1.0"
   },
   "repository": {
     "type": "git",
