@@ -6,6 +6,7 @@
   "licence": "MIT",
   "main": "index.js",
   "scripts": {
+    "serve": "pm2 start -f index.js",
     "lint": "eslint . --fix --ext .js"
   },
   "dependencies": {
@@ -18,8 +19,8 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "eslint": "^7.18.0",
-    "babel-eslint": "10.1.0"
+    "babel-eslint": "10.1.0",
+    "eslint": "^7.18.0"
   },
   "repository": {
     "type": "git",
