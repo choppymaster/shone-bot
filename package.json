@@ -1,7 +1,9 @@
 {
   "name": "shone-bot",
-  "version": "1.2.4",
-  "author": "shone",
+  "version": "1.2.0",
+  "author": "choppymaster",
+  "private": true,
+  "licence": "MIT",
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --fix --ext .js"
@@ -23,6 +25,5 @@
     "type": "git",
     "url": "https://github.com/choppymaster/Shone-Bot"
   },
-  "licence": "MIT",
-  "description": "My bot"
+  "description": "A discord.js made bot"
 }
