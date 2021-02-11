@@ -8,6 +8,7 @@
   "scripts": {
     "serve": "yarn global add pm2 && pm2 start -f index.js --name discord-bot-ss --watch",
     "stop": "pm2 stop all",
+    "delete": "pm2 delete all",
     "lint": "eslint . --fix --ext .js"
   },
   "dependencies": {
