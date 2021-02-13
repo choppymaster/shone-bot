@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js")
 
 module.exports = {
   name: "pokemon",
-  description: "InFo about Pokemons",
+  description: "Info about Pokemons",
   async execute(message, args) {
     if(!args.join(" ")) return message.channel.send("Pokémon not specified").then(m => m.delete({ timeout: 10000 }))
 const res = await fetch(`https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=${args.join(' ')}`).then(info => info.json()).catch(err => {
