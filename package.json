@@ -6,14 +6,13 @@
   "licence": "MIT",
   "main": "index.js",
   "scripts": {
-    "serve": "yarn global add pm2 && pm2 start -f index.js --name discord-bot-ss --watch",
+    "serve": "yarn global add pm2 && pm2 start -f index.js --watch",
     "stop": "pm2 stop all",
     "delete": "pm2 delete all",
     "lint": "eslint . --fix --ext .js"
   },
   "dependencies": {
     "alexa-bot-api": "^0.2.1",
-    "axios": "^0.21.1",
     "ctk-anime-scraper": "^1.1.1",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
