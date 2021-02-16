@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "alexa-bot-api": "^0.2.1",
-    "ctk-anime-scraper": "^1.1.1",
+    "ctk-anime-scraper": "^1.2.0",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "quick.db": "^7.1.3",
