@@ -1,12 +1,16 @@
 {
   "name": "shone-bot",
-  "version": "1.2.0",
+  "version": "1.0.0",
   "author": "choppymaster",
   "private": true,
   "licence": "MIT",
   "main": "index.js",
+  "engines": {
+    "node": "14.x",
+    "yarn": "*"
+  },
   "scripts": {
-    "serve": "pm2 start index.js",
+    "serve": "node index.js",
     "lint": "eslint . --fix --ext .js"
   },
   "dependencies": {
@@ -22,6 +26,7 @@
     "babel-eslint": "10.1.0",
     "eslint": "^7.20.0"
   },
+  "keywords": [],
   "repository": {
     "type": "git",
     "url": "https://github.com/Bot-Discord-SS/Shone-Bot"
