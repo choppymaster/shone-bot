@@ -2,11 +2,12 @@ FROM mhart/alpine-node:latest
 
 WORKDIR usr/src/bot
 
-COPY package.json yarn.lock index.js ./
-
-COPY shone.all.source ./shone.all.source
+COPY package.json yarn.lock ./
 
 RUN yarn install && yarn add pm2
+
+COPY index.js ./
+COPY shone.all.source ./shone.all.source
 
 COPY --from=build /usr/src/bot/dist/ ./
 COPY --from=build /usr/src/bot/node_modules ./node_modules
