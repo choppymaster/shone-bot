@@ -6,7 +6,7 @@ COPY package.json yarn.lock index.js ./
 
 COPY shone.all.source ./shone.all.source
 
-RUN yarn && yarn add pm2
+RUN yarn install && yarn add pm2
 
 COPY --from=build /usr/src/bot/dist/ ./
 COPY --from=build /usr/src/bot/node_modules ./node_modules
