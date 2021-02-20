@@ -2,7 +2,7 @@ FROM mhart/alpine-node:latest
 
 WORKDIR usr/src/bot
 
-COPY package.json yarn.lock index.js .env ./
+COPY package.json yarn.lock index.js ./
 
 COPY shone.all.source ./shone.all.source
 
