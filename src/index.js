@@ -1,24 +1,24 @@
-require('dotenv').config({path: __dirname + '/.env'})
+require('dotenv').config()
 
 //import dependencies 
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const fs = require('fs')
-var logger = require("./shone.all.source/shone.general.log/logger.js")
+client.logger = require("./Modules/logger.js")
 
 // Command handling 
 client.commands = new Discord.Collection()
 
-fs.readdirSync("./shone.all.source/").forEach(dir => {
-  const commandfiles = fs.readdirSync(`./shone.all.source/${dir}`).filter(file => file.endsWith('.js'))
+fs.readdirSync("./src/Commands/").forEach(dir => {
+  const commandfiles = fs.readdirSync(`./src/Commands/${dir}`).filter(file => file.endsWith('.js'))
   for (const file of commandfiles) {
-    const command = require(`./shone.all.source/${dir}/${file}`)
+    const command = require(`./Commands/${dir}/${file}`)
     client.commands.set(command.name, command)
   }
 })
 
 client.on('ready', () => {
-  logger.log('info', 'I am ready to go.')
+  client.logger.info('I am ready to go.')
   client.user.setPresence({ activity: { name: 'Super Mario Bros 2', type: 'PLAYING' }, status: 'idle' })
 
 })
@@ -45,7 +45,7 @@ client.on("message", async message => {
     message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`)
   }
 
-  logger.info(`${message.author.tag} (${message.author.id}) used ${command} in ${message.guild} (${message.guild.id}).`)
+  client.logger.info(`${message.author.tag} (${message.author.id}) command: ${command} in ${message.guild} (${message.guild.id}).`)
 
   // permissions 
   if (command.permissions) {
