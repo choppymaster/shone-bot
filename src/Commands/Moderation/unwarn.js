@@ -4,7 +4,7 @@ module.exports = {
     name: "unwarn",
     description: "unwarns a warned member",
     permissions: "MANAGE_MESSAGES",
-    execute(client, message, args) {
+    execute(client, message) {
         message.delete()
         const member = message.mentions.members.first()
           if (!member) return message.channel.send("Member not specified").then(m => m.delete({ timeout: 10000 }))
