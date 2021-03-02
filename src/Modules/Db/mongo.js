@@ -3,16 +3,16 @@ const mongoose = require('mongoose')
 
 module.exports = {
   init: (client) => {
-    const options = {
+    const dbOptions = {
       useNewUrlParser: true,
       autoIndex: false,
-      poolsize: 5,
+      poolSize: 5,
       connectTimeoutMS: 10000,
       family: 4,
       useUnifiedTopology: true,
+      useFindAndModify: true
     }
-  mongoose.connect(process.env.MONGODBURL, options)
-  mongoose.set('useFindAndModify', false)
+  mongoose.connect(process.env.MONGODBURL, dbOptions)
   mongoose.promise = global.Promise
   mongoose.connection.on('connected', () => {
     client.logger.info('mongoose successfully connected!')

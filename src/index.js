@@ -68,8 +68,8 @@ client.on("message", async message => {
 
 })
 
-const mongo = require("./Modules/Db/mongo.js")
-mongo.init(client)
+// mongoose connection 
+require("./Modules/Db/mongo.js").init(Client)
 
 // import the token!
 client.login(process.env.TOKEN)
