@@ -4,10 +4,10 @@
   "author": "choppymaster",
   "private": true,
   "licence": "MIT",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "serve": "node src/index.js",
-    "lint": "eslint . --fix --ext .js"
+    "lint": "eslint . --ext .js"
   },
   "dependencies": {
     "alexa-bot-api": "^0.2.1",
@@ -23,7 +23,11 @@
     "babel-eslint": "10.1.0",
     "eslint": "^7.21.0"
   },
-  "keywords": [],
+  "keywords": [
+   "bot",
+   "discord",
+   "github"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Bot-Discord-SS/Shone-Bot"
