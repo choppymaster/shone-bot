@@ -45,7 +45,7 @@ client.on("message", async message => {
     message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`)
   }
 
-  client.logger.info(`${message.author.tag} (${message.author.id}) command: ${command} in ${message.guild} (${message.guild.id}).`)
+  client.logger.info(`${message.author.tag} | ${message.author.id} command: ${command.name} Guild: ${message.guild} | ${message.guild.id}`)
 
   // permissions 
   if (command.permissions) {
