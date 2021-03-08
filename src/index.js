@@ -4,15 +4,15 @@ require('dotenv').config()
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const fs = require('fs')
-client.logger = require("./Modules/logger.js")
+client.logger = require("./modules/logger.js")
 
 // Command handling 
 client.commands = new Discord.Collection()
 
-fs.readdirSync("./src/Commands/").forEach(dir => {
-  const commandfiles = fs.readdirSync(`./src/Commands/${dir}`).filter(file => file.endsWith('.js'))
+fs.readdirSync("./src/commands/").forEach(dir => {
+  const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith('.js'))
   for (const file of commandfiles) {
-    const command = require(`./Commands/${dir}/${file}`)
+    const command = require(`./commands/${dir}/${file}`)
     client.commands.set(command.name, command)
   }
 })
@@ -69,7 +69,7 @@ client.on("message", async message => {
 })
 
 // mongoose connection 
-require("./Modules/Db/mongo.js").init(client)
+require("./modules/db/mongo.js").init(client)
 
 // import the token!
 client.login(process.env.TOKEN)
