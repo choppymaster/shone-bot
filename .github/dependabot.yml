@@ -13,6 +13,6 @@ updates:
     schedule:
       interval: "daily"
     commit-message:
-      prefix: "yarn"
+      prefix: "chore(deps)"
     labels:
       - "dependencies"
