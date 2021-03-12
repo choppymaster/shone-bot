@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "alexa-bot-api": "^0.2.1",
-    "ctk-anime-scraper": "^1.2.0",
+    "ctk-anime-scraper": "^1.2.2",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "mongoose": "^5.11.19",
