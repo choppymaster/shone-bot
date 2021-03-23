@@ -1,6 +1,5 @@
 # Shone-Bot
-Discord bot for moderation and entertainment on my discord server. Currently it is only for my server. I will make it public when I add other features. 
-This bot is made with Node.js language. 
+Discordbot which have errors and errors.
 
 ## Installing 
 ### Step 1: Cloning the repository and installing node.js & yarn
