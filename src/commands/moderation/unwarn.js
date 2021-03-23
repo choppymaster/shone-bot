@@ -1,10 +1,6 @@
 const db = require('quick.db')
 
-module.exports = {
-    name: "unwarn",
-    description: "unwarns a warned member",
-    permissions: "MANAGE_MESSAGES",
-    execute(client, message) {
+module.exports.run = (client, message) => {
         message.delete()
         const member = message.mentions.members.first()
           if (!member) return message.channel.send("Member not specified").then(m => m.delete({ timeout: 10000 }))
@@ -13,4 +9,10 @@ module.exports = {
           db.subtract(`warn.${member.id}`)
           message.channel.send(`${member} is unwarned. 👍`)
      }
+
+module.exports.config = {
+  "name": "unwarn",
+  "description": "unwarns a warned member",
+  "guildOnly": true,
+  "permissions": ["MANAGE_MESSAGES", "SEND_MESSAGES"]
 }

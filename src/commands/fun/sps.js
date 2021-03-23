@@ -1,7 +1,4 @@
-module.exports = {
-    name: "sps",
-    description: "plays stone paper scissors!",
-    execute(message) {
+module.exports.run = (message) => {
     const options = [
             "stone :shell: ",
             "paper :newspaper2:",
@@ -12,4 +9,9 @@ module.exports = {
         //Send the option 
         message.channel.send(`You got ${option}`)
     }
+
+module.exports.config = {
+  "name": "sps",
+  "description": "plays stone paper scissors!",
+  "permissions": ["SEND_MESSAGES"]
 }

@@ -13,7 +13,7 @@ fs.readdirSync("./src/commands/").forEach(dir => {
   const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith('.js'))
   for (const file of commandfiles) {
     const command = require(`./commands/${dir}/${file}`)
-    client.commands.set(command.name, command)
+    client.commands.set(command.config.name.toLowerCase(), command)
   }
 })
 
@@ -38,36 +38,32 @@ client.on("message", async message => {
   const command = client.commands.get(commandName)
 
   try {
-    command.execute(client, message, args)
+    command.run(client, message, args)
   } 
   catch (error) {
     client.logger.error(error)
     message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`)
   }
 
-  client.logger.info(`${message.author.tag} | ${message.author.id} command: ${command.name} Guild: ${message.guild} | ${message.guild.id}`)
+  client.logger.info(`${message.author.tag} | ${message.author.id} command: ${command.config.name} Guild: ${message.guild} | ${message.guild.id}`)
 
   // permissions 
-  if (command.permissions) {
+  if (command.config.permissions) {
     const authorPerms = message.channel.permissionsFor(message.author)
-    if (!authorPerms || !authorPerms.has(command.permissions)) {
+    if (!authorPerms || !authorPerms.has(command.config.permissions)) {
       return message.channel.send('Insufficient permissions')
 
     }
   }
 
-  if (command.guildOnly && message.channel.type === "dm") {
+  if (command.config.guildOnly && message.channel.type === "dm") {
     message.delete()
     return message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }))
   }
 
-  if (command.botMaster && message.author.id !== process.env.BOTMASTER) {
-    message.delete()
-    return message.channel.send("This command is for bot masters only").then(m => m.delete({ timeout: 10000 }))
-  }
+  if (command.config.botMaster && message.author.id !== process.env.BOTMASTER) return;
 
 })
-
 // mongoose connection 
 require("./modules/db/mongo.js").init(client)
 

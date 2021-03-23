@@ -1,10 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 
-module.exports = {
-    name: "kick",
-    description: "kicks a member",
-    permissions: "KICK_MEMBERS",
-    execute(message, args) {
+module.exports.run = (message, args) => {
       const member = message.mentions.members.first()
     if(!member) return message.channel.send("You didn't mentioned a user to kick!").then(m => m.delete({ timeout: 10000 }))
     const reason = args.slice(1).join(" ")
@@ -17,4 +13,10 @@ module.exports = {
               message.channel.send(KickEmbed)
               })
         }
-   }
+
+module.exports.config = {
+  "name": "kick",
+  "description": "kicks a member of the server",
+  "guildOnly": true,
+  "permissions": ["KICK_MEMBERS", "SEND_MESSAGES"]
+}

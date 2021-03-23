@@ -1,10 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 
-module.exports = {
-    name: "ban",
-    description: "bans a member",
-    permissions: "BAN_MEMBERS",
-    execute(message, args) {
+module.exports.run = (message, args) => {
         const member = message.mentions.members.first()
         if (!member) return message.channel.send("Member not specified").then(m => m.delete({ timeout: 10000 }))
         const reason = args.slice(1).join(" ")
@@ -18,4 +14,9 @@ module.exports = {
            })
     }
     
+module.exports.config = {
+  "name": "ban",
+  "description": "Bans a member from the server",
+  "guildOnly": true,
+  "permissions": ["BAN_MEMBERS", "SEND_MESSAGES"]
 }
