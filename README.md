@@ -39,7 +39,7 @@ BOTMASTER = your_discord_id
 ```
 
 * Change `your_bot_token` to your bot's token, and `your_discord_id` to your discord ID.
- 
+      
 ### Starting
 
 * You need to execute the script `pm2 start index.js`.
