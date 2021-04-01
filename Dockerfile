@@ -4,9 +4,10 @@ WORKDIR usr/src/shonebot
 
 COPY . .
 
+RUN sudo apt-get install python3.8
+
 RUN yarn && \
-    yarn global add pm2 && \
-    sudo apt-get install python3.8 # needed for quick.db
+    yarn global add pm2 
     
 USER shonebot 
 
