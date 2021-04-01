@@ -12,7 +12,7 @@
   "dependencies": {
     "alexa-bot-api": "^0.2.1",
     "ctk-anime-scraper": "^1.2.2",
-    "discord.js": "^12.5.1",
+    "discord.js": "^12.5.2",
     "dotenv": "^8.2.0",
     "mongoose": "^5.12.2",
     "node-fetch": "^2.6.1",
