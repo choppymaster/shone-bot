@@ -4,8 +4,6 @@ WORKDIR usr/src/shonebot
 
 COPY . .
 
-RUN sudo apt-get install python3.8
-
 RUN yarn && \
     yarn global add pm2 
     

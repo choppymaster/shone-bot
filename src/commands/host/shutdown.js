@@ -1,9 +1,9 @@
 module.exports.run = (message) => {
-	message.channel.send('Goodbye 👋');
+	message.channel.send("Goodbye 👋");
 	process.exit();
 };
 
 module.exports.config = {
-	'name': 'shutdown',
-	'botMaster': true,
+	"name": "shutdown",
+	"botMaster": true,
 };

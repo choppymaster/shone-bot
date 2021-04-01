@@ -3,7 +3,7 @@ module.exports.run = async (client, message) => {
 };
 
 module.exports.config = {
-	'name': 'ping',
-	'description': 'says the ping',
-	'permissions': ['SEND_MESSAGES'],
+	"name": "ping",
+	"description": "says the ping",
+	"permissions": ["SEND_MESSAGES"],
 };

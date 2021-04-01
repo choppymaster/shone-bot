@@ -1,5 +1,5 @@
-require('dotenv').config();
-const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
 
 module.exports = {
 	init: (client) => {
@@ -14,14 +14,14 @@ module.exports = {
 		};
 		mongoose.connect(process.env.MONGODBURL, dbOptions);
 		mongoose.promise = global.Promise;
-		mongoose.connection.on('connected', () => {
-			client.logger.info('mongoose successfully connected!');
+		mongoose.connection.on("connected", () => {
+			client.logger.info("mongoose successfully connected!");
 		});
-		mongoose.connection.on('err', (err) => {
+		mongoose.connection.on("err", (err) => {
 			client.logger.error(`Mongoose error: ${err}`);
 		});
-		mongoose.connection.on('disconnected', () => {
-			client.logger.info('Mongoose disconnected.');
+		mongoose.connection.on("disconnected", () => {
+			client.logger.info("Mongoose disconnected.");
 		});
 	},
 };

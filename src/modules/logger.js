@@ -1,7 +1,7 @@
-const winston = require('winston');
+const winston = require("winston");
 
 const logger = winston.createLogger({
-	level: 'debug',
+	level: "debug",
 	transports: [
 		new (winston.transports.Console)({
 			format: winston.format.combine(
