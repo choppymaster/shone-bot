@@ -1,4 +1,4 @@
-const { model, Schema } = require('mongoose')
+const { model, Schema } = require('mongoose');
 
 const warnSchema = Schema({
   userID: String,
@@ -7,6 +7,6 @@ const warnSchema = Schema({
   reason: Array,
   moderators: Array,
   date: Array,
-})
+});
 
-module.exports = model('warns', warnSchema)
+module.exports = model('warns', warnSchema);

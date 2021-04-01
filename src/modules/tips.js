@@ -3,8 +3,8 @@ const tips = [
     "The dashboard and docs website of the bot is in development.",
     "For extended support, join our support server: <>",
     ""
-    ]
+    ];
   
-const tip = tips[Math.floor(Math.random() * tips.length)]
+const tip = tips[Math.floor(Math.random() * tips.length)];
 
 module.exports = tip;

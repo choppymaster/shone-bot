@@ -1,5 +1,5 @@
-require('dotenv').config()
-const mongoose = require('mongoose')
+require('dotenv').config();
+const mongoose = require('mongoose');
 
 module.exports = {
   init: (client) => {
@@ -11,17 +11,17 @@ module.exports = {
       family: 4,
       useUnifiedTopology: true,
       useFindAndModify: true
-    }
-  mongoose.connect(process.env.MONGODBURL, dbOptions)
-  mongoose.promise = global.Promise
+    };
+  mongoose.connect(process.env.MONGODBURL, dbOptions);
+  mongoose.promise = global.Promise;
   mongoose.connection.on('connected', () => {
-    client.logger.info('mongoose successfully connected!')
-  })
+    client.logger.info('mongoose successfully connected!');
+  });
   mongoose.connection.on('err', (err) => {
-    client.logger.error(`Mongoose error: ${err}`)
-  })
+    client.logger.error(`Mongoose error: ${err}`);
+  });
   mongoose.connection.on('disconnected', () => {
-    client.logger.info('Mongoose disconnected.')
-  })
+    client.logger.info('Mongoose disconnected.');
+  });
   }
-}
+};
