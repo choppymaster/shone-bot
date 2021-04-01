@@ -1,6 +1,6 @@
 const db = require("quick.db");
 
-module.exports.run = (message, args) => {
+module.exports.run = (client, message, args) => {
 	const prefix = ".";
 	const ps = args[0];
 	if(!ps) return message.channel.send("Prefix not specified.").then(m => m.delete({ timeout: 10000 }));
