@@ -1,6 +1,6 @@
 const db = require("quick.db");
 
-module.exports.run = (message) => {
+module.exports.run = (client, message, args) => {
 	const channel = message.mentions.channels.first();
 	if(!channel) return message.channel.send("You didnt mentioned a channel").then(m => m.delete({ timeout: 10000 }));
 	db.set(`welcome_${message.guild.id}_channel`, channel.id);

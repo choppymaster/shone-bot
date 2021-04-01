@@ -41,11 +41,11 @@ client.on("message", async message => {
 		command.run(client, message, args);
 	}
 	catch (error) {
-		client.logger.error(error);
-		message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`);
+	  client.logger.error(error)
+			message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`)
 	}
 
-	client.logger.info(`${message.author.tag} | ${message.author.id} command: ${command.config.name} Guild: ${message.guild} | ${message.guild.id}`);
+	client.logger.verbose(`${message.author.tag} | ${message.author.id} command: ${command.config.name} Guild: ${message.guild} | ${message.guild.id}`);
 
 	// permissions
 	if (command.config.permissions) {

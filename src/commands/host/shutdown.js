@@ -1,6 +1,6 @@
-module.exports.run = (message) => {
+module.exports.run = async (client, message, args) => {
 	message.channel.send("Goodbye 👋");
-	process.exit();
+	await process.exit();
 };
 
 module.exports.config = {

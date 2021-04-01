@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const db = require("quick.db");
 
-module.exports.run = (message) => {
+module.exports.run = (client, message, args) => {
 	const member = message.mentions.members.first();
 	if(!member) return message.channel.send("Member not specified").then(m => m.delete({ timeout: 10000 }));
 	const data = db.get(`warn.${member.id}`);

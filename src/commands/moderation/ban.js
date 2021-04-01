@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
-module.exports.run = (message, args) => {
+module.exports.run = (client, message, args) => {
 	const member = message.mentions.members.first();
 	if (!member) return message.channel.send("Member not specified").then(m => m.delete({ timeout: 10000 }));
 	const reason = args.slice(1).join(" ");
