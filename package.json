@@ -2,12 +2,12 @@
   "name": "shone-bot",
   "version": "1.0.0",
   "author": "choppymaster",
-  "private": true,
+  "private": true, 
   "licence": "MIT",
   "main": "src/index.js",
   "scripts": {
     "serve": "node src/index.js",
-    "lint": "eslint . --ext .js"
+    "lint": "eslint . --fix --ext .js --ext .json"
   },
   "dependencies": {
     "alexa-bot-api": "^0.2.1",
@@ -21,12 +21,13 @@
   },
   "devDependencies": {
     "babel-eslint": "10.1.0",
-    "eslint": "^7.23.0"
+    "eslint": "^7.23.0",
+    "eslint-plugin-json": "^2.1.2"
   },
   "keywords": [
-   "bot",
-   "discord",
-   "github"
+    "bot",
+    "discord",
+    "github"
   ],
   "repository": {
     "type": "git",
