@@ -1,5 +1,5 @@
 # Shone-Bot
-Discordbot which have errors and errors.
+A discord bot which is written in node.js and uses discord.js as the Base module.
 
 ## Installing 
 ### Step 1: Cloning the repository and installing node.js & yarn
@@ -46,6 +46,6 @@ BOTMASTER = your_discord_id
 
 * That's it! You can start your bot.
 
-## Contributing
+## contributing
 
 If you want to contribute to this project, Feel free to open a pull request! We will run a build with a linter, to check if your contributing have conflicts.
