@@ -27,7 +27,6 @@ You need to create a new application on [discord developer portal](https://disco
 
 ```sh 
 yarn
-yarn global add pm2 
 ```
 ### Step 4: Create .env file
 
@@ -42,9 +41,7 @@ BOTMASTER = your_discord_id
       
 ### Starting
 
-* You need to execute the script `pm2 start index.js`.
-
-* That's it! You can start your bot.
+After following the above steps, you can start the bot with `node .`.
 
 ## contributing
 

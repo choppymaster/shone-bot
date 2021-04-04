@@ -10,7 +10,6 @@
     "lint": "eslint . --ext .js"
   },
   "dependencies": {
-    "alexa-bot-api": "^0.2.1",
     "ctk-anime-scraper": "^1.2.2",
     "discord.js": "^12.5.2",
     "dotenv": "^8.2.0",
@@ -21,12 +20,13 @@
   },
   "devDependencies": {
     "babel-eslint": "10.1.0",
-    "eslint": "^7.23.0"
+    "eslint": "^7.23.0",
+    "eslint-plugin-json": "^2.1.2"
   },
   "keywords": [
-   "bot",
-   "discord",
-   "github"
+    "bot",
+    "discord",
+    "github"
   ],
   "repository": {
     "type": "git",

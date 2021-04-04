@@ -5,7 +5,11 @@
   "es6": true
 },
   "parser": "babel-eslint",
+  "plugins": [
+    "json"
+    ],
 "rules": {
+"json/*": "error",
 "comma-spacing": "error",
 "comma-style": "error",
 "dot-location": ["error", "property"],
