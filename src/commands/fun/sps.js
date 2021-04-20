@@ -3,9 +3,12 @@ module.exports.run = (client, message, args) => {
 	
 	const option = options[Math.floor(Math.random() * options.length)];
 	
-	const input = args[0].toLowerCase();
-	if (!input) return message.channel.send("You didn't said an option!")
+	if (!args[0]) return message.channel.send("You didn't said an option!")
 	
+	const input = args[0].toLowerCase();
+  
+  if (!options.includes(input)) return message.channel.send("Invalid option!")
+  
   let winner = null;
   
   if (input === "stone" && option === "scissors" || input === "paper" && option === "stone" || input === "scissors" && option === "paper") {

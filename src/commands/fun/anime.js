@@ -1,12 +1,18 @@
-const anime = require("ctk-anime-scraper");
+const fetch = require("node-fetch")
+const { MessageEmbed } = require("discord.js")
 
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
 	const query = args.join(" ");
 	if(!query) return message.channel.send("Anime not specified").then(m => m.delete({ timeout: 10000 }));
-	anime.search(query).then(data => {
-		if(!data.length) return message.channel.send("No anime found.");
-		anime.fetchAnime(data[0].link).then (d => message.channel.send(d));
-	});
+	const res = await fetch(`https://kitsu.io/api/edge/anime?filter[text]=${query}`).then(resx => resx.json()).catch(e => message.channel.send("Anime not found!"))
+	
+	const AnimEmbed = new MessageEmbed()
+	.setTitle(`${Object.values(res.data[0].attributes.titles)[0]} (${res.data[0].attributes.titles.ja_jp})`)
+	.setColor("RANDOM")
+	.setDescription(res.data[0].attributes.synopsis)
+	.setThumbnail(res.data[0].attributes.posterImage.original)
+	
+	message.channel.send(AnimEmbed)
 };
 
 module.exports.config = {
