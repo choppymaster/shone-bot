@@ -2,7 +2,7 @@ module.exports.run = async (client, message, args) => {
   const member = args[0]
   if (!member) return message.channel.send("You didn't specified a member!")
   
-  message.guild.fetchBans().then(ban => {
+  message.guild.fetchBans().then(bans => {
     const user = bans.find(ban => ban.user.id === member);
     if (!user) return message.channel.send("User not found in bans.")
     message.guild.unban(user.user);
