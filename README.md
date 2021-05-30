@@ -1,7 +1,7 @@
 # Shone-Bot
 A discord bot which is written in node.js and uses discord.js as the Base module.
 
-## Installing 
+## Installing  
 ### Step 1: Cloning the repository and installing node.js & yarn
 First you need to clone the repository, by downloading as a zip file. You can click the "clone or download" button to clone this repo. You also download node.js for coding, and yarn for pkg updates.
 
