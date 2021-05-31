@@ -4,7 +4,7 @@ require("dotenv").config();
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
-client.logger = require("./modules/logger.js");
+client.logger = require("./utils/logger.js");
 
 // Command handling
 client.commands = new Discord.Collection();
@@ -21,12 +21,12 @@ const eventFiles = fs.readdirSync("./src/events/").filter(file => file.endsWith(
 
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
-	const eventName = file.split(".")[0]
+	const eventName = file.split(".")[0];
 	client.on(eventName, (...args) => event.run(client, ...args));
 }
 
 // mongoose connection
-require("./modules/database/mongo.js").init(client);
+require("./database/mongo.js").init(client)
 
 // import the token!
 client.login(process.env.TOKEN);

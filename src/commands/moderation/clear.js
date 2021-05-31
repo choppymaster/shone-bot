@@ -4,7 +4,7 @@ module.exports.run = (client, message, args) => {
 	if(isNaN(number)) return message.channel.send("it is not a number.");
 	if(number > 100 || number < 2) return message.channel.send("The number should be 100 messages lower and 2 messages higher.");
 	message.channel.bulkDelete(number).catch(e => client.logger.error(e));
-	message.channel.send(`cleared ${number} messages.`).then(msg => msg.delete({ timeout: 10000 }));
+	message.channel.send(`cleared ${number} messages.`).then(msg => msg.delete({ timeout: 2000 }));
 
 };
 
