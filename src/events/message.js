@@ -9,30 +9,17 @@ module.exports.run = async (client, message) => {
 	if (!client.commands.has(commandName)) return;
 	const command = client.commands.get(commandName);
 
-	let not = false;
-
-	if (command.config.botMaster && message.author.id !== process.env.BOTMASTER) {
-		not = true;
-		return;
-	}
+	if (command.config.botMaster && message.author.id !== process.env.BOTMASTER) return;
 
 	if (command.config.guildOnly && message.channel.type === "dm") {
 		message.delete();
 		message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }));
-		not = true;
-		return;
 	}
 
-	if (command.config.permissions) {
+	if (message.guild && command.config.permissions) {
 		const authorPerms = message.channel.permissionsFor(message.author);
-		if (!authorPerms || !authorPerms.has(command.config.permissions)) {
-	             message.channel.send("Insufficient permissions");
-			not = true;
-			return;
-		}
-	}
-
-	if (not === false) {
+		if (!authorPerms || !authorPerms.has(command.config.permissions)) return message.channel.send("Insufficient permissions");
+		
 		try {
 			command.run(client, message, args);
 		}

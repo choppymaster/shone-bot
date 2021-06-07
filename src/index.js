@@ -30,3 +30,11 @@ require("./database/mongo.js").init(client)
 
 // import the token!
 client.login(process.env.TOKEN);
+
+process.on("unhandledRejection", err => {
+        client.logger.error(err.stack)
+})
+
+process.on("uncaughtException", err => {
+        client.logger.error(err.stack)
+})
