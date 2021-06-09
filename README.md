@@ -1,4 +1,4 @@
-# Shone-Bot
+# Sphynx
 A discord bot which is written in node.js and uses discord.js as the Base module.
 
 ## Installing  
