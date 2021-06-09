@@ -2,8 +2,8 @@
 A discord bot which is written in node.js and uses discord.js as the Base module.
 
 ## Installing  
-### Step 1: Cloning the repository and installing node.js & yarn
-First you need to clone the repository, by downloading as a zip file. You can click the "clone or download" button to clone this repo. You also download node.js for coding, and yarn for pkg updates.
+### Step 1: Cloning the repository and installing node.js & NPM/yarn
+First you need to clone the repository, by downloading as a zip file. You can click the "clone or download" button to clone this repo. You should also download node.js, and yarn/NPM for pkg updates. Note: NPM is now default installed with nodejs.
 
 ### Step 2: Creating the bot
 You need to create a new application on [discord developer portal](https://discord.com/developers/applications). Then you will need to:
@@ -26,7 +26,7 @@ You need to create a new application on [discord developer portal](https://disco
 * You have downloaded the zip mentioned in step 1 nah? So run these scripts on the terminal:
 
 ```sh 
-yarn
+yarn # for npm, use npm i
 ```
 ### Step 4: Create .env file
 
@@ -45,4 +45,4 @@ After following the above steps, you can start the bot with `node .`.
 
 ## contributing
 
-If you want to contribute to this project, Feel free to open a pull request! We will run a build with a linter, to check if your contributing have conflicts.
+If you want to contribute to this project, Feel free to open a pull request! This will run a CI with a linter, to check if your contributing have errors. Dont leak your bot details here!
