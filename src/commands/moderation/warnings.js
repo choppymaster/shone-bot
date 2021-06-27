@@ -1,10 +1,9 @@
 const { MessageEmbed } = require("discord.js");
+const Warning = require("../../database/models/warns.js")
 
 module.exports.run = (client, message, args) => {
 	const member = message.mentions.members.first();
 	if(!member) return message.channel.send("Member not specified").then(m => m.delete({ timeout: 10000 }));
-
-	const Warning = require("../../modules/database/models/warns.js");
 
 	Warning.findOne({
 	  userID: member.id,

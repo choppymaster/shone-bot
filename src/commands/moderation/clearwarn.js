@@ -1,20 +1,24 @@
-module.exports.run = (client, message, args) => {
+const warnings = require("../../database/models/warns.js")
+
+module.exports.run = async (client, message, args) => {
 	const member = message.mentions.members.first();
 	if (!member) return message.channel.send("Member not specified").then(m => m.delete({ timeout: 10000 }));
-	if(member.id === message.author.id) return message.channel.send("You cant unwarn yourself").then(m => m.delete({ timeout: 10000 }));
-	if(member.id === client.user.id) return message.channel.send("You cant unwarn me").then(m => m.delete({ timeout: 10000 }));
-	const warnings = require("../../modules/database/models/warns.js");
-	const data = warnings.findOne({
-		userID: member.id,
-		guildID: message.guild.id,
+	if(member.id === message.author.id) return message.channel.send("You cant clear warns yourself").then(m => m.delete({ timeout: 10000 }));
+	if(member.id === client.user.id) return message.channel.send("You cant clear-warns me because you cant warn me lol").then(m => m.delete({ timeout: 10000 }));
+	
+	warnings.findOne({
+	    userID: member.id,
+	    guildID: message.guild.id,
+	}, (err, warn) => {
+	    if (!warn) {
+	       message.channel.send("They have no warnings.")
+	    } else {
+	        warnings.findOneAndDelete({
+	            userID: member.id,
+	            guildID: message.guild.id
+	        }).then(() => message.channel.send(`${member.user.tag}'s warns have been cleared!`))
+	    }
 	});
-
-	if (data) {
-		warnings.deleteOne(data, function(err) {
-			if (err) client.logger.error(err);
-		});
-	}
-	message.channel.send(`${member.tag}'s warns have been cleared.`);
 };
 
 module.exports.config = {

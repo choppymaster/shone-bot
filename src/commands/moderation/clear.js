@@ -1,4 +1,5 @@
 module.exports.run = (client, message, args) => {
+	
 	const number = args.join(" ");
 	if(!number) return message.channel.send("Number not specified.");
 	if(isNaN(number)) return message.channel.send("it is not a number.");

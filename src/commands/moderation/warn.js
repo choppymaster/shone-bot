@@ -1,12 +1,12 @@
+const warning = require("../../database/models/warns.js")
+
 module.exports.run = (client, message, args) => {
 	const member = message.mentions.members.first();
 	if (!member) return message.channel.send("Member not specified");
 	if(member.id === message.author.id) return message.channel.send("You cant warn yourself").then(m => m.delete({ timeout: 10000 }));
 	if(member.id === client.user.id) return message.channel.send("You cant warn me").then(m => m.delete({ timeout: 10000 }));
 	const reason = args.slice(1).join(" ") ? args.slice(1).join(" ") : "No reason specified";
-
-	const warning = require("../../modules/database/models/warns.js");
-
+	
 	warning.findOne({
 		userID: member.id,
 		guildID: message.guild.id,
@@ -21,7 +21,7 @@ module.exports.run = (client, message, args) => {
 				warns: 1,
 				reason: [`${reason}`],
 				moderators: [`${message.author.id}`],
-				date: [`${new Date().toUTCString()}`],
+				date: [`${new Date().toUTCString()}`]
 			});
 
 			await newWarning.save().catch(err => client.logger.error(err));

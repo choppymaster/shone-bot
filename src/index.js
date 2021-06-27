@@ -1,22 +1,20 @@
-require("dotenv").config();
+require("dotenv").config(); 
 
 // import dependencies
-const Discord = require("discord.js");
-const client = new Discord.Client();
+require("./structures/");
+const client = new (require("./client.js"));
 const fs = require("fs");
-client.logger = require("./utils/logger.js");
 
 // Command handling
-client.commands = new Discord.Collection();
-
 fs.readdirSync("./src/commands/").forEach(dir => {
 	const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
 	for (const file of commandfiles) {
-		const command = require(`./commands/${dir}/${file}`);
+		const command = require(`./commands/${dir}/${file}`)
 		client.commands.set(command.config.name.toLowerCase(), command);
 	}
 });
 
+// event handling
 const eventFiles = fs.readdirSync("./src/events/").filter(file => file.endsWith(".js"));
 
 for (const file of eventFiles) {
@@ -29,7 +27,7 @@ for (const file of eventFiles) {
 require("./database/mongo.js").init(client)
 
 // import the token!
-client.login(process.env.TOKEN);
+client.login(client.config.token);
 
 process.on("unhandledRejection", err => {
         client.logger.error(err.stack)
