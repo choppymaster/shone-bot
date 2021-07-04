@@ -6,26 +6,18 @@ module.exports.run = async (client, message, args) => {
 	if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You dont have the permission to unwarn anyone.");
 	if (member.id === message.author.id) return message.channel.send("You cant unwarn yourself.");
 	if (member.id === client.user.id) return message.channel.send("You cant warn me");
-
-	 Warning.findOne({
-		userID: member.id,
-		guildID: message.guild.id,
-	}, (err, warn) => {
-	 if (warn.warns === 1) {
-	     Warning.findOneAndDelete({
-	         userID: member.id,
-	         guildID: message.guild.id
-	     })
-	     message.channel.send(`${member.user.username}'s warns have been cleared. (They had only 1 warn)`)
-	 } else {
-	     warn.warns--;
-	     warn.date.pop();
-	     warn.moderators.pop();
-	     warn.reason.pop();
-	     
-	     warn.save().then(() => message.channel.send(`${member.user.username}'s is unwarned. They have ${warn.warns} warnings.`))
-	 }
-  });
+	
+	const warns = await Warning.find({
+	    userID: member.id,
+	    guildID: message.guild.id
+     })
+    
+	    if (!warns.length) return message.channel.send("They don't have any warns")
+	    
+	    await Warning.findByIdAndRemove(warns[warns.length - 1]._id)
+	    await member.updateWarns()
+	   
+	    message.channel.send(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`)
 };
 
 module.exports.config = {

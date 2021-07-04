@@ -6,9 +6,8 @@ module.exports.init = (client) => {
 			autoIndex: false,
 			poolSize: 5,
 			connectTimeoutMS: 10000,
-			family: 4,
 			useUnifiedTopology: true,
-			useFindAndModify: true,
+			useFindAndModify: true
 		};
 		mongoose.connect(client.config.mongodb_uri, dbOptions);
 		mongoose.promise = global.Promise;

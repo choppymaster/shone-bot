@@ -1,5 +1,19 @@
-module.exports.run = client => {
-	client.logger.info("I am ready to go.");
+module.exports.run = async client => {
+    require("../database/mongo.js").init(client)
+    client.guilds.cache.forEach(guild => {
+        guild.members.fetch()
+        guild.members.cache.forEach(async member => {
+            member.warns = await require("../database/models/warns.js").find({
+                userID: member.id,
+                guildID: guild.id
+            })
+        })
+    })
+    
+    client.logger.info("Fetched all guilds and its members.")
+    
 	client.user.setPresence({ activity: { name: "Super Mario Bros 2", type: "PLAYING" }, status: "idle" });
+	
+	client.logger.info("Established full connection to discord.")
 
 };

@@ -6,19 +6,15 @@ module.exports.run = async (client, message, args) => {
 	if(member.id === message.author.id) return message.channel.send("You cant clear warns yourself").then(m => m.delete({ timeout: 10000 }));
 	if(member.id === client.user.id) return message.channel.send("You cant clear-warns me because you cant warn me lol").then(m => m.delete({ timeout: 10000 }));
 	
-	warnings.findOne({
-	    userID: member.id,
-	    guildID: message.guild.id,
-	}, (err, warn) => {
-	    if (!warn) {
-	       message.channel.send("They have no warnings.")
-	    } else {
-	        warnings.findOneAndDelete({
-	            userID: member.id,
-	            guildID: message.guild.id
-	        }).then(() => message.channel.send(`${member.user.tag}'s warns have been cleared!`))
-	    }
-	});
+	const obj = { userID: member.id, guildID: message.guild.id }
+	
+	const warns = await warnings.find(obj)
+	
+	if (!warns.length) return message.channel.send("They don't have any warns!")
+	
+	await warnings.deleteMany(obj)
+	await member.updateWarns()
+	message.channel.send(`${member.user.tag}'s warnings have been cleared.`)
 };
 
 module.exports.config = {

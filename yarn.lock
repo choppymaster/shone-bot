@@ -474,6 +474,11 @@ denque@^1.4.1:
   resolved "https://registry.yarnpkg.com/denque/-/denque-1.5.0.tgz#773de0686ff2d8ec2ff92914316a47b73b1c73de"
   integrity sha512-CYiCSgIF1p6EUByQPlGkKnP1M9g0ZV3qMIrqMqZqdwazygIA/YP2vrbcyl1h/WppKJTdl1F85cXIle+394iDAQ==
 
+dis@^0.3.7:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/dis/-/dis-0.3.7.tgz#6e0bf0aeb01712f817563523362249bb6a363e62"
+  integrity sha1-bgvwrrAXEvgXVjUjNiJJu2o2PmI=
+
 discord.js@^12.5.3:
   version "12.5.3"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-12.5.3.tgz#56820d473c24320871df9ea0bbc6b462f21cf85c"

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "ctk-anime-scraper": "^2.0.0",
+    "dis": "^0.3.7",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "mongoose": "^5.12.14",

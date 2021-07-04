@@ -23,9 +23,6 @@ for (const file of eventFiles) {
 	client.on(eventName, (...args) => event.run(client, ...args));
 }
 
-// mongoose connection
-require("./database/mongo.js").init(client)
-
 // import the token!
 client.login(client.config.token);
 
