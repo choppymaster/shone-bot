@@ -13,7 +13,7 @@
 "comma-spacing": "error",
 "comma-style": "error",
 "dot-location": ["error", "property"],
-"no-unused-vars": "off",
+"no-unused-vars": "warn",
 "no-mixed-spaces-and-tabs": "off",
 "handle-callback-err": "off",
 "max-nested-callbacks": ["error", { "max": 4 }],

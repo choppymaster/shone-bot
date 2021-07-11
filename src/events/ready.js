@@ -1,9 +1,9 @@
 module.exports.run = async client => {
-    require("../database/mongo.js").init(client)
+    require("../database")(client)
     client.guilds.cache.forEach(guild => {
         guild.members.fetch()
         guild.members.cache.forEach(async member => {
-            member.warns = await require("../database/models/warns.js").find({
+            member.warns = await require("../data/warns").find({
                 userID: member.id,
                 guildID: guild.id
             })

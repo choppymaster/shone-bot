@@ -1,3 +1,13 @@
+module.exports.Schemas = {
+    warns: require("./data/warns")
+}
+
+module.exports.Extends = {
+    Member: require("./extends/Member"),
+    Channel: require("./extends/Channel")
+}
+
+
 const winston = require("winston");
 
 const logger = winston.createLogger({
@@ -11,7 +21,7 @@ const logger = winston.createLogger({
 			handleExceptions: true,
 		}),
 	],
-	exitOnError: true,
+	exitOnError: false,
 });
 
-module.exports = logger;
+module.exports.Logger = logger;

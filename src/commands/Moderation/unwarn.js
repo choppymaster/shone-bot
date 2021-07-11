@@ -1,4 +1,4 @@
-const Warning = require("../../database/models/warns.js")
+const { Schemas } = require("../../common")
 
 module.exports.run = async (client, message, args) => {
 	const member = message.mentions.members.first();
@@ -7,14 +7,14 @@ module.exports.run = async (client, message, args) => {
 	if (member.id === message.author.id) return message.channel.send("You cant unwarn yourself.");
 	if (member.id === client.user.id) return message.channel.send("You cant warn me");
 	
-	const warns = await Warning.find({
+	const warns = await Schemas.warns.find({
 	    userID: member.id,
 	    guildID: message.guild.id
      })
     
 	    if (!warns.length) return message.channel.send("They don't have any warns")
 	    
-	    await Warning.findByIdAndRemove(warns[warns.length - 1]._id)
+	    await Schemas.warns.findByIdAndRemove(warns[warns.length - 1]._id)
 	    await member.updateWarns()
 	   
 	    message.channel.send(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`)

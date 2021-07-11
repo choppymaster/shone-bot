@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-module.exports.init = (client) => {
+module.exports = client => {
 		const dbOptions = {
 			useNewUrlParser: true,
 			autoIndex: false,

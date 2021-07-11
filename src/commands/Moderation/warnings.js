@@ -1,5 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-const Warning = require("../../database/models/warns.js")
 
 module.exports.run = (client, message, args) => {
 	const member = message.mentions.members.first() || message.member;

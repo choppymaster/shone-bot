@@ -9,7 +9,7 @@ module.exports.run = async (client, message) => {
 	if (!client.commands.has(commandName)) return;
 	const command = client.commands.get(commandName);
 
-	if (command.config.botMaster && !message.author.id === client.config.author) return message.channel.send("Nice!");
+	if (command.config.botMaster && !message.author.id === client.config.author) return;
 
 	if (command.config.guildOnly && message.channel.type === "dm") {
 		message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }))

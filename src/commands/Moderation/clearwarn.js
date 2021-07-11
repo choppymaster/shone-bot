@@ -1,4 +1,4 @@
-const warnings = require("../../database/models/warns.js")
+const { Schemas } = require("../../common")
 
 module.exports.run = async (client, message, args) => {
 	const member = message.mentions.members.first();
@@ -8,11 +8,11 @@ module.exports.run = async (client, message, args) => {
 	
 	const obj = { userID: member.id, guildID: message.guild.id }
 	
-	const warns = await warnings.find(obj)
+	const warns = await Schemas.warns.find(obj)
 	
 	if (!warns.length) return message.channel.send("They don't have any warns!")
 	
-	await warnings.deleteMany(obj)
+	await Schemas.warns.deleteMany(obj)
 	await member.updateWarns()
 	message.channel.send(`${member.user.tag}'s warnings have been cleared.`)
 };
