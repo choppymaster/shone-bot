@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .js --ext .json"
   },
   "dependencies": {
-    "ctk-anime-scraper": "^2.0.0",
+    "ctk-anime-scraper": "^3.0.0",
     "dis": "^0.3.7",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
