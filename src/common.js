@@ -1,11 +1,11 @@
 module.exports.Schemas = {
-    warns: require("./data/warns")
-}
+	warns: require("./data/warns"),
+};
 
 module.exports.Extends = {
-    Member: require("./extends/Member"),
-    Channel: require("./extends/Channel")
-}
+	Member: require("./extends/Member"),
+	Channel: require("./extends/Channel"),
+};
 
 
 const winston = require("winston");

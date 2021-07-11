@@ -1,15 +1,15 @@
-const { MessageEmbed } = require("discord.js")
+const { MessageEmbed } = require("discord.js");
 
 module.exports.run = (client, message, args) => {
 	const member = message.mentions.members.first();
-	if (!member) return
+	if (!member) return;
 	        message.channel.send(`You didn't specified a member, ${message.author}.`).then(m => m.delete({ timeout: 10000 }));
 	const reason = args.slice(1).join(" ") ? args.slice(1).join(" ") : "Reason Not specified";
 
 	member.ban(reason).then(() => {
 		const embed = new MessageEmbed()
-	        .setDescription(`${member.user.tag} was successfully banned. \n\n Reason: ${reason}`)
-		message.channel.send(embed)
+	        .setDescription(`${member.user.tag} was successfully banned. \n\n Reason: ${reason}`);
+		message.channel.send(embed);
 	});
 };
 

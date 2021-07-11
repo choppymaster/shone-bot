@@ -12,20 +12,20 @@ module.exports.run = async (client, message) => {
 	if (command.config.botMaster && !message.author.id === client.config.author) return;
 
 	if (command.config.guildOnly && message.channel.type === "dm") {
-		message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }))
+		message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }));
 	}
 
 	if (message.guild && command.config.permissions) {
 		const authorPerms = message.channel.permissionsFor(message.author);
 		if (!authorPerms || !authorPerms.has(command.config.permissions)) return message.channel.send("Insufficient permissions");
 	}
-		try {
-			command.run(client, message, args);
-		}
-		catch (error) {
+	try {
+		command.run(client, message, args);
+	}
+	catch (error) {
 	  client.logger.error(error);
-			message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`);
-		}
+		message.channel.send(`Sorry! There was an error while executing the command! \nError: ${error}`);
+	}
 
-		client.logger.verbose(`${message.author.tag} | ${message.author.id} command: ${command.config.name} Guild: ${message.guild === null ? "in DMs" : message.guild.name} | ${message.guild === null ? "" : message.guild.id}`);
+	client.logger.verbose(`${message.author.tag} | ${message.author.id} command: ${command.config.name} Guild: ${message.guild === null ? "in DMs" : message.guild.name} | ${message.guild === null ? "" : message.guild.id}`);
 };
