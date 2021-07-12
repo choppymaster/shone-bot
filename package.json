@@ -10,18 +10,18 @@
     "lint": "eslint . --ext .js --ext .json"
   },
   "dependencies": {
-    "ctk-anime-scraper": "^2.0.0",
+    "ctk-anime-scraper": "^3.0.0",
     "dis": "^0.3.7",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
-    "mongoose": "^5.13.0",
+    "mongoose": "^5.13.2",
     "node-fetch": "^2.6.1",
     "something-random-on-discord": "^3.4.4",
     "winston": "^3.3.3"
   },
   "devDependencies": {
     "babel-eslint": "10.1.0",
-    "eslint": "^7.29.0",
+    "eslint": "^7.30.0",
     "eslint-plugin-json": "^3.0.0"
   },
   "keywords": [
