@@ -1,13 +1,35 @@
 {
-  "name": "shone-bot",
+  "name": "sphynx",
   "version": "1.0.0",
+  "description": "A Nice Discord bot, made discord.js",
   "author": "choppymaster",
+  "main": "./src/index.js",
   "private": true,
-  "licence": "MIT",
-  "main": "src/index.js",
+  "engines": {
+      "node": ">=12.x"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/choppymaster/sphynx"
+  },
+  "homepage": "https://github.com/choppymaster/sphynx#readme",
+  "bugs": {
+      "url": "https://github.com/choppymaster/sphynx/issues"
+  },
+  "keywords": [
+      "bot",
+      "Discord",
+      "Discord bot",
+      "node",
+      "Nice",
+      "Lol",
+      "Moderation",
+      "Fun"
+  ],
   "scripts": {
     "serve": "node src/index.js",
-    "lint": "eslint . --ext .js --ext .json"
+    "lint": "yarn run eslint . --ext .js, .json",
+    "fixlint": "yarn run eslint . --fix --ext .js,.json"
   },
   "dependencies": {
     "ctk-anime-scraper": "^3.0.0",
@@ -23,15 +45,5 @@
     "babel-eslint": "10.1.0",
     "eslint": "^7.30.0",
     "eslint-plugin-json": "^3.0.0"
-  },
-  "keywords": [
-    "bot",
-    "discord",
-    "github"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/choppymaster/sphynx"
-  },
-  "description": "A discord.js made bot"
+  }
 }
