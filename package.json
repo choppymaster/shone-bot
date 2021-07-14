@@ -6,25 +6,25 @@
   "main": "./src/index.js",
   "private": true,
   "engines": {
-      "node": ">=12.x"
+    "node": ">=12.x"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/choppymaster/sphynx"
+    "type": "git",
+    "url": "https://github.com/choppymaster/sphynx"
   },
   "homepage": "https://github.com/choppymaster/sphynx#readme",
   "bugs": {
-      "url": "https://github.com/choppymaster/sphynx/issues"
+    "url": "https://github.com/choppymaster/sphynx/issues"
   },
   "keywords": [
-      "bot",
-      "Discord",
-      "Discord bot",
-      "node",
-      "Nice",
-      "Lol",
-      "Moderation",
-      "Fun"
+    "bot",
+    "Discord",
+    "Discord bot",
+    "node",
+    "Nice",
+    "Lol",
+    "Moderation",
+    "Fun"
   ],
   "scripts": {
     "serve": "node src/index.js",
@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "ctk-anime-scraper": "^3.0.0",
-    "dis": "^0.3.7",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "mongoose": "^5.13.2",
@@ -41,7 +40,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "babel-eslint": "10.1.0",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.30.0",
     "eslint-plugin-json": "^3.0.0"
   }
