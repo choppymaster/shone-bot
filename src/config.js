@@ -4,4 +4,4 @@ const SphynxConfig = {
     "mongodb_uri": process.env.MONGODBURL
 }
 
-module.exports = sphynxConfig;
+module.exports = SphynxConfig;
