@@ -1,13 +1,14 @@
 # Sphynx
-A discord bot which is written in node.js and uses discord.js as the Base module.
- 
-## Installing  
+
+A WIP discord bot which is written in node.js and uses discord.js as the Base module.
+
+## Installing
 
 Clone this repo.
 
 Install nodejs and yarn.
 
-Create a new application on [discord developer portal](https://discord.com/developers/applications). 
+Create a new application on [discord developer portal](https://discord.com/developers/applications).
 
 Do the required things for creating a bot.
 
@@ -17,9 +18,10 @@ CD the repository u cloned.
 
 Install dependencies.
 
-```sh 
+```sh
 yarn # for npm, use npm i
 ```
+
 Create .env file the contents below:
 
 ```sh
