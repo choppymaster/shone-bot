@@ -465,10 +465,10 @@ css-what@^5.0.0, css-what@^5.0.1:
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-5.0.1.tgz#3efa820131f4669a8ac2408f9c32e7c7de9f4cad"
   integrity sha512-FYDTSHb/7KXsWICVsxdmiExPjCfRC4qRFBdVwv7Ax9hMnvMmEjP9RfxTEZ3qPZGmADDn2vAKSo9UcN1jKVYscg==
 
-ctk-anime-scraper@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ctk-anime-scraper/-/ctk-anime-scraper-3.0.0.tgz#deb3ea50c480fe34784808d32c6bba4843599e74"
-  integrity sha512-598xg3HWvUa+UE6VeC+agw+Kr6B9K0OS1hyeiSzRy3GVpxECPHisiwxfsvYvvtB5c2cy+jsJWhSCZduT0b7C2g==
+ctk-anime-scraper@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/ctk-anime-scraper/-/ctk-anime-scraper-3.5.0.tgz#ad8fe74880b207c022e340a61c748dcb841dcbb2"
+  integrity sha512-rpr4RAqNjBq+w1A6H1qvJukmBjxFCfMBndX5ENFijszGmWNbazxoQOrZ2o95QmwCe3kshRpRG3TfMZEDz7kN8w==
   dependencies:
     axios "^0.21.1"
     cheerio "^1.0.0-rc.10"
