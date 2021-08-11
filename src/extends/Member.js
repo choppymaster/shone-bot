@@ -7,7 +7,7 @@ module.exports = Structures.extend("GuildMember", member => {
 			this.warns = [];
 		}
 		async updateWarns() {
-			this.warns = await require("./common").Schemas.warns.find({
+			this.warns = await require("../common").Schemas.warns.find({
 				userID: this.id,
 				guildID: this.guild.id,
 			});

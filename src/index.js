@@ -12,7 +12,7 @@ void function loadCommands() {
 		for (const file of commandfiles) {
 			const command = require(`./commands/${dir}/${file}`);
 			
-			if (command.config.name) {
+			if (command.config && command.config.name) {
 			    client.commands.set(command.config.name.toLowerCase(), command)
 			} else {
 			    client.logger.warn(`command_file ${file} doesnt have a command name, or a config.`)
