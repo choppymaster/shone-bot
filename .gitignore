@@ -113,3 +113,7 @@ json.sqlite
 # Yarn files
 dist/
 lib/
+
+# Code editor (replit) tweaks for djs v12+
+node
+npm
