@@ -1,4 +1,3 @@
-
 # Logs
 logs
 *.log
@@ -69,7 +68,7 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+# environment variables file
 .env
 .env.test
 
@@ -107,12 +106,11 @@ dist
 # repl.it clone files
 .replit 
 
-# db files 
+# quick.db file 
 json.sqlite 
 
-# Yarn files
+# typesript files
 dist/
-lib/
 
 # Code editor (replit) tweaks for djs v12+
 node

@@ -11,12 +11,7 @@ void function loadCommands() {
 		const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
 		for (const file of commandfiles) {
 			const command = require(`./commands/${dir}/${file}`);
-			
-			if (command.config && command.config.name) {
-			    client.commands.set(command.config.name.toLowerCase(), command)
-			} else {
-			    client.logger.warn(`command_file ${file} doesnt have a command name, or a config.`)
-			}
+			client.commands.set(command.config?.name?.toLowerCase(), command)
 		}
 	});
 }();

@@ -3,7 +3,7 @@ module.exports.run = async (client, message, args) => {
 	const member = message.mentions.members.first();
 	if (!member) return message.channel.send("You didn't mentioned a user to be undeafened?!");
 
-	const channel = member.guild.channels.cache.get(member.voice.channelID);
+	const channel = member.guild.channels.cache.get(member.voice?.channelId);
 	if (!channel) return message.channel.send("The member is not in a voice channel!");
 
 	try {

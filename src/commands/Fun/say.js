@@ -6,7 +6,7 @@ module.exports.run = (client, message, args) => {
 	const embed = new MessageEmbed()
 		.setDescription(text)
 		.setFooter(message.author.tag);
-	message.channel.send(embed);
+	message.channel.send({ embeds: [embed] });
 };
 
 module.exports.config = {

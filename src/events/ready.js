@@ -3,11 +3,8 @@ module.exports.run = async client => {
 	client.guilds.cache.forEach(guild => {
 		guild.members.fetch();
 		guild.members.cache.forEach(async member => {
-			member.warns = await require("../data/warns").find({
-				userID: member.id,
-				guildID: guild.id,
-			});
-		});
+		  await member.fetchWarns();
+        });
 	});
 
 	client.logger.info("Fetched all guilds and its members.");

@@ -15,7 +15,7 @@ module.exports.run = (client, message, args) => {
 		winner = `${message.author} wins!`;
 	}
 	else if (input === option) {
-		winner = "No one wins.";
+		winner = "So, a draw.";
 	}
 	else {
 		winner = "I win!";

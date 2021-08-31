@@ -15,9 +15,9 @@ module.exports.run = async (client, message, args) => {
 		.setImage(res[0].img)
 		.setDescription([
 			`${res[0].releaseDate}`,
-			`[See the anime on Gogoanime.ai](${res[0].link})`]);
+			`[See the anime on Gogoanime.ai](${res[0].link}) **Alert: Please be aware of the ads given on that website.**`]);
 
-	message.channel.send(embed);
+	message.channel.send({ embeds: [embed] });
 };
 
 module.exports.config = {

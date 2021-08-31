@@ -2,19 +2,20 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
 	const guild = message.guild;
-
+    
 	const embed = new MessageEmbed()
 		.setColor("RANDOM")
-		.setTitle(`Server InFo - ${guild.name}`)
+		.setTitle(`Server Info - ${guild.name}`)
 		.setThumbnail(guild.iconURL())
-		.addField("Region", guild.region, true)
-		.addField("Members", guild.memberCount, true)
-		.addField("Roles", guild.roles.cache.size, true)
-		.addField("Emojis", guild.emojis.cache.size, true)
-		.addField("Owner", guild.owner.user.tag)
-		.addField("AFK Timeout", guild.afkTimeout / 60 + "minute(s)");
+		.addField("Created at", new Date(guild.createdTimestamp).toLocaleString(), true)
+		.addField("Members", guild.memberCount.toString() , true)
+		.addField("Roles", guild.roles.cache.size.toString(), true)
+		.addField("Emojis", guild.emojis.cache.size.toString() , true)
+        .addField("Stickers", guild.stickers.cache.size.toString() , true)
+		.addField("Owner", guild.members.cache.get(guild.ownerId).user.tag, true)
+		.addField("AFK Timeout", guild.afkTimeout / 60 + " minute(s)", true);
 
-	message.channel.send(embed);
+	message.channel.send({ embeds: [embed] });
 };
 
 module.exports.config = {

@@ -4,7 +4,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports.run = (client, message, args) => {
 	const member = message.mentions.members.first();
 	if (!member) return message.channel.send("Member not specified");
-	if (member.id === message.author.id) return message.channel.send("You cant warn yourself").then(m => m.delete({ timeout: 10000 }));
+	if (member.id === message.author?.id) return message.channel.send("You cant warn yourself").then(m => m.delete({ timeout: 10000 }));
 	if (member.id === client.user.id) return message.channel.send("You cant warn me").then(m => m.delete({ timeout: 10000 }));
 	const reason = args.slice(1).join(" ") ? args.slice(1).join(" ") : "No reason specified";
 
@@ -12,8 +12,8 @@ module.exports.run = (client, message, args) => {
 	    userID: member.id,
 	    guildID: message.guild.id,
 	}, async (err, warns) => {
-
-		if (warns.length === 4) return message.channel.send("Sorry, The user have exceeded his maximum warn length.");
+        if (err) client.logger.error(err)
+        if (warns.length === 4) return message.channel.send("Sorry, The user have exceeded his maximum warn length.");
 		const newWarn = new Schemas.warns({
 	    userID: member.id,
 	    guildID: message.guild.id,
@@ -22,9 +22,9 @@ module.exports.run = (client, message, args) => {
 	    date: new Date().toUTCString(),
 		});
 
-		await newWarn.save().catch(() => null);
+		await newWarn.save().catch(() => client.logger.error(e.stack));
 
-		member.updateWarns();
+		await member.fetchWarns();
 
 		const embed = new MessageEmbed()
 			.setColor("RANDOM")
@@ -32,7 +32,7 @@ module.exports.run = (client, message, args) => {
 	    `**${member.user.tag} is warned**`,
 	    `Reason: ${reason}`,
 	    ].join("\n\n"));
-	    message.channel.send(embed);
+	    message.channel.send({ embeds: [embed] });
 	});
 };
 

@@ -1,3 +1,5 @@
+const { Permissions } = require("discord.js")
+
 module.exports.run = async (client, message) => {
 	const prefix = ".";
 	if (message.author.bot || !message.content.startsWith(prefix)) return;
@@ -17,7 +19,7 @@ module.exports.run = async (client, message) => {
 
 	if (message.guild && command.config.permissions) {
 		const authorPerms = message.channel.permissionsFor(message.author);
-		if (!authorPerms || !authorPerms.has(command.config.permissions)) return message.channel.send("Insufficient permissions");
+		if (!authorPerms || !authorPerms.has(Permissions.FLAGS[command.config.permissions])) return message.channel.send("Insufficient permissions");
 	}
 	try {
 		command.run(client, message, args);

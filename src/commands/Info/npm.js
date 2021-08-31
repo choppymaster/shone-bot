@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
 	catch {
 	        info = "package not found";
 	}
-	message.channel.send(info);
+	message.channel.send({ embeds: [info] });
 };
 
 module.exports.config = {

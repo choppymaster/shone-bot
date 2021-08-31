@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 		.setImage(hare.media.poster)
 		.setColor("RANDOM");
 
-	message.channel.send(embed);
+	message.channel.send({ embeds: [embed] });
 };
 
 module.exports.config = {

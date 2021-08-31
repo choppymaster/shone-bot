@@ -2,7 +2,7 @@ const srod = require("something-random-on-discord");
 
 module.exports.run = async (client, message, args) => {
 	const advice = await srod.Random.getAdvice();
-	message.channel.send(advice);
+	message.channel.send({ embeds: [advice] });
 };
 
 module.exports.config = {

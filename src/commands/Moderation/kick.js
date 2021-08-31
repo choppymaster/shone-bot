@@ -5,12 +5,11 @@ module.exports.run = (client, message, args) => {
 	if(!member) return message.channel.send("You didn't mentioned a user to kick!").then(m => m.delete({ timeout: 10000 }));
 	const reason = args.slice(1).join(" ");
 	if(!reason) return message.channel.send("Reason not specified").then(m => m.delete({ timeout: 10000 }));
-	member.kick(reason).then(() => {
+	member.kick({ reason: reason }).then(() => {
 		const KickEmbed = new MessageEmbed()
-			.setTitle("❌ User kicked")
 			.setColor("RANDOM")
-			.setDescription(`${member} was kicked by ${message.author}.`);
-		message.channel.send(KickEmbed);
+			.setDescription(`${member} was kicked. \n Reason ${reason}`);
+		message.channel.send({ embeds: [KickEmbed] });
 	});
 };
 

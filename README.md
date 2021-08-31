@@ -12,7 +12,7 @@ Create a new application on [discord developer portal](https://discord.com/devel
 
 Do the required things for creating a bot.
 
-Enable the Indents `guild members` and `guild presences`.
+Enable the Intents `guild members` and `guild presences`.
 
 CD the repository u cloned.
 
@@ -31,8 +31,4 @@ BOTMASTER = your_discord_id
 
 Change `your_bot_token` to your bot's token, and `your_discord_id` to your discord ID.
 
-After following the above steps, you can start the bot with `node .`.
-
-## contributing
-
-If you want to contribute to this project, Feel free to open a pull request! Dont leak your bot details here!
+After following the above steps, you can start the bot with `node .`

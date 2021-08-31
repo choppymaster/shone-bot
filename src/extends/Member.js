@@ -1,17 +1,18 @@
-const { Structures } = require("discord.js");
+const { GuildMember } = require("discord.js")
 
-module.exports = Structures.extend("GuildMember", member => {
-	class MemberStructure extends member {
-		constructor(client, data, guild) {
-			super(client, data, guild);
-			this.warns = [];
-		}
-		async updateWarns() {
-			this.warns = await require("../common").Schemas.warns.find({
+module.exports = Object.defineProperties(GuildMember.prototype, {
+	warns: {
+		value: [],
+		writable: true,
+	},
+	fetchWarns: {
+		value: async function() {
+			const warns = await require("../common").Schemas.warns.find({
 				userID: this.id,
-				guildID: this.guild.id,
+				guildID: this.guild.id
 			});
-		}
-	}
-	return MemberStructure;
+			this.warns = warns;
+			return this.warns;
+		},
+	},
 });

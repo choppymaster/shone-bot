@@ -15,7 +15,7 @@ module.exports.run = (client, message, args) => {
 	            `Reason: ${warns[i].reason}`,
 	            `Date: ${warns[i].date}`].join("\n"), true);
 	    }
-	    message.channel.send(embed);
+	    message.channel.send({ embeds: [embed] });
 	}
 	else {
 	   message.channel.send("They don't have any warns.");

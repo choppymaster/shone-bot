@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
 	if (!warns.length) return message.channel.send("They don't have any warns!");
 
 	await Schemas.warns.deleteMany(obj);
-	await member.updateWarns();
+	await member.fetchWarns();
 	message.channel.send(`${member.user.tag}'s warnings have been cleared.`);
 };
 

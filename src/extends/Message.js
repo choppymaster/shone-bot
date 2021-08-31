@@ -1,12 +1,20 @@
-const { Structures } = require("discord.js");
+const { Message } = require("discord.js")
 
-module.exports = Structures.extend("Message", msg => {
-	class MessageStructure extends msg {
-		constructor() {
-			super();
-
-			this.logged = false;
-		}
-	}
-	return MessageStructure;
+module.exports = Object.defineProperties(Message.prototype, {
+	delete: {
+		value: function(timeout = {}) {
+			if (timeout.timeout) {
+                try {
+				setTimeout(() => { this.delete(); }, timeout.timeout);
+                } catch (e) {
+                    client.logger.error(e)
+                }
+                }
+			else {
+                try {
+                    this.delete()
+                } catch {}
+        	}
+		},
+	},
 });

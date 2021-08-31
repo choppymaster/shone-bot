@@ -4,7 +4,8 @@ module.exports.Schemas = {
 
 module.exports.Extends = {
 	Member: require("./extends/Member"),
-	Channel: require("./extends/Channel"),
+	TextChannel: require("./extends/TextChannel"),
+    Message: require("./extends/Message.js")
 };
 
 
