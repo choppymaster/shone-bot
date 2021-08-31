@@ -22,7 +22,7 @@ module.exports.run = (client, message, args) => {
 	    date: new Date().toUTCString(),
 		});
 
-		await newWarn.save().catch(() => client.logger.error(e.stack));
+		await newWarn.save().catch(e => client.logger.error(e.stack));
 
 		await member.fetchWarns();
 

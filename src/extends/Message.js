@@ -7,13 +7,13 @@ module.exports = Object.defineProperties(Message.prototype, {
                 try {
 				setTimeout(() => { this.delete(); }, timeout.timeout);
                 } catch (e) {
-                    client.logger.error(e)
+                    this.client.logger.error(e)
                 }
                 }
 			else {
                 try {
                     this.delete()
-                } catch {}
+                } catch { return; }
         	}
 		},
 	},
