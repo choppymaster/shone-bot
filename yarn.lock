@@ -970,9 +970,9 @@ node-fetch@^2.6.1:
   version "2.6.1"
   resolved "https://registry.npmjs.org/node-fetch/-/node-fetch-2.6.1.tgz"
 
-node@16.6.1:
-  version "16.6.1"
-  resolved "https://registry.npmjs.org/node/-/node-16.6.1.tgz"
+node@16.9.1:
+  version "16.9.1"
+  resolved "https://registry.yarnpkg.com/node/-/node-16.9.1.tgz#059e61d8b35f9eb5fcec12bc5e3b6b6fcd2beb2b"
   dependencies:
     node-bin-setup "^1.0.0"
 
