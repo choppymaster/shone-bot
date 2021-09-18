@@ -11,7 +11,8 @@ void function loadCommands() {
 		const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
 		for (const file of commandfiles) {
 			const command = require(`./commands/${dir}/${file}`);
-			client.commands.set(command.config?.name?.toLowerCase(), command)
+			client.loadApplicationCommand(command);
+			client.commands.set(command.config?.name?.toLowerCase(), command);
 		}
 	});
 }();

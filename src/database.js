@@ -4,11 +4,10 @@ module.exports = client => {
 	const dbOptions = {
 		useNewUrlParser: true,
 		autoIndex: false,
-		poolSize: 5,
 		connectTimeoutMS: 10000,
 		useUnifiedTopology: true,
-		useFindAndModify: true,
 	};
+
 	mongoose.connect(client.config.mongodb_uri, dbOptions);
 	mongoose.promise = global.Promise;
 	mongoose.connection.on("connected", () => {

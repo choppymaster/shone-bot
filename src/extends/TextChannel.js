@@ -1,4 +1,4 @@
-const { TextChannel, Permissions } = require("discord.js")
+const { TextChannel, Permissions } = require("discord.js");
 
 const originalSend = TextChannel.prototype.send;
 

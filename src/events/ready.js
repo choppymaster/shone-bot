@@ -1,10 +1,18 @@
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
+
 module.exports.run = async client => {
 	require("../database")(client);
-	client.guilds.cache.forEach(guild => {
+	client.guilds.cache.forEach(async guild => {
+		const rest = new REST({ version: "9" }).setToken(client.config.token);
+		await rest.put(
+			Routes.applicationGuildCommands(client.config.clientId, guild.id),
+			{ body: client.slash },
+		);
 		guild.members.fetch();
 		guild.members.cache.forEach(async member => {
 		  await member.fetchWarns();
-        });
+		});
 	});
 
 	client.logger.info("Fetched all guilds and its members.");
