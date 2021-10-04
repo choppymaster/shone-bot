@@ -5,7 +5,8 @@ module.exports.Schemas = {
 module.exports.Extends = {
 	Member: require("./extends/Member"),
 	TextChannel: require("./extends/TextChannel"),
-	Message: require("./extends/Message.js"),
+	Message: require("./extends/Message"),
+    Guild: require("./extends/Guild")
 };
 
 
