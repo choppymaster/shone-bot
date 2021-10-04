@@ -33,12 +33,12 @@
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
     "@discordjs/rest": "^0.1.0-canary.0",
+    "axios": "^0.22.0",
     "ctk-anime-scraper": "^3.5.0",
     "discord-api-types": "^0.23.1",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "mongoose": "^6.0.3",
-    "node-fetch": "^2.6.1",
     "npm": "^7.23.0",
     "something-random-on-discord": "^3.4.4",
     "winston": "^3.3.3"

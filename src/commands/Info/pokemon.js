@@ -1,10 +1,10 @@
-const fetch = require("node-fetch");
+const axios = require("axios");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
 	run: async (client, message, args) => {
 		if (!args.join(" ")) return message.channel.send("Pokémon not specified").then(m => m.delete({ timeout: 10000 }));
-		const res = await fetch(`https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=${args.join(" ")}`).then(info => info.json());
+		const res = axios.get(`https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=${args.join(" ")}`);
 
 		try {
 
@@ -30,7 +30,7 @@ module.exports = {
 		],
 	},
 	execute: async (client, interaction, guild) => {
-		const res = await fetch(`https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=${interaction.options.getString("name")}`).then(info => info.json());
+		const res = axios.get(`https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=${interaction.options.getString("name")}`);
 
 		try {
 

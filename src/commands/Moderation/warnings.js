@@ -50,7 +50,7 @@ module.exports = {
 	    interaction.reply({ embeds: [embed] });
 		}
 		else {
-	  interaction.reply("They don't have any warns.").then(() => setTimeout(() => { interaction.deleteReply() }, 10000));
+	  interaction.reply("They don't have any warns.").then(() => setTimeout(() => { interaction.deleteReply(); }, 10000));
 		}
 	},
 	config: {

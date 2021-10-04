@@ -29,14 +29,14 @@ module.exports = {
 	},
 	execute: async (client, interaction, guild) => {
 		const member = guild.membrs.cache.get(interaction.options.getUser("member").id);
-		if (member.id === interaction.member.id) return interaction.reply("You cant clear warns yourself").then(() => setTimeout(() => { interaction.deleteReply }, 10000));
-		if (member.id === client.user.id) return interaction.reply("You cant clear-warns me because you cant warn me lol").then(() => setTimeout(() => { interaction.deleteReply }, 10000));
+		if (member.id === interaction.member.id) return interaction.reply("You cant clear warns yourself").then(() => setTimeout(() => { interaction.deleteReply; }, 10000));
+		if (member.id === client.user.id) return interaction.reply("You cant clear-warns me because you cant warn me lol").then(() => setTimeout(() => { interaction.deleteReply; }, 10000));
 
 		const obj = { userID: member.id, guildID: guild.id };
 
 		const warns = await Schemas.warns.find(obj);
 
-		if (!warns.length) return interaction.reply("They don't have any warns!").then(() => setTimeout(() => { interaction.deleteReply }, 10000));
+		if (!warns.length) return interaction.reply("They don't have any warns!").then(() => setTimeout(() => { interaction.deleteReply; }, 10000));
 
 		await Schemas.warns.deleteMany(obj);
 		await member.fetchWarns();

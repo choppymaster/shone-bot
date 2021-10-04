@@ -54,8 +54,8 @@ module.exports = {
 	},
 	execute: async (client, interaction, guild) => {
 		const member = guild.members.cache.get(interaction.options.getUser("member").id);
-		if (member.id === interaction.member?.id) return interaction.reply("You cant warn yourself").then(() => setTimeout(() => { interaction.deleteReply }, 10000))
-		if (member.id === client.user.id) return interaction.reply("You cant warn me").then(() => setTimeout(() => { interaction.deleteReply }, 10000));
+		if (member.id === interaction.member?.id) return interaction.reply("You cant warn yourself").then(() => setTimeout(() => { interaction.deleteReply; }, 10000));
+		if (member.id === client.user.id) return interaction.reply("You cant warn me").then(() => setTimeout(() => { interaction.deleteReply; }, 10000));
 		const reason = interaction.options.getString("reason") ?? "No reason specified";
 
 		Schemas.warns.find({

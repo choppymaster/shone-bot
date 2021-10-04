@@ -20,9 +20,9 @@ module.exports = {
 	},
 	execute: async (client, interaction, guild) => {
 		const number = interaction.options.getInteger("number");
-		if (number > 100 || number < 2) return interaction.reply("The number should be 100 messages lower and 1 message higher.").then(() => setTimeout(() => { interaction.deleteReply() }, 10000))
+		if (number > 100 || number < 2) return interaction.reply("The number should be 100 messages lower and 1 message higher.").then(() => setTimeout(() => { interaction.deleteReply(); }, 10000));
 		guild.channels.cache.get(interaction.channelId).bulkDelete(number).catch(e => client.logger.error(e.stack));
-	    interaction.reply(`cleared ${number} messages.`).then(() => setTimeout(() => { interaction.deleteReply() }, 2000));
+	    interaction.reply(`cleared ${number} messages.`).then(() => setTimeout(() => { interaction.deleteReply(); }, 2000));
 	},
 
 	config: {

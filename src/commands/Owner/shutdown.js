@@ -13,7 +13,7 @@ module.exports = {
 	},
 	config: {
 		name: "shutdown",
-        description: "Shutdown the bot.",
+		description: "Shutdown the bot.",
 		botMaster: true,
 	},
 };
