@@ -6,7 +6,7 @@
   "main": "./src/index.js",
   "private": true,
   "engines": {
-    "node": "=<16.6.x"
+    "node": ">=16.6.x"
   },
   "repository": {
     "type": "git",
