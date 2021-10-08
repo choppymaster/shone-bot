@@ -8,7 +8,7 @@ RUN yarn && \
     yarn global add pm2 
 
 
-FROM mhart/alpine-node:latest
+FROM node:alpine
 
 WORKDIR usr/src/sphynx
 
