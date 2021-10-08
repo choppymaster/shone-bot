@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:latest AS depsinstall
+FROM node:alpine AS depsinstall
 
 WORKDIR usr/src/sphynx
 
