@@ -7,7 +7,7 @@ module.exports = {
 		if (!member) return message.channel.send("Member not specified");
 		if (member.id === message.author?.id) return message.channel.send("You cant warn yourself").then(m => m.delete({ timeout: 10000 }));
 		if (member.id === client.user.id) return message.channel.send("You cant warn me").then(m => m.delete({ timeout: 10000 }));
-		const reason = args.slice(1).join(" ") ? args.slice(1).join(" ") : "No reason specified";
+		const reason = args.slice(1).join(" ") ?? "No reason specified";
 
 		Schemas.warns.find({
 	    userID: member.id,

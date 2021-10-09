@@ -1,6 +1,6 @@
 module.exports = {
 	run: (client, message, args) => {
-		const number = args.join(" ");
+		const number = args[0];
 		if (!number) return message.channel.send("Number not specified.");
 		if (isNaN(number)) return message.channel.send("it is not a number.");
 		if (number > 100 || number < 2) return message.channel.send("The number should be 100 messages lower and 1 message higher.");

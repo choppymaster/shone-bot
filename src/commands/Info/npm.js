@@ -1,7 +1,7 @@
 const srod = require("something-random-on-discord");
 
 module.exports.run = async (client, message, args) => {
-	const pkg = args.join(" ");
+	const pkg = args[0];
 	if (!pkg) return message.channel.send("You didn't specified a package!");
 
 	let info;
