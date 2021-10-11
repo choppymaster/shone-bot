@@ -15,8 +15,8 @@ WORKDIR usr/src/sphynx
 COPY --from=depsinstall usr/src/sphynx/node_modules ./
 COPY src/ ./
 
-RUN addgroup -S sphynx -g 44444 && \
-    adduser -S -g sphynx -u 44444 sphynx && \
+RUN addgroup -S sphynx -g 50000 && \
+    adduser -S -g sphynx -u 50000 sphynx && \
     mkdir /data && chown sphynx:sphynx /data/
 
 
