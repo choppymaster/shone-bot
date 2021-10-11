@@ -1,6 +1,6 @@
-FROM node:alpine AS depsinstall
+FROM node:alpine AS build
 
-WORKDIR usr/src/sphynx
+WORKDIR usr/sphynx
 
 COPY package.json yarn.lock ./
 
@@ -12,7 +12,7 @@ FROM node:alpine
 
 WORKDIR usr/src/sphynx
 
-COPY --from=depsinstall usr/src/sphynx/node_modules ./
+COPY --from=build usr/sphynx/node_modules ./
 COPY src/ ./
 
 RUN addgroup -S sphynx -g 50000 && \
