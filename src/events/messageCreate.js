@@ -4,6 +4,8 @@ module.exports.run = async (client, message) => {
   const prefix = ".";
   if (message.author.bot || !message.content.startsWith(prefix)) return;
 
+  if (message.channel.partial) await message.channel.fetch();
+  
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const commandName = args.shift().toLowerCase();
 
@@ -13,7 +15,7 @@ module.exports.run = async (client, message) => {
 
   if (command.config.botMaster && !message.author.id === client.config.botMaster) return;
 
-  if (command.config.guildOnly && message.channel.type === "dm") {
+  if (command.config.guildOnly && (message.guild === null)) {
     message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }));
   }
 

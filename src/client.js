@@ -12,7 +12,8 @@ module.exports = class extends Client {
         Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
         Intents.FLAGS.GUILD_PRESENCES,
         Intents.FLAGS.GUILD_BANS
-      ]
+      ],
+      partials: ["CHANNEL"]
     });
 
     this.config = require("./config");
