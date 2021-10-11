@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "serve": "node src/index.js",
-    "lint": "eslint . --ext .js --ext .json"
+    "lint": "eslint . --ext .js --ext .json --fix"
   },
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
@@ -38,6 +38,10 @@
     "discord-api-types": "^0.23.1",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
     "mongoose": "^6.0.9",
     "npm": "^8.0.0",
     "something-random-on-discord": "^3.4.4",

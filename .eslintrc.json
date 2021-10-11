@@ -1,5 +1,5 @@
 {
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "standard"],
   "env": {
     "node": true,
     "es6": true
@@ -8,9 +8,11 @@
   "plugins": ["json"],
   "rules": {
     "json/*": "error",
+    "semi": [2, "always"],
     "comma-spacing": "error",
     "comma-style": "error",
     "dot-location": ["error", "property"],
+    "no-tabs": "off",
     "no-unused-vars": "warn",
     "no-mixed-spaces-and-tabs": "off",
     "handle-callback-err": "off",

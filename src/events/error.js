@@ -1,3 +1,3 @@
 module.exports.run = (client, err) => {
-	client.logger.error(err.stack);
+  client.logger.error(err.stack);
 };

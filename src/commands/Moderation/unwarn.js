@@ -1,16 +1,16 @@
 const { Schemas } = require("../../common");
 
 module.exports = {
-	run: async (client, message, args) => {
-		const member = message.mentions.members.first();
-		if (!member) return message.channel.send("Member not specified");
-		if (member.id === message.author?.id) return message.channel.send("You cant unwarn yourself.");
-		if (member.id === client.user.id) return message.channel.send("You cant warn me");
+  run: async (client, message, args) => {
+    const member = message.mentions.members.first();
+    if (!member) return message.channel.send("Member not specified");
+    if (member.id === message.author?.id) return message.channel.send("You cant unwarn yourself.");
+    if (member.id === client.user.id) return message.channel.send("You cant warn me");
 
-		const warns = await Schemas.warns.find({
+    const warns = await Schemas.warns.find({
 	    userID: member.id,
-	    guildID: message.guild.id,
-		});
+	    guildID: message.guild.id
+    });
 
 	    if (!warns.length) return message.channel.send("They don't have any warns");
 
@@ -18,26 +18,26 @@ module.exports = {
 	    await member.fetchWarns();
 
 	    message.channel.send(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
-	},
-	slashCommand: {
-		options: [
-			{
-				name: "member",
-				description: "The user to unwarn for",
-				type: "USER",
-				required: true,
-			},
-		],
-	},
-	execute: async (client, interaction, guild) => {
-		const member = guild.members.cache.get(interaction.options.getUser("member").id);
-		if (member.id === interaction.member?.id) return interaction.reply("You cant unwarn yourself.");
-		if (member.id === client.user.id) return interaction.reply("You cant warn me");
+  },
+  slashCommand: {
+    options: [
+      {
+        name: "member",
+        description: "The user to unwarn for",
+        type: "USER",
+        required: true
+      }
+    ]
+  },
+  execute: async (client, interaction, guild) => {
+    const member = guild.members.cache.get(interaction.options.getUser("member").id);
+    if (member.id === interaction.member?.id) return interaction.reply("You cant unwarn yourself.");
+    if (member.id === client.user.id) return interaction.reply("You cant warn me");
 
-		const warns = await Schemas.warns.find({
+    const warns = await Schemas.warns.find({
 	    userID: member.id,
-	    guildID: guild.id,
-		});
+	    guildID: guild.id
+    });
 
 	    if (!warns.length) return interaction.reply("They don't have any warns");
 
@@ -45,13 +45,12 @@ module.exports = {
 	    await member.fetchWarns();
 
 	    interaction.reply(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
+  },
 
-	},
-
-	config: {
-		name: "unwarn",
-		description: "unwarns a member on the guild",
-		guildOnly: true,
-		permissions: ["SEND_MESSAGES", "MANAGE_MESSAGES"],
-	},
+  config: {
+    name: "unwarn",
+    description: "unwarns a member on the guild",
+    guildOnly: true,
+    permissions: ["SEND_MESSAGES", "MANAGE_MESSAGES"]
+  }
 };
