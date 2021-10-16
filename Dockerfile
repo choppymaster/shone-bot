@@ -6,7 +6,12 @@ COPY package.json yarn.lock ./
 
 RUN yarn install
 
-COPY . ./
+
+FROM node:alpine
+
+COPY --from=build usr/sphynx/node_modules ./
+
+COPY /src ./
 
 RUN addgroup -S sphynx -g 50000 && \
     adduser -S -g sphynx -u 50000 sphynx && \
