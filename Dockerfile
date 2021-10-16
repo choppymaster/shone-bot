@@ -4,8 +4,7 @@ WORKDIR usr/sphynx
 
 COPY package.json yarn.lock ./
 
-RUN yarn && \
-    yarn global add pm2 
+RUN yarn 
 
 
 FROM node:alpine
@@ -22,4 +21,4 @@ RUN addgroup -S sphynx -g 50000 && \
 
 USER sphynx
 
-CMD [ "pm2-runtime", "src/index.js" ]
+CMD [ "node", "src/index.js" ]
