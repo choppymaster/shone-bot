@@ -15,7 +15,7 @@ COPY /src ./
 
 RUN addgroup -S sphynx -g 50000 && \
     adduser -S -g sphynx -u 50000 sphynx && \
-    mkdir /data && chown sphynx:sphynx /data/
+    mkdir /dat && chown sphynx:sphynx /dat/
 
 
 USER sphynx
