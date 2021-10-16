@@ -4,14 +4,8 @@ WORKDIR usr/sphynx
 
 COPY package.json yarn.lock ./
 
-RUN yarn 
+RUN yarn install
 
-
-FROM node:alpine
-
-WORKDIR usr/sphynx
-
-COPY --from=build usr/sphynx/node_modules ./
 COPY . ./
 
 RUN addgroup -S sphynx -g 50000 && \
