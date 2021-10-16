@@ -13,7 +13,7 @@ module.exports = class extends Client {
         Intents.FLAGS.GUILD_PRESENCES,
         Intents.FLAGS.GUILD_BANS
       ],
-      partials: ["CHANNEL"]
+      partials: ["CHANNEL"] // fixes PM receiving
     });
 
     this.config = require("./config");
@@ -22,9 +22,9 @@ module.exports = class extends Client {
 
     this.commands = new Collection();
 
-    this.slash = [];
+    this.slash = []; // Array of slash commands
   }
-
+  // load slashcommand for the command
   async loadApplicationCommand(command) {
     let builder;
     if (command.execute) {

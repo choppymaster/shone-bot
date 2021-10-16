@@ -12,7 +12,7 @@ module.exports = Object.defineProperties(Message.prototype, {
       } else {
         try {
           this.delete();
-        } catch { }
+        } catch { 
         	}
     }
   }

@@ -1,7 +1,9 @@
+// database schemas
 module.exports.Schemas = {
   warns: require("./data/warns")
 };
 
+// extends 
 module.exports.Extends = () => {
   return {
     Member: require("./extends/Member"),
@@ -11,7 +13,7 @@ module.exports.Extends = () => {
   };
 };
 
-
+// logging
 const winston = require("winston");
 
 const logger = winston.createLogger({
