@@ -6,7 +6,7 @@ COPY package.json yarn.lock ./
 
 RUN yarn install
 
-
+# second stage
 FROM node:alpine
 
 COPY --from=build usr/sphynx/node_modules ./node_modules
@@ -20,4 +20,4 @@ RUN addgroup -S sphynx -g 50000 && \
 
 USER sphynx
 
-CMD [ "node", "src/index.js" ]
+ENTRYPOINT [ "node", "src/index.js" ]
