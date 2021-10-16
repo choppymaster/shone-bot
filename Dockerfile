@@ -9,7 +9,7 @@ RUN yarn
 
 FROM node:alpine
 
-WORKDIR usr/src/sphynx
+WORKDIR usr/sphynx
 
 COPY --from=build usr/sphynx/node_modules ./
 COPY /src ./
