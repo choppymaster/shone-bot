@@ -11,7 +11,7 @@ FROM node:alpine
 
 COPY --from=build usr/sphynx/node_modules ./
 
-COPY /src ./
+COPY /src ./src
 
 RUN addgroup -S sphynx -g 50000 && \
     adduser -S -g sphynx -u 50000 sphynx && \
