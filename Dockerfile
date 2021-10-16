@@ -13,7 +13,7 @@ FROM node:alpine
 WORKDIR usr/src/sphynx
 
 COPY --from=build usr/sphynx/node_modules ./
-COPY src/ ./
+COPY /src ./
 
 RUN addgroup -S sphynx -g 50000 && \
     adduser -S -g sphynx -u 50000 sphynx && \
@@ -22,4 +22,4 @@ RUN addgroup -S sphynx -g 50000 && \
 
 USER sphynx
 
-CMD [ "pm2", "start", "index.js" ]
+CMD [ "pm2-runtime", "src/index.js" ]
