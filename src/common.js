@@ -3,7 +3,7 @@ module.exports.Schemas = {
   warns: require("./data/warns")
 };
 
-// extends 
+// extends
 module.exports.Extends = () => {
   return {
     Member: require("./extends/Member"),

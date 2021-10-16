@@ -24,6 +24,7 @@ module.exports = class extends Client {
 
     this.slash = []; // Array of slash commands
   }
+
   // load slashcommand for the command
   async loadApplicationCommand(command) {
     let builder;

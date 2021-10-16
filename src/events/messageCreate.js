@@ -5,7 +5,7 @@ module.exports.run = async (client, message) => {
   if (message.author.bot || !message.content.startsWith(prefix)) return;
 
   if (message.channel.partial) await message.channel.fetch();
-  
+
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
   const commandName = args.shift().toLowerCase();
 

@@ -3,7 +3,7 @@ const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
 Object.defineProperties(Guild.prototype, {
-  // register slash commands 
+  // register slash commands
   registerSlashCommands: {
     value: async function(client) {
       const rest = new REST({ version: "9" }).setToken(client.config.token);
