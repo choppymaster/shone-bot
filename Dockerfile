@@ -9,7 +9,7 @@ RUN yarn install
 
 FROM node:alpine
 
-COPY --from=build usr/sphynx/node_modules ./
+COPY --from=build usr/sphynx/node_modules ./node_modules
 
 COPY /src ./src
 
