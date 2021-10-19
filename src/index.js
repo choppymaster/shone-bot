@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 // import dependencies
-require("./common").Extends();
+require("./common").loadExtends();
 const client = new (require("./client"))();
 const fs = require("fs");
 

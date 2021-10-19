@@ -4,7 +4,7 @@ module.exports.Schemas = {
 };
 
 // extends
-module.exports.Extends = () => {
+module.exports.loadExtends = () => {
   return {
     Member: require("./extends/Member"),
     TextChannel: require("./extends/TextChannel"),
