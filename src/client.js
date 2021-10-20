@@ -18,7 +18,7 @@ module.exports = class extends Client {
 
     this.config = require("./config");
 
-    this.logger = require("./common").Logger;
+    this.logger = require("./logger");
 
     this.commands = new Collection();
 
