@@ -2172,9 +2172,9 @@ npm-user-validate@*:
   version "1.0.1"
   resolved "https://registry.npmjs.org/npm-user-validate/-/npm-user-validate-1.0.1.tgz"
 
-npm@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/npm/-/npm-8.1.0.tgz#2b4a44f00cab4ae7e8fb2d8180f2af92e1098b09"
+npm@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/npm/-/npm-8.1.1.tgz#0eed5e178fe057fbe02be987107dd6c81bd6742f"
   dependencies:
     "@isaacs/string-locale-compare" "*"
     "@npmcli/arborist" "*"
