@@ -111,13 +111,13 @@
     ts-mixer "^6.0.0"
     tslib "^2.3.1"
 
-"@discordjs/builders@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@discordjs/builders/-/builders-0.7.0.tgz#c2670d9443ffc3e86d087fd236fc00d3c56f7503"
+"@discordjs/builders@^0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@discordjs/builders/-/builders-0.8.1.tgz#4fa610bf9bc40b60d6c7e27ba97a8f07e2d2ff2a"
   dependencies:
     "@sindresorhus/is" "^4.2.0"
     discord-api-types "^0.24.0"
-    ow "^0.27.0"
+    ow "^0.28.1"
     ts-mixer "^6.0.0"
     tslib "^2.3.1"
 
@@ -2342,6 +2342,17 @@ ow@^0.27.0:
     type-fest "^1.2.1"
     vali-date "^1.0.0"
 
+ow@^0.28.1:
+  version "0.28.1"
+  resolved "https://registry.yarnpkg.com/ow/-/ow-0.28.1.tgz#e7cf19a0994a4ace78f38976f11f2a080f51a570"
+  dependencies:
+    "@sindresorhus/is" "^4.2.0"
+    callsites "^3.1.0"
+    dot-prop "^6.0.1"
+    lodash.isequal "^4.5.0"
+    type-fest "^2.3.4"
+    vali-date "^1.0.0"
+
 p-limit@^1.1.0:
   version "1.3.0"
   resolved "https://registry.npmjs.org/p-limit/-/p-limit-1.3.0.tgz"
@@ -2903,6 +2914,10 @@ type-fest@^0.20.2:
 type-fest@^1.2.1:
   version "1.4.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz"
+
+type-fest@^2.3.4:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-2.5.2.tgz#d6a5247b8019716b300d9023fa7b1b02016dd864"
 
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"
