@@ -43,7 +43,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
     "mongoose": "^6.0.12",
-    "npm": "^8.1.1",
+    "npm": "^8.1.2",
     "something-random-on-discord": "^3.4.4",
     "winston": "^3.3.3"
   },
