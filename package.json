@@ -31,7 +31,7 @@
     "lint": "eslint . --ext .js --ext .json --fix"
   },
   "dependencies": {
-    "@discordjs/builders": "^0.7.0",
+    "@discordjs/builders": "^0.8.1",
     "@discordjs/rest": "^0.1.0-canary.0",
     "axios": "^0.24.0",
     "ctk-anime-scraper": "^3.5.0",
