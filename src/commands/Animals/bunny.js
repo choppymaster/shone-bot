@@ -1,9 +1,9 @@
-const fetch = require("node-fetch");
+const axios = require("axios");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   run: async (client, message, args) => {
-    const hare = await fetch("https://api.bunnies.io/v2/loop/random/?media=gif,png").then(res => res.json());
+    const hare = await axios.get("https://api.bunnies.io/v2/loop/random/?media=gif,png").then(res => res.data);
 
     const embed = new MessageEmbed()
       .setTitle(":rabbit: squeak")
@@ -13,7 +13,7 @@ module.exports = {
     message.channel.send({ embeds: [embed] });
   },
   execute: async (client, interaction, guild) => {
-    const hare = await fetch("https://api.bunnies.io/v2/loop/random/?media=gif,png").then(res => res.json());
+    const hare = await axios.get("https://api.bunnies.io/v2/loop/random/?media=gif,png").then(res => res.data);
 
     const embed = new MessageEmbed()
       .setTitle(":rabbit: squeak")

@@ -1,9 +1,9 @@
-const fetch = require("node-fetch");
+const axios = require("axios");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   run: async (client, message, args) => {
-    const cat = await fetch("https://aws.random.cat/meow").then(res => res.json());
+    const cat = await axios.get("https://aws.random.cat/meow").then(res => res.data);
     const embed = new MessageEmbed()
       .setTitle(":cat: meow")
       .setImage(cat.file)
@@ -12,7 +12,7 @@ module.exports = {
     message.channel.send({ embeds: [embed] });
   },
   execute: async (client, interaction, guild) => {
-    const cat = await fetch("https://aws.random.cat/meow").then(res => res.json());
+    const cat = await axios.get("https://aws.random.cat/meow").then(res => res.data);
     const embed = new MessageEmbed()
       .setTitle(":cat: meow")
       .setImage(cat.file)
