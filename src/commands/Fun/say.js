@@ -5,8 +5,7 @@ module.exports = {
     const text = args.join(" ");
     if (!text) return message.channel.send("You didn't specified something to say!");
     const embed = new MessageEmbed()
-      .setDescription(text)
-      .setFooter();
+      .setDescription(text);
     message.channel.send({ embeds: [embed] });
   },
   slashCommand: {
