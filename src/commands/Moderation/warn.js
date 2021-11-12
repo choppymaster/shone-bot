@@ -15,7 +15,7 @@ module.exports = {
     }, async (err, warns) => {
       if (err) client.logger.error(err);
       if (warns.length === 4) return message.channel.send("Sorry, The user have exceeded his maximum warn length.");
-      const newWarn = new Schemas.Warns({
+      const newWarn = new Schemas.warns({
 	    userID: member.id,
 	    guildID: message.guild.id,
 	    reason: reason,
