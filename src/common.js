@@ -1,3 +1,5 @@
+const fs = require("fs")
+
 // database schemas
 module.exports.Schemas = {
   warns: require("./data/warns")
@@ -5,10 +7,7 @@ module.exports.Schemas = {
 
 // extends
 module.exports.loadExtends = () => {
-  return {
-    Member: require("./extends/Member"),
-    TextChannel: require("./extends/TextChannel"),
-    Message: require("./extends/Message"),
-    Guild: require("./extends/Guild")
-  };
+  fs.readdirSync("./src/extends").forEach(file => {
+    require(`./extends/${file}`);
+  });
 };

@@ -9,7 +9,7 @@ module.exports = {
     if (member.id === client.user.id) return message.channel.send("You cant warn me").then(m => m.delete({ timeout: 10000 }));
     const reason = args.slice(1).join(" ") ?? "No reason specified";
 
-    Schemas.Warns.find({
+    Schemas.warns.find({
 	    userID: member.id,
 	    guildID: message.guild.id
     }, async (err, warns) => {
@@ -58,7 +58,7 @@ module.exports = {
     if (member.id === client.user.id) return interaction.reply("You cant warn me").then(() => setTimeout(() => { interaction.deleteReply(); }, 10000));
     const reason = interaction.options.getString("reason") ?? "No reason specified";
 
-    Schemas.Warns.find({
+    Schemas.warns.find({
 	    userID: member.id,
 	    guildID: guild.id
     }, async (err, warns) => {
