@@ -15,24 +15,22 @@ module.exports = {
     }, async (err, warns) => {
       if (err) client.logger.error(err);
       if (warns.length === 4) return message.channel.send("Sorry, The user have exceeded his maximum warn length.");
-      const newWarn = new Schemas.warns({
-	    userID: member.id,
-	    guildID: message.guild.id,
-	    reason: reason,
-	    moderator: message.author.id,
-	    date: new Date().toUTCString()
+      
+      const newWarn = new Schemas.Warn({
+	      userID: member.id,
+	      guildID: message.guild.id,
+	      reason: reason,
+	      moderator: message.author.id,
+	      date: new Date().toUTCString()
       });
-
-      await newWarn.save().catch(e => client.logger.error(e.stack));
-
-      await member.fetchWarns();
+      await newWarn.save()
 
       const embed = new MessageEmbed()
         .setColor("RANDOM")
         .setDescription([
-	    `**${member.user.tag} is warned**`,
-	    `Reason: ${reason}`
-	    ].join("\n\n"));
+	        `**${member.user.tag} is warned**`,
+	        `Reason: ${reason}`
+	      ].join("\n\n"));
 	    message.channel.send({ embeds: [embed] });
     });
   },
@@ -65,23 +63,20 @@ module.exports = {
       if (err) client.logger.error(err);
       if (warns.length === 4) return interaction.reply("Sorry, The user have exceeded his maximum warn length.");
       const newWarn = new Schemas.Warns({
-	    userID: member.id,
-	    guildID: guild.id,
-	    reason: reason,
-	    moderator: interaction.member.id,
-	    date: new Date().toUTCString()
+	      userID: member.id,
+	      guildID: guild.id,
+	      reason: reason,
+	      moderator: interaction.member.id,
+	      date: new Date().toUTCString()
       });
-
-      await newWarn.save().catch(e => client.logger.error(e.stack));
-
-      await member.fetchWarns();
+      await newWarn.save()
 
       const embed = new MessageEmbed()
         .setColor("RANDOM")
         .setDescription([
-	    `**${member.user.tag} is warned**`,
-	    `Reason: ${reason}`
-	    ].join("\n\n"));
+	        `**${member.user.tag} is warned**`,
+	        `Reason: ${reason}`
+	      ].join("\n\n"));
 	   interaction.reply({ embeds: [embed] });
     });
   },

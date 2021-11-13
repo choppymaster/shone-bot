@@ -2,7 +2,7 @@ const fs = require("fs")
 
 // database schemas
 module.exports.Schemas = {
-  warns: require("./data/warns")
+  Warn: require("./data/warn")
 };
 
 // extends

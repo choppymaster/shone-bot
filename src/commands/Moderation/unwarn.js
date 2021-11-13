@@ -7,17 +7,13 @@ module.exports = {
     if (member.id === message.author?.id) return message.channel.send("You cant unwarn yourself.");
     if (member.id === client.user.id) return message.channel.send("You cant warn me");
 
-    const warns = await Schemas.warns.find({
-	    userID: member.id,
-	    guildID: message.guild.id
-    });
+    const warns = await member.fetchWarns();
 
-	    if (!warns.length) return message.channel.send("They don't have any warns");
+	  if (!warns.length) return message.channel.send("They don't have any warns");
 
-	    await Schemas.warns.findByIdAndRemove(warns[warns.length - 1]._id);
-	    await member.fetchWarns();
+	  await Schemas.Warn.findByIdAndRemove(warns[warns.length - 1]._id);
 
-	    message.channel.send(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
+	  message.channel.send(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
   },
   slashCommand: {
     options: [
@@ -34,17 +30,13 @@ module.exports = {
     if (member.id === interaction.member?.id) return interaction.reply("You cant unwarn yourself.");
     if (member.id === client.user.id) return interaction.reply("You cant warn me");
 
-    const warns = await Schemas.warns.find({
-	    userID: member.id,
-	    guildID: guild.id
-    });
+    const warns = await member.fetchWarns();
 
-	    if (!warns.length) return interaction.reply("They don't have any warns");
+	  if (!warns.length) return interaction.reply("They don't have any warns");
 
-	    await Schemas.warns.findByIdAndRemove(warns[warns.length - 1]._id);
-	    await member.fetchWarns();
+	  await Schemas.warns.findByIdAndRemove(warns[warns.length - 1]._id);
 
-	    interaction.reply(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
+	  interaction.reply(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
   },
 
   config: {
