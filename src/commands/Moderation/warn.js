@@ -15,7 +15,7 @@ module.exports = {
     }, async (err, warns) => {
       if (err) client.logger.error(err);
       if (warns.length === 4) return message.channel.send("Sorry, The user have exceeded his maximum warn length.");
-      
+
       const newWarn = new Schemas.Warn({
 	      userID: member.id,
 	      guildID: message.guild.id,
@@ -23,7 +23,7 @@ module.exports = {
 	      moderator: message.author.id,
 	      date: new Date().toUTCString()
       });
-      await newWarn.save()
+      await newWarn.save();
 
       const embed = new MessageEmbed()
         .setColor("RANDOM")
@@ -69,7 +69,7 @@ module.exports = {
 	      moderator: interaction.member.id,
 	      date: new Date().toUTCString()
       });
-      await newWarn.save()
+      await newWarn.save();
 
       const embed = new MessageEmbed()
         .setColor("RANDOM")
