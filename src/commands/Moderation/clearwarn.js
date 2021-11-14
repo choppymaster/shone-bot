@@ -33,7 +33,7 @@ module.exports = {
 
     if (!warns.length) return interaction.reply("They don't have any warns!").then(() => setTimeout(() => { interaction.deleteReply(); }, 10000));
 
-    await Schemas.warns.deleteMany({ userID: member.id, guildID: message.guild.id });
+    await Schemas.warns.deleteMany({ userID: member.id, guildID: guild.id });
     interaction.reply(`${member.user.tag}'s warnings have been cleared.`);
   },
 
