@@ -4,7 +4,7 @@ module.exports = {
   run: (client, message, args) => {
     const member = message.mentions.members.first() || message.member;
 
-    const warns = member.warns;
+    const warns = await member.fetchWarns();
     const embed = new MessageEmbed()
       .setTitle(`Warnings - ${member.user.tag}`)
       .setColor("RANDOM");
@@ -34,7 +34,7 @@ module.exports = {
   execute: async (client, interaction, guild) => {
     const member = guild.members.cache.get(interaction.options.getUser("member").id) || interaction.member;
 
-    const warns = member.warns;
+    const warns = await member.fetchWarns();
     const embed = new MessageEmbed()
       .setTitle(`Warnings - ${member.user.tag}`)
       .setColor("RANDOM");

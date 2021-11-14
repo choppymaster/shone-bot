@@ -8,4 +8,4 @@ const warnSchema = Schema({
   date: String
 });
 
-module.exports = model("warns", warnSchema);
+module.exports = model("warn", warnSchema);
