@@ -1,6 +1,6 @@
 # Sphynx
 
-A WIP discord bot which is written in node.js and uses discord.js as the Base module.
+A WIP discord bot which is written in node.js and uses discord.js as the Base module. This bot is hosted on [railway](https://railway.app?referralCode=choppy).
 
 ## Installing
 
