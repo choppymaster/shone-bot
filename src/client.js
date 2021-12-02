@@ -41,6 +41,7 @@ module.exports = class extends Client {
           case "USER": builder.addUserOption(add); break;
           case "CHANNEL": builder.addChannelOption(add); break;
           case "INTEGER": builder.addIntegerOption(add); break;
+          case "ROLE": builder.addRoleOption(add); break;
         }
       });
     }
