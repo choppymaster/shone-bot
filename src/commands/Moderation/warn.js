@@ -56,13 +56,13 @@ module.exports = {
     if (member.id === client.user.id) return interaction.reply("You cant warn me").then(() => setTimeout(() => { interaction.deleteReply(); }, 10000));
     const reason = interaction.options.getString("reason") ?? "No reason specified";
 
-    Schemas.warns.find({
+    Schemas.Warn.find({
 	    userID: member.id,
 	    guildID: guild.id
     }, async (err, warns) => {
       if (err) client.logger.error(err);
       if (warns.length === 4) return interaction.reply("Sorry, The user have exceeded his maximum warn length.");
-      const newWarn = new Schemas.Warns({
+      const newWarn = new Schemas.Warn({
 	      userID: member.id,
 	      guildID: guild.id,
 	      reason: reason,

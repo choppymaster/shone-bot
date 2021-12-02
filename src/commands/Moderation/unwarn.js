@@ -34,7 +34,7 @@ module.exports = {
 
 	  if (!warns.length) return interaction.reply("They don't have any warns");
 
-	  await Schemas.warns.findByIdAndRemove(warns[warns.length - 1]._id);
+	  await Schemas.Warn.findByIdAndRemove(warns[warns.length - 1]._id);
 
 	  interaction.reply(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
   },
