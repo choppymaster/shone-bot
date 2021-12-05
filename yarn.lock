@@ -2184,9 +2184,9 @@ npm-user-validate@*:
   version "1.0.1"
   resolved "https://registry.npmjs.org/npm-user-validate/-/npm-user-validate-1.0.1.tgz"
 
-npm@^8.1.4:
-  version "8.1.4"
-  resolved "https://registry.yarnpkg.com/npm/-/npm-8.1.4.tgz#ea3666739f316f1999103ae99b542c50b9b3cca1"
+npm@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/npm/-/npm-8.2.0.tgz#19d889938ed52f952b219544ffcb614e206f22cc"
   dependencies:
     "@isaacs/string-locale-compare" "*"
     "@npmcli/arborist" "*"
@@ -2243,6 +2243,7 @@ npm@^8.1.4:
     opener "*"
     pacote "*"
     parse-conflict-json "*"
+    proc-log "*"
     qrcode-terminal "*"
     read "*"
     read-package-json "*"
@@ -2450,7 +2451,7 @@ prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
 
-proc-log@^1.0.0:
+proc-log@*, proc-log@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/proc-log/-/proc-log-1.0.0.tgz"
 
