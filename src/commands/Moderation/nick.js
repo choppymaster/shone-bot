@@ -6,7 +6,7 @@ module.exports = {
     await member.setNickname(name);
     message.channel.send(`${member}'s nickname set to ${name}.`);
   },
-  slashCommand: { 
+  slashCommand: {
     options: [
       {
         name: "nickname",
