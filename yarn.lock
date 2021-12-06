@@ -2094,9 +2094,9 @@ node-gyp@*, node-gyp@^8.2.0:
     tar "^6.1.2"
     which "^2.0.2"
 
-node@^17.1.0:
-  version "17.1.0"
-  resolved "https://registry.yarnpkg.com/node/-/node-17.1.0.tgz#a18a8f388e78381dbaeb00ae7a4414e99fa1ca79"
+node@^17.2.0:
+  version "17.2.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-17.2.0.tgz#bee040193ce1f3c2c6d19b93a5df8de367f34edd"
   dependencies:
     node-bin-setup "^1.0.0"
 
