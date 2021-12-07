@@ -4,11 +4,12 @@ WORKDIR usr/sphynx
 
 COPY package.json yarn.lock ./
 
-RUN yarn install
+RUN yarn install && yarn build && rm -f dist/*.map
 
 # second stage
 FROM node:alpine
 
+COPY --from-build usr/sphynx/dist/ ./
 COPY --from=build usr/sphynx/node_modules ./node_modules
 
 COPY /src ./src
