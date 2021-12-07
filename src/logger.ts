@@ -1,6 +1,6 @@
 import winston = require("winston");
 
-export default winston.createLogger({
+export = winston.createLogger({
   level: "debug",
   transports: [
     new (winston.transports.Console)({

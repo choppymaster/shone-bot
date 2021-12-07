@@ -2,7 +2,7 @@ import { Client, Collection, Intents } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { ICommand } from "./common"
 
-class SphynxClient extends Client {
+export = class extends Client {
   config: any
   logger: any
   commands: any
@@ -52,5 +52,3 @@ class SphynxClient extends Client {
     if (builder) (this.slash as Array<{}>).push(builder.toJSON());
   }
 };
-
-export default new SphynxClient();

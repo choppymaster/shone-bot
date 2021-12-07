@@ -5,4 +5,4 @@ const SphynxConfig = {
   mongodb_uri: process.env.MONGODBURL
 };
 
-export default SphynxConfig;
+export = SphynxConfig;

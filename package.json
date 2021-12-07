@@ -27,6 +27,7 @@
     "Fun"
   ],
   "scripts": {
+    "build": "yarn run tsc",
     "serve": "ts-node src/index.ts",
     "lint": "eslint . --ext .js --ext .json --fix"
   },
