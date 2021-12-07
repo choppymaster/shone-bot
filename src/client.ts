@@ -1,7 +1,13 @@
-const { Client, Collection, Intents } = require("discord.js");
-const { SlashCommandBuilder } = require("@discordjs/builders");
+import { Client, Collection, Intents } from "discord.js";
+import { SlashCommandBuilder } from "@discordjs/builders";
+import { ICommand } from "./common"
 
-module.exports = class extends Client {
+class SphynxClient extends Client {
+  config: any
+  logger: any
+  commands: any
+  slash: Array<Object>
+  
   constructor() {
     super({
       intents: [
@@ -15,7 +21,7 @@ module.exports = class extends Client {
       ],
       partials: ["CHANNEL"] // fixes PM receiving
     });
-
+    
     this.config = require("./config");
 
     this.logger = require("./logger");
@@ -26,16 +32,14 @@ module.exports = class extends Client {
   }
 
   // load slashcommand for the command
-  async loadApplicationCommand(command) {
-    let builder;
-    if (command.execute) {
-      builder = new SlashCommandBuilder();
-      builder.setName(command.config?.name)?.setDescription(command.config?.description);
-    }
+  async loadApplicationCommand(command: ICommand) {
+    let builder = new SlashCommandBuilder();
+    builder.setName(command.config?.name)?.setDescription(command.config?.description ?? "No description");
+    
     const slash = command.slashCommand;
     if (slash) {
-      slash.options.forEach(option => {
-        const add = options => options.setName(option.name).setDescription(option.description).setRequired(option.required);
+      slash.options.forEach((option: any) => {
+        const add = (options: any) => options.setName(option.name).setDescription(option.description ?? "No description").setRequired(option.required);
         switch (option.type) {
           case "STRING": builder.addStringOption(add); break;
           case "USER": builder.addUserOption(add); break;
@@ -45,6 +49,8 @@ module.exports = class extends Client {
         }
       });
     }
-    if (builder) this.slash.push(builder.toJSON());
+    if (builder) (this.slash as Array<{}>).push(builder.toJSON());
   }
 };
+
+export default new SphynxClient();

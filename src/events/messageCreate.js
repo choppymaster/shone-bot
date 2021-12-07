@@ -17,6 +17,8 @@ module.exports.run = async (client, message) => {
 
   if (command.config.guildOnly && (message.guild === null)) return message.channel.send("This command cant be executed in DMs").then(m => m.delete({ timeout: 10000 }));
 
+  if (!message.channel.permissionsFor(client.user).has(Permissions.FLAGS.SEND_MESSAGES)) return;
+
   if (message.guild && command.config.permissions) {
     const authorPerms = message.channel.permissionsFor(message.author);
     if (!authorPerms || !authorPerms.has(Permissions.FLAGS[command.config.permissions])) return message.channel.send("Insufficient permissions");

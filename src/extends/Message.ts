@@ -1,8 +1,8 @@
-const { Message } = require("discord.js");
+import { Message } from "discord.js";
 
-module.exports = Object.defineProperties(Message.prototype, {
+export = Object.defineProperties(Message.prototype, {
   delete: {
-    value: function(timeout = {}) {
+    value: function(timeout: { timeout: number }) {
       if (timeout.timeout) {
         try {
           setTimeout(() => { this.delete(); }, timeout.timeout);

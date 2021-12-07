@@ -1,12 +1,13 @@
-const { Guild } = require("discord.js");
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-const { Guild: GuildSchema } = require("../common").Schemas;
+import { Guild } from "discord.js";
+import { REST } from "@discordjs/rest";
+import { Routes } from "discord-api-types/v9";
+import { Schemas } from "../common";
+const GuildSchema = Schemas.Guild
 
 Object.defineProperties(Guild.prototype, {
   // register slash commands
   registerSlashCommands: {
-    value: async function(client) {
+    value: async function(client: any) {
       const rest = new REST({ version: "9" }).setToken(client.config.token);
 		    await rest.put(
         Routes.applicationGuildCommands(client.config.clientId, this.id),
@@ -25,7 +26,7 @@ Object.defineProperties(Guild.prototype, {
   },
   // updates guild data
   updateGuildData: {
-    value: async function(updation) {
+    value: async function(updation: {}) {
       return await GuildSchema.findOneAndUpdate({ id: this.id }, updation);
     }
   }

@@ -6,7 +6,7 @@
   "main": "./src/index.js",
   "private": true,
   "engines": {
-    "node": ">=16.6.x"
+    "node": ""
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "Fun"
   ],
   "scripts": {
-    "serve": "node src/index.js",
+    "serve": "ts-node src/index.ts",
     "lint": "eslint . --ext .js --ext .json --fix"
   },
   "dependencies": {
@@ -45,12 +45,16 @@
     "mongoose": "^6.0.14",
     "npm": "^8.2.0",
     "something-random-on-discord": "^3.4.4",
+    "typescript": "^4.5.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@tsconfig/node16": "^1.0.2",
+    "@types/node": "^16.11.11",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-plugin-json": "^3.1.0",
-    "node": "^17.1.0"
+    "node": "^17.1.0",
+    "ts-node": "^10.4.0"
   }
 }

@@ -1,9 +1,9 @@
-require("dotenv").config();
+require("dotenv/config")
 
 // import dependencies
 require("./common").loadExtends();
-const client = new (require("./client"))();
-const fs = require("fs");
+const client = require("./client")
+import fs = require("fs");
 
 // Command handling
 (function loadCommands() {
@@ -24,17 +24,17 @@ const eventFiles = fs.readdirSync("./src/events/").filter(file => file.endsWith(
   for (const file of eventFiles) {
     const event = require(`./events/${file}`);
     const eventName = file.split(".")[0];
-    client.on(eventName, (...args) => event.run(client, ...args));
+    client.on(eventName, (...args: any[]) => event.run(client, ...args));
   }
 }());
 
 // import the token!
 client.login(client.config.token);
 
-process.on("unhandledRejection", err => {
+process.on("unhandledRejection", (err: any) => {
   client.logger.error(err.stack);
 });
 
-process.on("uncaughtException", err => {
+process.on("uncaughtException", (err: any) => {
   client.logger.error(err.stack);
 });

@@ -1,6 +1,6 @@
-const { GuildMember } = require("discord.js");
+import { GuildMember } from "discord.js";
 
-module.exports = Object.defineProperties(GuildMember.prototype, {
+export = Object.defineProperties(GuildMember.prototype, {
   fetchWarns: {
     value: async function() {
       const warns = await require("../common").Schemas.Warn.find({

@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import mongoose = require("mongoose");
 
-module.exports = client => {
+export = (client: any) => {
   const dbOptions = {
     useNewUrlParser: true,
     autoIndex: false,
@@ -9,7 +9,7 @@ module.exports = client => {
   };
 
   mongoose.connect(client.config.mongodb_uri, dbOptions);
-  mongoose.promise = global.Promise;
+  mongoose.Promise = global.Promise;
   mongoose.connection.on("connected", () => {
     client.logger.info("Connected to Database.");
   });
