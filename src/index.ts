@@ -1,11 +1,11 @@
-require("dotenv/config")
+require("dotenv/config");
 
 // import dependencies
 require("./common").loadExtends();
-const Client = require("./client")
-const client = new Client()
-import fs = require("fs");
-console.log(client.slash);
+const Client = require("./client");
+const client = new Client();
+import fs = require("fs")
+  
 // Command handling
 (function loadCommands() {
   fs.readdirSync("./src/commands/").forEach(dir => {

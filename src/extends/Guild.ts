@@ -2,7 +2,7 @@ import { Guild } from "discord.js";
 import { REST } from "@discordjs/rest";
 import { Routes } from "discord-api-types/v9";
 import { Schemas } from "../common";
-const GuildSchema = Schemas.Guild
+const GuildSchema = Schemas.Guild;
 
 Object.defineProperties(Guild.prototype, {
   // register slash commands
@@ -26,7 +26,7 @@ Object.defineProperties(Guild.prototype, {
   },
   // updates guild data
   updateGuildData: {
-    value: async function(updation: {}) {
+    value: async function(updation: Record<string, unknown>) {
       return await GuildSchema.findOneAndUpdate({ id: this.id }, updation);
     }
   }

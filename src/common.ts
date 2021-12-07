@@ -16,7 +16,7 @@ export const loadExtends = () => {
 export interface ICommand {
   run: (client: any, message: any, args: string[]) => void | Promise<void>
   slashCommand?: {
-    options: Array<{ name: string, description?: string, type: string, required: boolean }> 
+    options: Array<{ name: string, description?: string, type: string, required: boolean }>
   }
   execute: (client: any, interaction: any, guild: any) => void | Promise<void>
   config: {

@@ -1,13 +1,13 @@
 import { Client, Collection, Intents } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { ICommand } from "./common"
+import { ICommand } from "./common";
 
 export = class extends Client {
   config: any
   logger: any
   commands: any
-  slash: Array<Object>
-  
+  slash: any
+
   constructor() {
     super({
       intents: [
@@ -21,7 +21,7 @@ export = class extends Client {
       ],
       partials: ["CHANNEL"] // fixes PM receiving
     });
-    
+
     this.config = require("./config");
 
     this.logger = require("./logger");
@@ -33,9 +33,9 @@ export = class extends Client {
 
   // load slashcommand for the command
   async loadApplicationCommand(command: ICommand) {
-    let builder = new SlashCommandBuilder();
+    const builder = new SlashCommandBuilder();
     builder.setName(command.config?.name)?.setDescription(command.config?.description ?? "No description");
-    
+
     const slash = command.slashCommand;
     if (slash) {
       slash.options.forEach((option: any) => {
@@ -49,6 +49,6 @@ export = class extends Client {
         }
       });
     }
-    if (builder) (this.slash as Array<{}>).push(builder.toJSON());
+    if (builder) this.slash.push(builder.toJSON());
   }
 };

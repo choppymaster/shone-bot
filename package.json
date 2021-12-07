@@ -29,7 +29,7 @@
   "scripts": {
     "build": "yarn run tsc",
     "serve": "ts-node src/index.ts",
-    "lint": "eslint . --ext .js --ext .json --fix"
+    "lint": "eslint . --ext .ts --ext .json --fix"
   },
   "dependencies": {
     "@discordjs/builders": "^0.9.0",
@@ -53,6 +53,8 @@
     "@tsconfig/node16": "^1.0.2",
     "@types/node": "^16.11.11",
     "babel-eslint": "^10.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
     "eslint": "^7.32.0",
     "eslint-plugin-json": "^3.1.0",
     "node": "^17.1.0",

@@ -1,16 +1,18 @@
 {
-  "extends": ["eslint:recommended", "standard"],
+  "extends": ["eslint:recommended", "standard", "plugin:@typescript-eslint/recommended"],
   "env": {
     "node": true,
     "es6": true
   },
-  "parser": "babel-eslint",
-  "plugins": ["json"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["json", "@typescript-eslint"],
   "rules": {
     "json/*": "error",
     "semi": [2, "always"],
     "comma-spacing": "error",
     "comma-style": "error",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "dot-location": ["error", "property"],
     "no-tabs": "off",
     "no-unused-vars": "warn",
