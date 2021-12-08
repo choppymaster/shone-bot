@@ -1,17 +1,18 @@
-require("dotenv/config");
-
 // import dependencies
-require("./common").loadExtends();
+import { loadExtends, IEvent, ICommand } from "./common";
+import fs = require("fs")
+
+require("dotenv/config");
+loadExtends();
 const Client = require("./client");
 const client = new Client();
-import fs = require("fs")
-  
+
 // Command handling
 (function loadCommands() {
   fs.readdirSync("./src/commands/").forEach(dir => {
     const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
     for (const file of commandfiles) {
-      const command = require(`./commands/${dir}/${file}`);
+      const command: ICommand = require(`./commands/${dir}/${file}`);
       client.loadApplicationCommand(command);
       client.commands.set(command.config?.name?.toLowerCase(), command);
     }
@@ -23,9 +24,9 @@ const eventFiles = fs.readdirSync("./src/events/").filter(file => file.endsWith(
 
 (function loadEvents() {
   for (const file of eventFiles) {
-    const event = require(`./events/${file}`);
+    const { Event }: IEvent = require(`./events/${file}`);
     const eventName = file.split(".")[0];
-    client.on(eventName, (...args: any[]) => event.run(client, ...args));
+    client.on(eventName, (...args: any[]) => Event(client, ...args));
   }
 }());
 

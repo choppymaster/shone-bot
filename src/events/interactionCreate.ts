@@ -1,6 +1,6 @@
-const { Permissions } = require("discord.js");
+import { Permissions } from "discord.js";
 
-module.exports.run = async (client, interaction) => {
+export const Event = async (client, interaction) => {
   if (interaction.isCommand()) {
     if (!interaction.member.permissions.has(Permissions.FLAGS[client.commands.get(interaction.commandName).permissions])) return interaction.reply("Insufficent permissions.");
     client.commands.get(interaction.commandName).execute(client, interaction, interaction.guild);

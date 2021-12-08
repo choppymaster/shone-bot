@@ -12,22 +12,22 @@ export const loadExtends = () => {
     require(`./extends/${file}`);
   });
 };
-
+// command Interface
 export interface ICommand {
-  run: (client: any, message: any, args: string[]) => void | Promise<void>
+  run: (client, message, args: string[]) => void | Promise<void>
   slashCommand?: {
-    options: Array<{ name: string, description?: string, type: string, required: boolean }>
+    readonly options: Array<{ name: string, description?: string, type: string, required: boolean }>
   }
-  execute: (client: any, interaction: any, guild: any) => void | Promise<void>
-  config: {
-    name: string,
-    description?: string,
-    botMaster?: boolean,
-    guildOnly?: boolean,
-    permissions?: Array<{ user: string[], bot: string[] }>
+  execute: (client, interaction, guild) => void | Promise<void>
+  readonly config: {
+    readonly name: string,
+    readonly description?: string,
+    readonly botMaster?: boolean,
+    readonly guildOnly?: boolean,
+    readonly permissions?: Array<{ user: string[], bot: string[] }>
   }
 }
-
+// event interface
 export interface IEvent {
-  run: (client: any, ...args: any[]) => void | Promise<void>
+  Event: (client, ...args: any[]) => void | Promise<void>
 }

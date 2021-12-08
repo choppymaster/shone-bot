@@ -2,11 +2,15 @@ import { Client, Collection, Intents } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { ICommand } from "./common";
 
+interface IConfig {
+  [key: string]: string | null 
+}
+
 export = class extends Client {
-  config: any
+  config: IConfig
   logger: any
-  commands: any
-  slash: any
+  commands: Collection<string, ICommand>
+  slash: Array<any>
 
   constructor() {
     super({
@@ -37,8 +41,14 @@ export = class extends Client {
     builder.setName(command.config?.name)?.setDescription(command.config?.description ?? "No description");
 
     const slash = command.slashCommand;
+    interface ISlashOption {
+      name: string,
+      description: string,
+      type: string,
+      required: boolean
+    }
     if (slash) {
-      slash.options.forEach((option: any) => {
+      slash.options.forEach((option: ISlashOption) => {
         const add = (options: any) => options.setName(option.name).setDescription(option.description ?? "No description").setRequired(option.required);
         switch (option.type) {
           case "STRING": builder.addStringOption(add); break;

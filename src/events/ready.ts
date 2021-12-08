@@ -1,6 +1,6 @@
-const { Guild } = require("../common").Schemas;
+import { Schemas } from "../common";
 
-module.exports.run = async client => {
+export const Event = async client => {
   require("../database")(client);
   client.guilds.cache.forEach(async guild => {
     guild.registerSlashCommands(client);
@@ -8,9 +8,9 @@ module.exports.run = async client => {
     guild.members.fetch();
 
     if (!await guild.fetchData()) return client.emit("guildCreate", guild);
-    const data = await Guild.find({});
+    const data = await Schemas.Guild.find({});
     if (data.length > client.guilds.cache.size) {
-      const guildIds = [];
+      const guildIds: number[] = [];
       for (let i = 0; i < client.guilds.cache.size; i++) {
         guildIds.push([...client.guilds.cache.values()][i].id);
       }

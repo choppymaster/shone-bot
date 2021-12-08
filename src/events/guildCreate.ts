@@ -1,9 +1,9 @@
-const { Guild } = require("../common").Schemas;
+import { Schemas } from "../common";
 
-module.exports.run = async (client, guild) => {
+export const Event = async (client, guild) => {
   client.logger.info(`Joined new guild! ${guild.name} | ${guild.id}`);
 
-  await new Guild({
+  await new Schemas.Guild({
     id: guild.id
   }).save();
 

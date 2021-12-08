@@ -1,6 +1,6 @@
-const { Permissions } = require("discord.js");
+import { Permissions } from "discord.js";
 
-module.exports.run = async (client, message) => {
+export const Event = async (client, message) => {
   const prefix = ".";
   if (message.author.bot || !message.content.startsWith(prefix)) return;
 
