@@ -1,4 +1,4 @@
-const { model, Schema } = require("mongoose");
+import { model, Schema } from "mongoose";
 
 const warnSchema = Schema({
   userID: String,
@@ -8,4 +8,4 @@ const warnSchema = Schema({
   date: String
 });
 
-module.exports = model("warn", warnSchema);
+export = model("warn", warnSchema);
