@@ -35,7 +35,7 @@ class Client extends DiscordClient {
   }
 
   // load slashcommand for the command
-  async loadApplicationCommand(command: ICommand) {
+  async loadApplicationCommand(command) {
     const builder = new SlashCommandBuilder();
     builder.setName(command.config?.name)?.setDescription(command.config?.description ?? "No description");
     const slash = command.slashCommand;

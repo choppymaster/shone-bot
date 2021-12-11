@@ -2,17 +2,17 @@ FROM node:alpine AS build
 
 WORKDIR usr/sphynx
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock tsconfig.json ./
+COPY src/ ./src
 
 RUN yarn install && yarn build && rm -f dist/*.map
+RUN rm -r src
 
 # second stage
 FROM node:alpine
 
-COPY --from-build usr/sphynx/dist/ ./
+COPY --from-build usr/sphynx/dist/ ./src
 COPY --from=build usr/sphynx/node_modules ./node_modules
-
-COPY /src ./src
 
 RUN addgroup -S sphynx -g 50000 && \
     adduser -S -g sphynx -u 50000 sphynx && \
