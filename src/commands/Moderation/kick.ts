@@ -1,6 +1,6 @@
-const { MessageEmbed } = require("discord.js");
+import { MessageEmbed } from "discord.js";
 
-module.exports = {
+export const Command = {
   run: (client, message, args) => {
     const member = message.mentions.members.first();
     if (!member) return message.channel.send("You didn't mentioned a user to kick!").then(m => m.delete({ timeout: 10000 }));

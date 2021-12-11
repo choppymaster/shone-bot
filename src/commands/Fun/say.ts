@@ -1,6 +1,6 @@
-const { MessageEmbed } = require("discord.js");
+import { MessageEmbed } from "discord.js";
 
-module.exports = {
+export const Command = {
   run: (client, message, args) => {
     const text = args.join(" ");
     if (!text) return message.channel.send("You didn't specified something to say!");

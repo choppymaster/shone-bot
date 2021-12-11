@@ -1,7 +1,7 @@
-const axios = require("axios");
-const { MessageEmbed } = require("discord.js");
+import { MessageEmbed } from "discord.js";
+const axios = require("axios").default;
 
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const cat = await axios.get("https://aws.random.cat/meow").then(res => res.data);
     const embed = new MessageEmbed()

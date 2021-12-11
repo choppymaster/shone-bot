@@ -1,4 +1,4 @@
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const member = message.mentions.members.first() ?? message.member;
     const name = args.join(" ").split(member).join(" ");

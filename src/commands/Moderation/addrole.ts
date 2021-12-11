@@ -1,4 +1,4 @@
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const role = message.mentions.roles.first();
     const member = message.mentions.members.first();

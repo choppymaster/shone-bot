@@ -1,31 +1,30 @@
 // import dependencies
-import { loadExtends, IEvent, ICommand } from "./common";
+import { loadExtends, IEvent } from "./common";
 import fs = require("fs")
+import client from "./client";
 
 require("dotenv/config");
 loadExtends();
-const Client = require("./client");
-const client = new Client();
 
 // Command handling
 (function loadCommands() {
   fs.readdirSync("./src/commands/").forEach(dir => {
-    const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".js"));
+    const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".ts"));
     for (const file of commandfiles) {
-      const command: ICommand = require(`./commands/${dir}/${file}`);
-      client.loadApplicationCommand(command);
-      client.commands.set(command.config?.name?.toLowerCase(), command);
+      const { Command } = require(`./commands/${dir}/${file}`);
+      client.loadApplicationCommand(Command);
+      client.commands.set(Command.config?.name?.toLowerCase(), Command);
     }
   });
 }());
 
 // event handling
-const eventFiles = fs.readdirSync("./src/events/").filter(file => file.endsWith(".js"));
+const eventFiles = fs.readdirSync("./src/events/").filter(file => file.endsWith(".ts"));
 
-(function loadEvents() {
+(async function loadEvents() {
   for (const file of eventFiles) {
-    const { Event }: IEvent = require(`./events/${file}`);
     const eventName = file.split(".")[0];
+    const { Event }: IEvent = require(`./events/${eventName}`);
     client.on(eventName, (...args: any[]) => Event(client, ...args));
   }
 }());

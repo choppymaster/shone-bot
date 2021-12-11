@@ -1,4 +1,4 @@
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const member = message.mentions.users.first();
     if (!member) return message.channel.send("Member not specified");

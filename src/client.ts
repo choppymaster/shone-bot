@@ -1,12 +1,12 @@
-import { Client, Collection, Intents } from "discord.js";
+import { Client as DiscordClient, Collection, Intents } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { ICommand } from "./common";
 
 interface IConfig {
-  [key: string]: string | null 
+  [key: string]: any
 }
 
-export = class extends Client {
+class Client extends DiscordClient {
   config: IConfig
   logger: any
   commands: Collection<string, ICommand>
@@ -39,16 +39,9 @@ export = class extends Client {
   async loadApplicationCommand(command: ICommand) {
     const builder = new SlashCommandBuilder();
     builder.setName(command.config?.name)?.setDescription(command.config?.description ?? "No description");
-
     const slash = command.slashCommand;
-    interface ISlashOption {
-      name: string,
-      description: string,
-      type: string,
-      required: boolean
-    }
-    if (slash) {
-      slash.options.forEach((option: ISlashOption) => {
+    if (slash && slash.options) {
+      slash.options.forEach((option: any) => {
         const add = (options: any) => options.setName(option.name).setDescription(option.description ?? "No description").setRequired(option.required);
         switch (option.type) {
           case "STRING": builder.addStringOption(add); break;
@@ -61,4 +54,6 @@ export = class extends Client {
     }
     if (builder) this.slash.push(builder.toJSON());
   }
-};
+}
+
+export default new Client();

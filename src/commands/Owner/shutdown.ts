@@ -1,4 +1,4 @@
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     await message.channel.send("Goodbye 👋");
     await client.logger.debug("Shutdown.");

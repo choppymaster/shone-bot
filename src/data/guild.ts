@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const guildSchema = Schema({
+const guildSchema = new Schema({
   id: String,
   muteRole: String
 });

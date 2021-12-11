@@ -1,4 +1,4 @@
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const member = message.mentions.members.first();
     if (!member) return message.channel.send("You didn't mentioned a user to be defended!");

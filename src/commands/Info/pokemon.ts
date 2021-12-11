@@ -1,7 +1,7 @@
-const axios = require("axios");
-const { MessageEmbed } = require("discord.js");
+import { MessageEmbed } from "discord.js";
+const axios = require("axios").default;
 
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     if (!args.join(" ")) return message.channel.send("Pokémon not specified").then(m => m.delete({ timeout: 10000 }));
     let res;

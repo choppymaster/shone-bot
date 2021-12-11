@@ -1,7 +1,7 @@
-const { Schemas } = require("../../common");
-const { MessageEmbed } = require("discord.js");
+import { Schemas } from "../../common";
+import { MessageEmbed } from "discord.js";
 
-module.exports = {
+export const Command = {
   run: (client, message, args) => {
     const member = message.mentions.members.first();
     if (!member) return message.channel.send("Member not specified");

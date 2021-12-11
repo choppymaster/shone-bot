@@ -1,4 +1,4 @@
-const srod = require("something-random-on-discord");
+import srod = require("something-random-on-discord");
 
 module.exports.run = async (client, message, args) => {
   const pkg = args[0];

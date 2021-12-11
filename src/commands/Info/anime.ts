@@ -1,7 +1,7 @@
-const AnimeScraper = require("ctk-anime-scraper");
-const { MessageEmbed } = require("discord.js");
+import AnimeScraper = require("ctk-anime-scraper")
+import { MessageEmbed } from "discord.js";
 
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const anim = args.join(" ");
     if (!anim) return message.channel.send("You didn't specified an anime!");
@@ -16,7 +16,7 @@ module.exports = {
       .setImage(res[0].img)
       .setDescription([
 				`${res[0].releaseDate}`,
-				`[See the anime on Gogoanime.ai](${res[0].link}) **Alert: Please be aware of the ads given on that website.**`]);
+				`[See the anime on Gogoanime.ai](${res[0].link}) **Alert: Please be aware of the ads given on that website.**`].join("\n"));
 
     message.channel.send({ embeds: [embed] });
   },

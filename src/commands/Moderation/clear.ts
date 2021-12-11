@@ -1,4 +1,4 @@
-module.exports = {
+export const Command = {
   run: (client, message, args) => {
     const number = args[0];
     if (!number) return message.channel.send("Number not specified.");

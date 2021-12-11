@@ -1,7 +1,7 @@
-const axios = require("axios");
-const { MessageEmbed } = require("discord.js");
+import { MessageEmbed } from "discord.js";
+const axios = require("axios").default;
 
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const fox = await axios.get("https://randomfox.ca/floof").then(res => res.data);
     const embed = new MessageEmbed()

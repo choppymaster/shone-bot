@@ -1,7 +1,7 @@
-const axios = require("axios");
-const { MessageEmbed } = require("discord.js");
+import { MessageEmbed } from "discord.js";
+const axios = require("axios").default;
 
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const hare = await axios.get("https://api.bunnies.io/v2/loop/random/?media=gif,png").then(res => res.data);
 

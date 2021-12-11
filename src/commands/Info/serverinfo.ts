@@ -1,6 +1,6 @@
-const { MessageEmbed } = require("discord.js");
+import { MessageEmbed } from "discord.js";
 
-module.exports = {
+export const Command = {
   run: async (client, message, args) => {
     const guild = message.guild;
 

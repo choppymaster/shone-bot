@@ -1,4 +1,4 @@
-module.exports = {
+export const Command = {
   run: (client, message, args) => {
     const options = ["stone", "paper", "scissors"];
 
@@ -10,7 +10,7 @@ module.exports = {
 
     if (!options.includes(input)) return message.channel.send("Invalid option!");
 
-    let winner = null;
+    let winner: string;
 
     if ((input === "stone" && option === "scissors") || (input === "paper" && option === "stone") || (input === "scissors" && option === "paper")) {
       winner = `${message.author} wins!`;
@@ -41,7 +41,7 @@ module.exports = {
 
     if (!options.includes(input)) return interaction.reply("Invalid option!");
 
-    let winner = null;
+    let winner: string;
 
     if ((input === "stone" && option === "scissors") || (input === "paper" && option === "stone") || (input === "scissors" && option === "paper")) {
       winner = `${interaction.member} wins!`;
