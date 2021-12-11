@@ -1,6 +1,5 @@
 import { Client as DiscordClient, Collection, Intents } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { ICommand } from "./common";
 
 interface IConfig {
   [key: string]: any
@@ -9,7 +8,7 @@ interface IConfig {
 class Client extends DiscordClient {
   config: IConfig
   logger: any
-  commands: Collection<string, ICommand>
+  commands: Collection<string, any>
   slash: Array<any>
 
   constructor() {
