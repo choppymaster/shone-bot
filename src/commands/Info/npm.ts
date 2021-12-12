@@ -1,6 +1,7 @@
 import srod = require("something-random-on-discord");
 
-module.exports.run = async (client, message, args) => {
+export const Command = {
+  run: async (client, message, args) => {
   const pkg = args[0];
   if (!pkg) return message.channel.send("You didn't specified a package!");
 
@@ -11,10 +12,11 @@ module.exports.run = async (client, message, args) => {
 	        info = "package not found";
   }
   message.channel.send({ embeds: [info] });
-};
+},
 
-module.exports.config = {
+config: {
   name: "npm",
   description: "searchs about a npm package.",
   permissions: ["SEND_MESSAGES"]
-};
+}
+}

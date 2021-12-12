@@ -9,7 +9,7 @@ loadExtends();
 // Command handling
 (function loadCommands() {
   fs.readdirSync("./src/commands/").forEach(dir => {
-    const commandfiles = fs.readdirSync(`./src/commands/${dir}`).filter(file => file.endsWith(".ts"));
+    const commandfiles = fs.readdirSync(`./src/commands/${dir}`);
     for (const file of commandfiles) {
       const { Command } = require(`./commands/${dir}/${file}`);
       client.loadApplicationCommand(Command);
@@ -19,7 +19,7 @@ loadExtends();
 }());
 
 // event handling
-const eventFiles = fs.readdirSync("./src/events/").filter(file => file.endsWith(".ts"));
+const eventFiles = fs.readdirSync("./src/events/");
 
 (async function loadEvents() {
   for (const file of eventFiles) {
