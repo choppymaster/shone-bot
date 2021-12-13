@@ -5,7 +5,7 @@ WORKDIR usr/sphynx
 COPY package.json yarn.lock tsconfig.json ./
 COPY src/ ./src
 
-RUN yarn install && yarn build && rm -f dist/*.map
+RUN yarn install && yarn build && rm -r dist/*.map
 RUN rm -r src
 
 # second stage
