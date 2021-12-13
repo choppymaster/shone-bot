@@ -7,7 +7,6 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "outDir": "dist/",
-        "sourceMap": true,
         "lib": [
             "es2021",
             "dom"

@@ -15,8 +15,6 @@ WORKDIR usr/sphynx
 COPY --from=build usr/sphynx/dist/ ./src
 COPY --from=build usr/sphynx/node_modules ./node_modules
 
-RUN rm -f src/*.map
-
 RUN addgroup -S sphynx -g 50000 && \
     adduser -S -g sphynx -u 50000 sphynx && \
     mkdir /dat && chown sphynx:sphynx /dat/
