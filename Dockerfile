@@ -11,7 +11,7 @@ RUN rm -r src
 # second stage
 FROM node:alpine
 
-COPY --from-build usr/sphynx/dist/ ./src
+COPY --from=build usr/sphynx/dist/ ./src
 COPY --from=build usr/sphynx/node_modules ./node_modules
 
 RUN addgroup -S sphynx -g 50000 && \
