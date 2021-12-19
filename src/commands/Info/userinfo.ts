@@ -1,7 +1,23 @@
+import Command from "../../core/Command";
+import { name, description, guildOnly, slashCommandOptions, clientPermissions, usage, cooldown } from "../../core/commandDecorators";
 import { MessageEmbed } from "discord.js";
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("userinfo")
+@description("Get info about user")
+@guildOnly
+@slashCommandOptions([
+  {
+    name: "user",
+    description: "The user to info",
+    type: "USER",
+    required: false
+  }
+])
+@clientPermissions("EMBED_LINKS")
+@usage("[?member]")
+@cooldown(9000)
+class Userinfo extends Command {
+  public async run(client, message, args) {
     const user = message.mentions.users.first() || message.member.user;
     const member = message.guild.members.cache.get(user.id);
     const embed = new MessageEmbed()
@@ -16,19 +32,9 @@ export const Command = {
       .addField("Joined at", new Date(member.joinedTimestamp).toLocaleString(), true);
 
     message.channel.send({ embeds: [embed] });
-  },
+  }
 
-  slashCommand: {
-    options: [
-      {
-        name: "user",
-        description: "The user to info",
-        type: "USER",
-        required: false
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  public async execute(client, interaction, guild) {
     const user = interaction.options.getUser("user") || interaction.member.user;
     const member = guild.members.cache.get(user.id);
     const embed = new MessageEmbed()
@@ -43,12 +49,7 @@ export const Command = {
       .addField("Joined at", new Date(member.joinedTimestamp).toLocaleString(), true);
 
     interaction.reply({ embeds: [embed] });
-  },
-
-  config: {
-    name: "userinfo",
-    description: "Gives the info of a user in guild.",
-    guildOnly: true,
-    permissions: ["SEND_MESSAGES"]
   }
-};
+}
+
+export default Userinfo;

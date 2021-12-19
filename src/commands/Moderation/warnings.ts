@@ -1,7 +1,21 @@
+import Command from "../../core/Command";
+import { name, description, guildOnly, slashCommandOptions, userPermissions, usage } from "../../core/commandDecorators";
 import { MessageEmbed } from "discord.js";
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("warnings")
+@description("get the warnings of a member")
+@guildOnly
+@slashCommandOptions([
+  {
+    name: "member",
+    description: "The member to search warnings for",
+    type: "USER",
+    required: false
+  }
+])
+@usage("[?member]")
+class Warnings extends Command {
+  public async run(client, message, args) {
     const member = message.mentions.members.first() || message.member;
 
     const warns = await member.fetchWarns();
@@ -20,18 +34,9 @@ export const Command = {
     } else {
 	   message.channel.send("They don't have any warns.");
     }
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "member",
-        description: "The member for the warnings list. If not specified gets the warnings of you.",
-        type: "USER",
-        required: false
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const member = guild.members.cache.get(interaction.options.getUser("member").id) || interaction.member;
 
     const warns = await member.fetchWarns();
@@ -50,11 +55,7 @@ export const Command = {
     } else {
 	  interaction.reply("They don't have any warns.").then(() => setTimeout(() => { interaction.deleteReply(); }, 10000));
     }
-  },
-  config: {
-	  name: "warnings",
-	  description: "Get the warnings of a member on the server",
-	  guildOnly: true,
-	  permissions: ["SEND_MESSAGES"]
   }
-};
+}
+
+export default Warnings;

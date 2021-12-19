@@ -1,5 +1,22 @@
-export const Command = {
-  run: async (client, message, args) => {
+import Command from "../../core/Command";
+import { name, description, guildOnly, slashCommandOptions, userPermissions, clientPermissions, usage } from "../../core/commandDecorators";
+
+@name("undeafen")
+@description("Undeafen a member in VC")
+@guildOnly
+@slashCommandOptions([
+  {
+    name: "member",
+    description: "The user to undefended",
+    type: "USER",
+    required: true
+  }
+])
+@userPermissions("DEAFEN_MEMBERS")
+@clientPermissions("DEAFEN_MEMBERS")
+@usage("[member]")
+class Undeafen extends Command {
+  public async run(client, message, args) {
     const member = message.mentions.members.first();
     if (!member) return message.channel.send("You didn't mentioned a user to be undeafened?!");
 
@@ -10,19 +27,10 @@ export const Command = {
       await member.voice.setDeaf(false);
       message.channel.send("Member successfully unmuted on voice channel");
     } catch { }
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "member",
-        description: "The user to undefended",
-        type: "USER",
-        required: true
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
-        	const member = guild.members.cache.get(interaction.options.getUser("member").id);
+  }
+
+  public async execute(client, interaction, guild) {
+    const member = guild.members.cache.get(interaction.options.getUser("member").id);
 
     const channel = guild.channels.cache.get(member.voice?.channelId);
     if (!channel) return interaction.reply("The member is not in a voice channel!");
@@ -31,11 +39,7 @@ export const Command = {
       await member.voice.setDeaf(false);
       interaction.reply("Member successfully unmuted on voice channel");
     } catch { }
-  },
-  config: {
-    name: "undeafen",
-    description: "undeafens a member in a voice channel",
-    guildOnly: true,
-    permissions: ["SEND_MESSAGES", "DEAFEN_MEMBERS"]
   }
-};
+}
+
+export default Undeafen;

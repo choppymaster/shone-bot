@@ -1,7 +1,14 @@
+import Command from "../../core/Command";
+import { name, description, guildOnly, clientPermissions, cooldown } from "../../core/commandDecorators";
 import { MessageEmbed } from "discord.js";
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("serverinfo")
+@description("Get info about the guild")
+@guildOnly
+@clientPermissions("EMBED_LINKS")
+@cooldown(45000)
+class Serverinfo extends Command {
+  public async run(client, message, args) {
     const guild = message.guild;
 
     const embed = new MessageEmbed()
@@ -17,8 +24,9 @@ export const Command = {
       .addField("AFK Timeout", guild.afkTimeout / 60 + " minute(s)", true);
 
     message.channel.send({ embeds: [embed] });
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const embed = new MessageEmbed()
       .setColor("RANDOM")
       .setTitle(`Server Info - ${guild.name}`)
@@ -32,12 +40,6 @@ export const Command = {
       .addField("AFK Timeout", guild.afkTimeout / 60 + " minute(s)", true);
 
     interaction.reply({ embeds: [embed] });
-  },
-
-  config: {
-    name: "serverinfo",
-    description: "Gives the info of the guild.",
-    guildOnly: true,
-    permissions: ["SEND_MESSAGES"]
   }
-};
+}
+export default Serverinfo;

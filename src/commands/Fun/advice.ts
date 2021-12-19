@@ -1,8 +1,14 @@
+import Command from "../../core/Command";
+import { name, description, clientPermissions, cooldown } from "../../core/commandDecorators";
 import { MessageEmbed } from "discord.js";
 const axios = require("axios").default;
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("advice")
+@description("Gives you a random advice")
+@clientPermissions("EMBED_LINKS")
+@cooldown(6000)
+class Advice extends Command {
+  public async run(client, message, args) {
     const advice = await axios.get("https://api.adviceslip.com/advice", {
       headers: {
         "User-Agent": `axios ${axios.VERSION}`
@@ -13,8 +19,9 @@ export const Command = {
       .setColor("RANDOM");
 
     message.channel.send({ embeds: [embed] });
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const advice = await axios.get("https://api.adviceslip.com/advice", {
       headers: {
         "User-Agent": `axios ${axios.VERSION}`
@@ -25,10 +32,7 @@ export const Command = {
       .setColor("RANDOM");
 
     interaction.reply({ embeds: [embed] });
-  },
-  config: {
-    name: "advice",
-    description: "Gives you a random advice.",
-    permissions: ["SEND_MESSAGES"]
   }
-};
+}
+
+export default Advice;

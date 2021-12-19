@@ -1,7 +1,7 @@
 import { Schemas } from "../common";
 
 export const Event = async client => {
-  require("../database")(client);
+  require("../core/database")(client);
   client.guilds.cache.forEach(async guild => {
     guild.registerSlashCommands(client);
 

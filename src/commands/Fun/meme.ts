@@ -1,8 +1,14 @@
+import Command from "../../core/Command";
+import { name, description, aliases, clientPermissions, cooldown } from "../../core/commandDecorators";
 import { MessageEmbed } from "discord.js";
 const axios = require("axios").default;
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("meme")
+@description("Gives you a random meme")
+@clientPermissions("EMBED_LINKS")
+@cooldown(7000)
+class Meme extends Command {
+  async run(client, message, args) {
     const subreddits = ["memes", "me_irl", "MemeEconomy", "ComedyCemetery", "dankmemes", "comedyheaven", "Animemes"];
     const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
 
@@ -17,8 +23,9 @@ export const Command = {
       .setImage(meme.url);
 
     message.channel.send({ embeds: [embed] });
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  async execute(client, interaction, guild) {
     const subreddits = ["memes", "me_irl", "MemeEconomy", "ComedyCemetery", "dankmemes", "comedyheaven", "Animemes"];
     const subreddit = subreddits[Math.floor(Math.random() * subreddits.length)];
 
@@ -33,11 +40,7 @@ export const Command = {
       .setImage(meme.url);
 
     interaction.reply({ embeds: [embed] });
-  },
-
-  config: {
-    name: "meme",
-    description: "Gives you a random meme",
-    permissions: ["SEND_MESSAGES"]
   }
-};
+}
+
+export default Meme;

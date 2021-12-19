@@ -1,8 +1,23 @@
+import Command from "../../core/Command";
+import { name, description, slashCommandOptions, clientPermissions, usage, cooldown } from "../../core/commandDecorators";
 import { MessageEmbed } from "discord.js";
 const axios = require("axios").default;
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("pokemon")
+@description("Fetches pokemon details")
+@slashCommandOptions([
+  {
+    name: "name",
+    description: "the pokemon name you want to search for",
+    type: "STRING",
+    required: true
+  }
+])
+@usage("[name]")
+@clientPermissions("EMBED_LINKS")
+@cooldown(9000)
+class Pokemon extends Command {
+  public async run(client, message, args) {
     if (!args.join(" ")) return message.channel.send("Pokémon not specified").then(m => m.delete({ timeout: 10000 }));
     let res;
     try {
@@ -16,18 +31,9 @@ export const Command = {
     } catch {
       message.channel.send("Pokemon not found.");
     }
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "name",
-        description: "the pokemon name you want to search for",
-        type: "STRING",
-        required: true
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     let res;
     try {
       res = await axios.get(`https://courses.cs.washington.edu/courses/cse154/webservices/pokedex/pokedex.php?pokemon=${interaction.options.getString("name")}`).then(res => res.data);
@@ -41,10 +47,7 @@ export const Command = {
     } catch {
       interaction.reply("Pokemon not found");
     }
-  },
-  config: {
-    name: "pokemon",
-    description: "fetches pokemon details",
-    permissions: ["SEND_MESSAGES"]
   }
-};
+}
+
+export default Pokemon;
