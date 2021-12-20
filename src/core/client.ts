@@ -1,16 +1,7 @@
 import { Client as DiscordClient, Collection, Intents } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
+import { IConfig, ISlashOption } from "./interfaces";
 
-interface IConfig {
-  [key: string]: any
-}
-
-interface ISlashOption {
-  name: string,
-  description: string,
-  type: string,
-  required: boolean
-}
 class Client extends DiscordClient {
   config: IConfig
   logger: any

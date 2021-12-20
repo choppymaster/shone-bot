@@ -1,5 +1,6 @@
 // import dependencies
-import { loadExtends, IEvent } from "./common";
+import { loadExtends } from "./common";
+import { IEvent } from "./core/interfaces";
 import fs = require("fs")
 import client from "./core/client";
 
