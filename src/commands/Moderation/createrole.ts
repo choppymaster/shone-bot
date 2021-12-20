@@ -15,6 +15,7 @@ import { name, description, guildOnly, aliases, slashCommandOptions, userPermiss
 ])
 @userPermissions("MANAGE_ROLES")
 @clientPermissions("MANAGE_ROLES")
+@usage("[name]")
 class Createrole extends Command {
   public async run(client, message, args) {
     const name = args.join(" ");

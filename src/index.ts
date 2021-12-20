@@ -12,15 +12,15 @@ loadExtends();
   fs.readdirSync("./src/commands/").forEach(dir => {
     const commandfiles = fs.readdirSync(`./src/commands/${dir}`);
     for (const file of commandfiles) {
-      const Cmd = require(`./commands/${dir}/${file}`);
-      const Command = new Cmd.default();
-      client.commands.set(Command.name, Command);
-      if (Command.aliases) {
-        Command.aliases.forEach(alias => {
-          client.aliases.set(alias, Command);
+      const { default: Command } = require(`./commands/${dir}/${file}`);
+      const cmd = new Command();
+      client.commands.set(cmd.name, cmd);
+      if (cmd.aliases) {
+        cmd.aliases.forEach(alias => {
+          client.aliases.set(alias, cmd);
         });
       }
-      client.loadApplicationCommand(Command);
+      client.loadApplicationCommand(cmd);
     }
   });
 }());

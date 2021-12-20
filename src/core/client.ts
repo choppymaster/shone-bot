@@ -5,6 +5,12 @@ interface IConfig {
   [key: string]: any
 }
 
+interface ISlashOption {
+  name: string,
+  description: string,
+  type: string,
+  required: boolean
+}
 class Client extends DiscordClient {
   config: IConfig
   logger: any
@@ -39,10 +45,10 @@ class Client extends DiscordClient {
   // load slashcommand for the command
   async loadApplicationCommand(command) {
     const builder = new SlashCommandBuilder();
-    builder.setName(command.name)?.setDescription(command.description ?? "No description");
+    builder.setName(command.name as string)?.setDescription((command.description ?? "No description") as string);
     const slash = command.slashCommandOptions;
     if (slash) {
-      slash.forEach((option: any) => {
+      slash.forEach((option: ISlashOption) => {
         const add = (options: any) => options.setName(option.name).setDescription(option.description ?? "No description").setRequired(option.required);
         switch (option.type) {
           case "STRING": builder.addStringOption(add); break;
@@ -53,7 +59,7 @@ class Client extends DiscordClient {
         }
       });
     }
-    if (builder) this.slash.push(builder.toJSON());
+    this.slash.push(builder.toJSON());
   }
 }
 

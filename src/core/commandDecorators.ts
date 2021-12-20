@@ -1,5 +1,5 @@
 function setMetaData(key: string, value) {
-  return function<T extends Function>(target: T): T {
+  return function(target) {
     Object.defineProperty(target.prototype, key, {
       value: value
     });
@@ -7,7 +7,7 @@ function setMetaData(key: string, value) {
   };
 }
 
-function setFlagMetaData<T extends Function>(target: T, flag: string) {
+function setFlagMetaData(target, flag: string) {
   Object.defineProperty(target.prototype, flag, {
     value: true,
     enumerable: true
@@ -23,7 +23,7 @@ export function description(value: string) {
   return setMetaData("description", value);
 }
 
-export function ownerOnly<T extends Function>(target: T): T {
+export function ownerOnly(target) {
   return setFlagMetaData(target, "ownerOnly");
 }
 
@@ -35,7 +35,7 @@ export function slashCommandOptions(values: any[]) {
   return setMetaData("slashCommandOptions", values);
 }
 
-export function guildOnly<T extends Function>(target: T): T {
+export function guildOnly(target) {
   return setFlagMetaData(target, "guildOnly");
 }
 

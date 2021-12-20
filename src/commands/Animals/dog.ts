@@ -5,7 +5,7 @@ const axios = require("axios").default;
 
 @name("dog")
 @description("Gives you a random dog image")
-@aliases("doggie")
+@aliases("doggie", "doggo")
 @clientPermissions("EMBED_LINKS")
 @cooldown(8000)
 class Dog extends Command {
