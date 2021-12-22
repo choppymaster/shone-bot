@@ -27,8 +27,9 @@ Create .env file the contents below:
 ```sh
 TOKEN = your_bot_token
 BOTMASTER = your_discord_id
+CLIENTID = your_bots_client_id
 ```
 
-Change `your_bot_token` to your bot's token, and `your_discord_id` to your discord ID.
+Change `your_bot_token` to your bot's token, `your_discord_id` to your discord ID, and `your_bots_client_id` to your bots client ID.
 
 After following the above steps, you can start the bot with `node .`
