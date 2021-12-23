@@ -1,8 +1,23 @@
+import Command from "../../core/Command";
+import { name, description, slashCommandOptions, clientPermissions, usage, cooldown } from "../../core/commandDecorators";
 import AnimeScraper = require("ctk-anime-scraper")
 import { MessageEmbed } from "discord.js";
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("anime")
+@description("Gets anime info from Gogoanime")
+@slashCommandOptions([
+  {
+    name: "name",
+    description: "The anime name you want to search for",
+    type: "STRING",
+    required: true
+  }
+])
+@clientPermissions("EMBED_LINKS")
+@usage("[name]")
+@cooldown(15000)
+class Anime extends Command {
+  public async run(client, message, args) {
     const anim = args.join(" ");
     if (!anim) return message.channel.send("You didn't specified an anime!");
 
@@ -19,18 +34,9 @@ export const Command = {
 				`[See the anime on Gogoanime.ai](${res[0].link}) **Alert: Please be aware of the ads given on that website.**`].join("\n"));
 
     message.channel.send({ embeds: [embed] });
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "name",
-        description: "The anime name you want to search for",
-        type: "STRING",
-        required: true
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const anim = interaction.options.getString("name");
 
     const anime = new AnimeScraper.Gogoanime();
@@ -46,11 +52,7 @@ export const Command = {
 				`[See the anime on Gogoanime.ai](${res[0].link}) **Alert: Please be aware of the ads given on that website.**`].join("\n"));
 
     interaction.reply({ embeds: [embed] });
-  },
-
-  config: {
-    name: "anime",
-    description: "searches anime from Gogoanime",
-    permissions: ["SEND_MESSAGES"]
   }
-};
+}
+
+export default Anime;

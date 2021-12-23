@@ -1,5 +1,20 @@
-export const Command = {
-  run: (client, message, args) => {
+import Command from "../../core/Command";
+import { name, description, slashCommandOptions, usage, cooldown } from "../../core/commandDecorators";
+
+@name("sps")
+@description("Plays stone paper scissors")
+@slashCommandOptions([
+  {
+    name: "option",
+    description: "The option you select. Available options are stone, paper, scissors.",
+    type: "STRING",
+    required: true
+  }
+])
+@usage("[stone/paper/scissors]")
+@cooldown(5000)
+class Sps extends Command {
+  public run(client, message, args) {
     const options = ["stone", "paper", "scissors"];
 
     const option = options[Math.floor(Math.random() * options.length)];
@@ -21,18 +36,9 @@ export const Command = {
     }
 
     message.channel.send(`You selected ${input}, I selected ${option}. ${winner}`);
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "option",
-        description: "The option you select. Available options are stone, paper, scissors.",
-        type: "STRING",
-        required: true
-      }
-    ]
-  },
-  execute: (client, interaction, guild) => {
+  }
+
+  public execute(client, interaction, guild) {
     const options = ["stone", "paper", "scissors"];
 
     const option = options[Math.floor(Math.random() * options.length)];
@@ -52,11 +58,7 @@ export const Command = {
     }
 
     interaction.reply(`You selected ${input}, I selected ${option}. ${winner}`);
-  },
-
-  config: {
-    name: "sps",
-    description: "plays stone paper scissors!",
-    permissions: ["SEND_MESSAGES"]
   }
-};
+}
+
+export default Sps;

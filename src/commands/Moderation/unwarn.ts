@@ -1,7 +1,22 @@
+import Command from "../../core/Command";
+import { name, description, guildOnly, slashCommandOptions, userPermissions, usage } from "../../core/commandDecorators";
 import { Schemas } from "../../common";
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("unwarn")
+@description("Unwarns a member")
+@guildOnly
+@slashCommandOptions([
+  {
+    name: "member",
+    description: "The user to unwarn for",
+    type: "USER",
+    required: true
+  }
+])
+@userPermissions("MANAGE_MESSAGES")
+@usage("[member]")
+class Unwarn extends Command {
+  public async run(client, message, args) {
     const member = message.mentions.members.first();
     if (!member) return message.channel.send("Member not specified");
     if (member.id === message.author?.id) return message.channel.send("You cant unwarn yourself.");
@@ -14,18 +29,9 @@ export const Command = {
 	  await Schemas.Warn.findByIdAndRemove(warns[warns.length - 1]._id);
 
 	  message.channel.send(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "member",
-        description: "The user to unwarn for",
-        type: "USER",
-        required: true
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const member = guild.members.cache.get(interaction.options.getUser("member").id);
     if (member.id === interaction.member?.id) return interaction.reply("You cant unwarn yourself.");
     if (member.id === client.user.id) return interaction.reply("You cant warn me");
@@ -37,12 +43,7 @@ export const Command = {
 	  await Schemas.Warn.findByIdAndRemove(warns[warns.length - 1]._id);
 
 	  interaction.reply(`${member.user.tag} is unwarned. They have ${warns.length - 1} warns.`);
-  },
-
-  config: {
-    name: "unwarn",
-    description: "unwarns a member on the guild",
-    guildOnly: true,
-    permissions: ["SEND_MESSAGES", "MANAGE_MESSAGES"]
   }
-};
+}
+
+export default Unwarn;

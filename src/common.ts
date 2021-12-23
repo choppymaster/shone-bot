@@ -12,8 +12,3 @@ export const loadExtends = () => {
     require(`./extends/${file}`);
   });
 };
-
-// event interface
-export interface IEvent {
-  Event: (client, ...args: any[]) => void | Promise<void>
-}

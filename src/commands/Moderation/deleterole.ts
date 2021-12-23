@@ -1,5 +1,29 @@
-export const Command = {
-  run: async (client, message, args) => {
+import Command from "../../core/Command";
+import { name, description, guildOnly, aliases, slashCommandOptions, userPermissions, clientPermissions, usage } from "../../core/commandDecorators";
+
+@name("deleterole")
+@description("delete a role.")
+@guildOnly
+@aliases("roledelete", "delete-role")
+@slashCommandOptions([
+  {
+    name: "role",
+    description: "The role to delete",
+    type: "ROLE",
+    required: true
+  },
+  {
+    name: "reason",
+    description: "The reason to delete",
+    type: "STRING",
+    required: false
+  }
+])
+@userPermissions("MANAGE_ROLES")
+@clientPermissions("MANAGE_ROLES")
+@usage("[role] [?reason]")
+class Deleterole extends Command {
+  public async run(client, message, args) {
     const role = message.mentions.roles.first();
     if (!role) return message.channel.send("Role not specified");
     const reason = args.slice(1).join(" ") ?? "Reason not specified";
@@ -19,24 +43,9 @@ export const Command = {
         }
       })
       .catch(() => message.channel.send("Time over"));
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "role",
-        description: "The role to delete",
-        type: "ROLE",
-        required: true
-      },
-      {
-        name: "reason",
-        description: "The reason to delete",
-        type: "STRING",
-        required: false
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const role = interaction.options.getRole("role");
 
     interaction.reply("Are you sure you want to delete this role?");
@@ -54,11 +63,6 @@ export const Command = {
         }
       })
       .catch(() => interaction.followUp("Time over"));
-  },
-  config: {
-    name: "deleterole",
-    description: "deletes a role.",
-    guildOnly: true,
-    permissions: ["SEND_MESSAGES", "MANAGE_ROLES"]
   }
-};
+}
+export default Deleterole;

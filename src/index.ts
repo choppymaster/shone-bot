@@ -1,9 +1,11 @@
 // import dependencies
-import { loadExtends, IEvent } from "./common";
+import { loadExtends } from "./common";
+import { IEvent } from "./core/interfaces";
 import fs = require("fs")
-import client from "./client";
+import client from "./core/client";
 
 require("dotenv/config");
+
 loadExtends();
 
 // Command handling
@@ -11,9 +13,15 @@ loadExtends();
   fs.readdirSync("./src/commands/").forEach(dir => {
     const commandfiles = fs.readdirSync(`./src/commands/${dir}`);
     for (const file of commandfiles) {
-      const { Command } = require(`./commands/${dir}/${file}`);
-      client.loadApplicationCommand(Command);
-      client.commands.set(Command.config?.name?.toLowerCase(), Command);
+      const { default: Command } = require(`./commands/${dir}/${file}`);
+      const cmd = new Command();
+      client.commands.set(cmd.name, cmd);
+      if (cmd.aliases) {
+        cmd.aliases.forEach(alias => {
+          client.aliases.set(alias, cmd);
+        });
+      }
+      client.loadApplicationCommand(cmd);
     }
   });
 }());

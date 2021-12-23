@@ -1,14 +1,13 @@
 import { Client as DiscordClient, Collection, Intents } from "discord.js";
 import { SlashCommandBuilder } from "@discordjs/builders";
-
-interface IConfig {
-  [key: string]: any
-}
+import { IConfig, ISlashOption } from "./interfaces";
 
 class Client extends DiscordClient {
   config: IConfig
   logger: any
   commands: Collection<string, any>
+  aliases: Collection<string, any>
+  cooldowns: Collection<string, Collection<string, Date>> // TODO: Provide the valid types for this.
   slash: Array<any>
 
   constructor() {
@@ -25,11 +24,13 @@ class Client extends DiscordClient {
       partials: ["CHANNEL"] // fixes PM receiving
     });
 
-    this.config = require("./config");
+    this.config = require("../config");
 
     this.logger = require("./logger");
 
-    this.commands = new Collection();
+    this.commands = new Collection(); // commands
+    this.aliases = new Collection(); // aliases
+    this.cooldowns = new Collection(); // cooldowns
 
     this.slash = []; // Array of slash commands
   }
@@ -37,10 +38,10 @@ class Client extends DiscordClient {
   // load slashcommand for the command
   async loadApplicationCommand(command) {
     const builder = new SlashCommandBuilder();
-    builder.setName(command.config?.name)?.setDescription(command.config?.description ?? "No description");
-    const slash = command.slashCommand;
-    if (slash && slash.options) {
-      slash.options.forEach((option: any) => {
+    builder.setName(command.name as string)?.setDescription((command.description ?? "No description") as string);
+    const slash = command.slashCommandOptions;
+    if (slash) {
+      slash.forEach((option: ISlashOption) => {
         const add = (options: any) => options.setName(option.name).setDescription(option.description ?? "No description").setRequired(option.required);
         switch (option.type) {
           case "STRING": builder.addStringOption(add); break;
@@ -51,7 +52,7 @@ class Client extends DiscordClient {
         }
       });
     }
-    if (builder) this.slash.push(builder.toJSON());
+    this.slash.push(builder.toJSON());
   }
 }
 

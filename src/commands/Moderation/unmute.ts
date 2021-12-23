@@ -1,5 +1,22 @@
-export const Command = {
-  run: async (client, message, args) => {
+import Command from "../../core/Command";
+import { name, description, guildOnly, slashCommandOptions, userPermissions, clientPermissions, usage } from "../../core/commandDecorators";
+
+@name("unmute")
+@description("Unmute a muted member")
+@guildOnly
+@slashCommandOptions([
+  {
+    name: "member",
+    description: "The member you want to unmute",
+    type: "USER",
+    required: true
+  }
+])
+@userPermissions("MANAGE_ROLES")
+@clientPermissions("MANAGE_ROLES")
+@usage("[member]")
+class Unmute extends Command {
+  public async run(client, message, args) {
     const member = message.mentions.members.first();
     if (!member) return message.channel.send("member not specified");
 
@@ -10,18 +27,9 @@ export const Command = {
     await member.roles.remove(role);
 
     message.channel.send(`${member} is unmuted!`);
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "member",
-        description: "The member you want to unmute",
-        type: "USER",
-        required: true
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const member = guild.members.cache.get(interaction.options.getUser("member").id);
 
     const data = await guild.fetchData();
@@ -31,11 +39,7 @@ export const Command = {
     await member.roles.remove(role);
 
     interaction.reply(`${member} is unmuted!`);
-  },
-  config: {
-    name: "unmute",
-    description: "Unmutes a member.",
-    guildOnly: true,
-    permissions: ["SEND_MESSAGES", "MANAGE_ROLES"]
   }
-};
+}
+
+export default Unmute;

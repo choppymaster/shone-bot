@@ -6,6 +6,7 @@
         "strictNullChecks": true,
         "removeComments": true,
         "preserveConstEnums": true,
+        "experimentalDecorators": true,
         "outDir": "dist/",
         "lib": [
             "es2021",

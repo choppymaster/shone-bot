@@ -1,5 +1,22 @@
-export const Command = {
-  run: async (client, message, args) => {
+import Command from "../../core/Command";
+import { name, description, guildOnly, slashCommandOptions, userPermissions, clientPermissions, usage } from "../../core/commandDecorators";
+
+@name("mute")
+@description("Mutes a member")
+@guildOnly
+@slashCommandOptions([
+  {
+    name: "member",
+    description: "the member to mute",
+    type: "USER",
+    required: true
+  }
+])
+@userPermissions("MANAGE_ROLES")
+@clientPermissions("MANAGE_ROLES")
+@usage("[member] [?reason]")
+class Mute extends Command {
+  public async run(client, message, args) {
     const member = message.mentions.users.first();
     if (!member) return message.channel.send("Member not specified");
 
@@ -25,18 +42,9 @@ export const Command = {
     const role = message.guild.roles.cache.get(data.muteRole);
     await message.guild.members.cache.get(member.id).roles.add(role);
     message.channel.send(`${member} is muted`);
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "member",
-        description: "the member to mute",
-        type: "USER",
-        required: true
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const member = interaction.options.getUser("member");
 
     const data = await guild.fetchData();
@@ -61,11 +69,7 @@ export const Command = {
     const role = guild.roles.cache.get(data.muteRole);
     await guild.members.cache.get(member.id).roles.add(role);
     interaction.reply(`${member} is muted`);
-  },
-  config: {
-    name: "mute",
-    description: "mutes a member",
-    guildOnly: true,
-    permissions: ["SEND_MESSAGES", "MANAGE_ROLES"]
   }
-};
+}
+
+export default Mute;

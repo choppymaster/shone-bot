@@ -1,8 +1,29 @@
+import Command from "../../core/Command";
+import { name, description, guildOnly, slashCommandOptions, userPermissions, usage } from "../../core/commandDecorators";
 import { Schemas } from "../../common";
 import { MessageEmbed } from "discord.js";
 
-export const Command = {
-  run: (client, message, args) => {
+@name("warn")
+@description("Warns a member.")
+@guildOnly
+@slashCommandOptions([
+  {
+    name: "member",
+    description: "The user to warn",
+    type: "USER",
+    required: true
+  },
+  {
+    name: "reason",
+    description: "The reason for warn.",
+    type: "STRING",
+    required: false
+  }
+])
+@userPermissions("MANAGE_MESSAGES")
+@usage("[member] [?reason]")
+class Warn extends Command {
+  public run(client, message, args) {
     const member = message.mentions.members.first();
     if (!member) return message.channel.send("Member not specified");
     if (member.id === message.author?.id) return message.channel.send("You cant warn yourself").then(m => m.delete({ timeout: 10000 }));
@@ -33,24 +54,9 @@ export const Command = {
 	      ].join("\n\n"));
 	    message.channel.send({ embeds: [embed] });
     });
-  },
-  slashCommand: {
-    options: [
-      {
-        name: "member",
-        description: "The user to warn",
-        type: "USER",
-        required: true
-      },
-      {
-        name: "reason",
-        description: "The reason for warn.",
-        type: "STRING",
-        required: false
-      }
-    ]
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public execute(client, interaction, guild) {
     const member = guild.members.cache.get(interaction.options.getUser("member").id);
     if (member.id === interaction.member?.id) return interaction.reply("You cant warn yourself").then(() => setTimeout(() => { interaction.deleteReply(); }, 10000));
     if (member.id === client.user.id) return interaction.reply("You cant warn me").then(() => setTimeout(() => { interaction.deleteReply(); }, 10000));
@@ -79,11 +85,7 @@ export const Command = {
 	      ].join("\n\n"));
 	   interaction.reply({ embeds: [embed] });
     });
-  },
-  config: {
-    name: "warn",
-    description: "Warns a member on the server",
-    guildOnly: true,
-    permissions: ["MANAGE_MESSAGES", "SEND_MESSAGES"]
   }
-};
+}
+
+export default Warn;

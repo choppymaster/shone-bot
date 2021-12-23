@@ -1,8 +1,14 @@
+import Command from "../../core/Command";
+import { name, description, clientPermissions, cooldown } from "../../core/commandDecorators";
 import { MessageEmbed } from "discord.js";
 const axios = require("axios").default;
 
-export const Command = {
-  run: async (client, message, args) => {
+@name("dadjoke")
+@description("Gives a random dadjoke")
+@clientPermissions("EMBED_LINKS")
+@cooldown(6000)
+class Dadjoke extends Command {
+  public async run(client, message, args) {
     const joke = await axios.get("https://icanhazdadjoke.com/", {
       headers: {
         Accept: "text/plain",
@@ -13,8 +19,9 @@ export const Command = {
       .setTitle(joke)
       .setColor("RANDOM");
     message.channel.send({ embeds: [embed] });
-  },
-  execute: async (client, interaction, guild) => {
+  }
+
+  public async execute(client, interaction, guild) {
     const joke = await axios.get("https://icanhazdadjoke.com/", {
       headers: {
         Accept: "text/plain",
@@ -25,11 +32,7 @@ export const Command = {
       .setTitle(joke)
       .setColor("RANDOM");
     interaction.reply({ embeds: [embed] });
-  },
-
-  config: {
-    name: "dadjoke",
-    description: "Gives you a random dad joke.",
-    permissions: ["SEND_MESSAGES"]
   }
-};
+}
+
+export default Dadjoke;
