@@ -7,6 +7,7 @@ class Client extends DiscordClient {
   logger: any
   commands: Collection<string, any>
   aliases: Collection<string, any>
+  cooldowns: Collection<string, Collection<string, Date>> // TODO: Provide the valid types for this.
   slash: Array<any>
 
   constructor() {
@@ -29,6 +30,7 @@ class Client extends DiscordClient {
 
     this.commands = new Collection(); // commands
     this.aliases = new Collection(); // aliases
+    this.cooldowns = new Collection(); // cooldowns
 
     this.slash = []; // Array of slash commands
   }
