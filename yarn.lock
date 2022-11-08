@@ -1038,6 +1038,10 @@ discord-api-types@^0.25.2:
   version "0.25.2"
   resolved "https://registry.npmjs.org/discord-api-types/-/discord-api-types-0.25.2.tgz"
 
+discord-api-types@^0.37.17:
+  version "0.37.17"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.17.tgz#314e4225fdff31b08b83ba5104d46564bc02303c"
+
 discord.js@^13.3.1:
   version "13.3.1"
   resolved "https://registry.npmjs.org/discord.js/-/discord.js-13.3.1.tgz"
