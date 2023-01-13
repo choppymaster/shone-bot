@@ -36,7 +36,7 @@
     "@discordjs/rest": "^0.2.0-canary.0",
     "axios": "^0.24.0",
     "ctk-anime-scraper": "^3.5.0",
-    "discord-api-types": "^0.25.2",
+    "discord-api-types": "^0.37.28",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
     "eslint-config-standard": "^16.0.3",
